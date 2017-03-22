@@ -1,6 +1,8 @@
 package vue;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -15,6 +18,12 @@ import javax.swing.ImageIcon;
 import java.awt.SystemColor;
 
 public class Fenetre extends JFrame {
+	private JPanel jp1;
+	private JPanel jp2;
+	private JPanel jp3;
+	private JPanel jp4;
+	private JPanel jp5;
+	private JPanel jp6;
 	private JMenuBar menuBar;
 	private JMenu mnFichier;
 	private JMenuItem mntmOuvrir;
@@ -47,6 +56,7 @@ public class Fenetre extends JFrame {
 		addMenuFichier(); 
 		addMenuEditer();
 		setJMenuBar(menuBar);
+		addJPanels();
 		pack();
 		
 		setVisible(true);
@@ -87,6 +97,33 @@ public class Fenetre extends JFrame {
 		menuBar.add(mnEditer);
 		mnEditer.add(mntmUndo);
 		mnEditer.add(mntmRedo);
+	}
+	private void addJPanels() {
+		jp1 = new JPanel();
+		jp2 = new JPanel();
+		jp3 = new JPanel();
+		jp4 = new JPanel();
+		jp5 = new JPanel();
+		jp6 = new JPanel();
+		
+		jp1.setLayout(new GridLayout(1,2));
+		jp2.setLayout(new GridLayout(2,1));
+		jp3.setLayout(new GridLayout(2,1));
+		jp4.setLayout(new GridLayout(1, 1));
+		jp5.setLayout(new GridLayout(1, 1));
+		jp6.setLayout(new GridLayout(1, 1));
+		
+		
+		jp4.setBackground(Color.BLACK);
+		jp5.setBackground(Color.BLUE);
+		jp6.setBackground(Color.CYAN);
+		
+		getContentPane().add(jp1);
+		jp1.add(jp2);
+		jp1.add(jp3);
+		jp2.add(jp4);
+		jp2.add(jp5);
+		jp3.add(jp6);
 	}
 
 }
