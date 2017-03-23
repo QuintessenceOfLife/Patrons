@@ -67,7 +67,7 @@ public class Fenetre extends JFrame {
 	}
 	
 	private void addMenuFichier() {
-		mntmOuvrir.setIcon(new ImageIcon("icones\\ouvrir_16.png"));
+		mntmOuvrir.setIcon(new ImageIcon("icones/ouvrir_16.png"));
 		mntmSauvegarder.setIcon(new ImageIcon("icones\\save_16.png"));
 		mntmQuitter.setIcon(new ImageIcon("icones\\close_16.png"));
 		menuBar.add(mnFichier);
