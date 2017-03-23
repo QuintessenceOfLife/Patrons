@@ -67,9 +67,9 @@ public class Fenetre extends JFrame {
 	}
 	
 	private void addMenuFichier() {
-		mntmOuvrir.setIcon(new ImageIcon("icones/ouvrir_16.png"));
-		mntmSauvegarder.setIcon(new ImageIcon("icones\\save_16.png"));
-		mntmQuitter.setIcon(new ImageIcon("icones\\close_16.png"));
+		mntmOuvrir.setIcon(new ImageIcon("icons/ouvrir_16.png"));
+		mntmSauvegarder.setIcon(new ImageIcon("icons\\save_16.png"));
+		mntmQuitter.setIcon(new ImageIcon("icons\\close_16.png"));
 		menuBar.add(mnFichier);
 		mnFichier.add(mntmOuvrir);
 		mnFichier.add(separateur);
@@ -95,8 +95,8 @@ public class Fenetre extends JFrame {
 		
 	}
 	private void addMenuEditer() {
-		mntmUndo.setIcon(new ImageIcon("icones\\undo_16.png"));
-		mntmRedo.setIcon(new ImageIcon("icones\\redo_16.png"));
+		mntmUndo.setIcon(new ImageIcon("icons\\undo_16.png"));
+		mntmRedo.setIcon(new ImageIcon("icons\\redo_16.png"));
 		menuBar.add(mnEditer);
 		mnEditer.add(mntmUndo);
 		mnEditer.add(mntmRedo);
