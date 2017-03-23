@@ -19,18 +19,9 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.GridLayout;
 
-public class Fenetre extends JFrame {
+public class FenetrePrincipale extends JFrame {
 	
 	private JMenuBar menuBar;
-	private JMenu mnFichier;
-	private JMenuItem mntmOuvrir;
-	private JSeparator separateur;
-	private JSeparator separateur1;
-	private JMenuItem mntmSauvegarder;
-	private JMenuItem mntmQuitter;
-	private JMenu mnEditer;
-	private JMenuItem mntmUndo;
-	private JMenuItem mntmRedo;
 	private JPanel jp;
 	private JPanel jp1;
 	private JPanel jp2;
@@ -38,7 +29,7 @@ public class Fenetre extends JFrame {
 	private JPanel jpPerspective2;
 	private JPanel jpThumbnail;
 	
-	public Fenetre() {
+	public FenetrePrincipale() {
 		super("Application Image");
 		
 		getContentPane().setBackground(SystemColor.activeCaption);
@@ -47,18 +38,12 @@ public class Fenetre extends JFrame {
 		setPreferredSize(new Dimension(1024,720));
 		
 		menuBar = new JMenuBar();
-		mnFichier = new JMenu("Fichier");
-		mntmOuvrir = new JMenuItem("Ouvrir");
-		separateur = new JSeparator();
-		separateur1 = new JSeparator();
-		mntmSauvegarder = new JMenuItem("Sauvegarder");
-		mntmQuitter = new JMenuItem("Quitter");
-		mnEditer = new JMenu("Editer");
-		mntmUndo = new JMenuItem("Undo");
-		mntmRedo = new JMenuItem("Redo");
+		MenuFichier menuFichier = new MenuFichier();
+		MenuEditer menuEditer = new MenuEditer();
 		
-		addMenuFichier(); 
-		addMenuEditer();
+		menuBar.add(menuFichier);
+		menuBar.add(menuEditer);
+
 		setJMenuBar(menuBar);
 		addJPanels();
 		pack();
@@ -66,41 +51,8 @@ public class Fenetre extends JFrame {
 		setVisible(true);
 	}
 	
-	private void addMenuFichier() {
-		mntmOuvrir.setIcon(new ImageIcon("icons/ouvrir_16.png"));
-		mntmSauvegarder.setIcon(new ImageIcon("icons\\save_16.png"));
-		mntmQuitter.setIcon(new ImageIcon("icons\\close_16.png"));
-		menuBar.add(mnFichier);
-		mnFichier.add(mntmOuvrir);
-		mnFichier.add(separateur);
-		mnFichier.add(mntmSauvegarder);
-		mnFichier.add(separateur1);
-		mnFichier.add(mntmQuitter);
-		
-		mntmOuvrir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-		});
-		mntmSauvegarder.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-		});
-		mntmQuitter.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				System.exit(0);
-			}
-		});
-		
-	}
-	private void addMenuEditer() {
-		mntmUndo.setIcon(new ImageIcon("icons\\undo_16.png"));
-		mntmRedo.setIcon(new ImageIcon("icons\\redo_16.png"));
-		menuBar.add(mnEditer);
-		mnEditer.add(mntmUndo);
-		mnEditer.add(mntmRedo);
-	}
+	
+	
 	private void addJPanels() {
 		jp = new JPanel();
 		jp1 = new JPanel();
