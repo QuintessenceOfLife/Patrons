@@ -1,6 +1,6 @@
 package controller;
 
-public class Ouvrir extends Commande {
+public class Recuperer extends Commande {
 
 	//TODO add constructor and attributes
 	
