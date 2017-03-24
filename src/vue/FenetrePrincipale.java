@@ -1,5 +1,6 @@
 package vue;
 
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JFrame;
@@ -7,6 +8,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import java.awt.SystemColor;
 import javax.swing.BorderFactory;
+import javax.swing.JDesktopPane;
+
 import java.awt.GridLayout;
 
 public class FenetrePrincipale extends JFrame {
@@ -14,19 +17,24 @@ public class FenetrePrincipale extends JFrame {
 	private JMenuBar menuBar;
 	private MenuFichier menuFichier;
 	private MenuEditer menuEditer;
-	private JPanel mainPanel;
+	JDesktopPane desktopPane;
 	private FenetrePerspective topLeft;
 	private FenetrePerspective bottomLeft;
 	private Vignette topRight;
 	
 	public FenetrePrincipale() {
 		super("Application Image");
+	
 		
 		// Frame specifications
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(new GridLayout(1, 1));
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		
+		// Desktop
+		desktopPane = new JDesktopPane();
+		desktopPane.setBackground(Color.WHITE);
 		
 		// MenuBar
 		menuBar = new JMenuBar();
@@ -46,35 +54,19 @@ public class FenetrePrincipale extends JFrame {
 	}
 	
 	private void addJPanels(){
+	    
 		// Create the panels
-		mainPanel = new JPanel();
 		topLeft = new FenetrePerspective("Perspective 1");
+		topLeft.setLocation(0,0);
 		bottomLeft = new FenetrePerspective("Perspective 2");
+		bottomLeft.setLocation(0,400);
 		topRight = new Vignette("Vignette");
-		
-		
-		// Set borders and layouts of the frame
-		mainPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-		mainPanel.setLayout(new GridBagLayout());
+		topRight.setLocation(500,0);
 
-		// GridBagContraints
-		GridBagConstraints gbc = new GridBagConstraints();
-        gbc.fill = GridBagConstraints.BOTH;	// Fill in both x and y
-        gbc.gridx = 0;						// Start at (0,0)
-        gbc.gridy = 0;
-        gbc.weightx = 0.65;					// Perspectives takes 65% of width			
-        gbc.weighty = 0.5;
-        mainPanel.add(topLeft, gbc);		// Add Perspective1
-        
-        gbc.gridx = 0;						// (0,1)	
-        gbc.gridy = 1;
-        mainPanel.add(bottomLeft, gbc);		// Add Perspective2
-
-        gbc.gridx = 1;						// (1,0)
-        gbc.gridy = 0;
-        gbc.weightx = 0.35;					// Vignette takes 35% of width
-        mainPanel.add(topRight, gbc);		// Add Vignette
-        
-        setContentPane(mainPanel);
+        desktopPane.add(topLeft);		// Add Perspective1
+        desktopPane.add(bottomLeft);
+        desktopPane.add(topRight);
+   
+        setContentPane(desktopPane);
 	}
 }
