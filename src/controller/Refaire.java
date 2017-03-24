@@ -1,6 +1,6 @@
 package controller;
 
-public class Refaire extends Commande {
+public class Refaire extends Commande implements IRefaire {
 
 	@Override
 	public boolean faire() {

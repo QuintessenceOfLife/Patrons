@@ -1,6 +1,6 @@
 package controller;
 
-public class Sauvegarder extends Commande {
+public class Sauvegarder extends Commande implements ISauvegarder {
 
 	@Override
 	public boolean faire() {
