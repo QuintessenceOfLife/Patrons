@@ -2,6 +2,7 @@ package vue;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JMenu;
@@ -22,8 +23,8 @@ public class MenuEditer extends JMenu{
 	}
 	
 	private void addMenuEditer() {
-		mItemDefaire.setIcon(new ImageIcon("icons\\undo_16.png"));
-		mItemRefaire.setIcon(new ImageIcon("icons\\redo_16.png"));
+		mItemDefaire.setIcon(new ImageIcon("icons"+File.separator+"undo_16.png"));
+		mItemRefaire.setIcon(new ImageIcon("icons"+File.separator+"redo_16.png"));
 		
 		this.add(mItemDefaire);
 		this.add(mItemRefaire);

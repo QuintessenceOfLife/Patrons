@@ -2,6 +2,7 @@ package vue;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JMenu;
@@ -36,9 +37,9 @@ public class MenuFichier extends JMenu{
 	}
 	
 	private void addMenuFichier() {
-		mItemOuvrir.setIcon(new ImageIcon("icons\\ouvrir_16.png"));
-		mItemSauvegarder.setIcon(new ImageIcon("icons\\save_16.png"));
-		mItemQuitter.setIcon(new ImageIcon("icons\\close_16.png"));
+		mItemOuvrir.setIcon(new ImageIcon("icons"+File.separator+"ouvrir_16.png"));
+		mItemSauvegarder.setIcon(new ImageIcon("icons"+File.separator+"save_16.png"));
+		mItemQuitter.setIcon(new ImageIcon("icons"+File.separator+"close_16.png"));
 		
 		this.add(mItemOuvrir);
 		this.add(separateur);
