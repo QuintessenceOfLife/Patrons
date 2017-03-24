@@ -1,37 +1,48 @@
 package vue;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
-import javax.swing.JPanel;
 import java.awt.SystemColor;
-import javax.swing.BorderFactory;
+import java.awt.Toolkit;
+import javax.swing.JDesktopPane;
 import java.awt.GridLayout;
 
 public class FenetrePrincipale extends JFrame {
 	
 	private JMenuBar menuBar;
-	private JPanel mainPanel;
-	private JPanel topLeft;
-	private JPanel bottomLeft;
-	private JPanel topRight;
+	private MenuFichier menuFichier;
+	private MenuEditer menuEditer;
+	private JDesktopPane desktopPane;
+	private int width;
+	private int height;
+	private FenetrePerspective topLeft;
+	private FenetrePerspective bottomLeft;
+	private Vignette topRight;
 	
 	public FenetrePrincipale() {
 		super("Application Image");
-		
+	
 		// Frame specifications
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(new GridLayout(1, 1));
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		
+		// Desktop
+		desktopPane = new JDesktopPane();
+		desktopPane.setBackground(Color.WHITE);
+		Dimension desktopSize = Toolkit.getDefaultToolkit().getScreenSize();
+		width = desktopSize.width - 20;
+		height = desktopSize.height - 20;
+
 		// MenuBar
 		menuBar = new JMenuBar();
 		
 		// Menus
-		MenuFichier menuFichier = new MenuFichier();
-		MenuEditer menuEditer = new MenuEditer();
+		menuFichier = new MenuFichier();
+		menuEditer = new MenuEditer();
 		menuBar.add(menuFichier);
 		menuBar.add(menuEditer);
 
@@ -44,35 +55,17 @@ public class FenetrePrincipale extends JFrame {
 	}
 	
 	private void addJPanels(){
+	    
 		// Create the panels
-		mainPanel = new JPanel();
-		topLeft = new FenetrePerspective("Perspective 1");
-		bottomLeft = new FenetrePerspective("Perspective 2");
-		topRight = new Vignette("Vignette");
-		
-		
-		// Set borders and layouts of the frame
-		mainPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-		mainPanel.setLayout(new GridBagLayout());
+		topLeft = new FenetrePerspective("Perspective 1", (int) (width * 0.7), (int) (height * 0.4), 0,0);
+		bottomLeft = new FenetrePerspective("Perspective 2", (int) (width*0.7),(int) (height*0.4), 0, (int) (height*0.4));
+		topRight = new Vignette("Vignette", (int) (width * 0.3), (int) (height * 0.4), (int) (width * 0.7), 0);
 
-		// GridBagContraints
-		GridBagConstraints gbc = new GridBagConstraints();
-        gbc.fill = GridBagConstraints.BOTH;	// Fill in both x and y
-        gbc.gridx = 0;						// Start at (0,0)
-        gbc.gridy = 0;
-        gbc.weightx = 0.65;					// Perspectives takes 65% of width			
-        gbc.weighty = 0.5;
-        mainPanel.add(topLeft, gbc);		// Add Perspective1
-        
-        gbc.gridx = 0;						// (0,1)	
-        gbc.gridy = 1;
-        mainPanel.add(bottomLeft, gbc);		// Add Perspective2
-
-        gbc.gridx = 1;						// (1,0)
-        gbc.gridy = 0;
-        gbc.weightx = 0.35;					// Vignette takes 35% of width
-        mainPanel.add(topRight, gbc);		// Add Vignette
-        
-        setContentPane(mainPanel);
+		// Ajout des InternalFrames
+        desktopPane.add(topLeft);		// Add Perspective1
+        desktopPane.add(bottomLeft);
+        desktopPane.add(topRight);
+   
+        setContentPane(desktopPane);
 	}
 }
