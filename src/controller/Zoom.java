@@ -24,15 +24,14 @@ public class Zoom extends Commande {
 	}
 	
 	@Override
-	public boolean faire() {
-		// TODO Auto-generated method stub
-		//perspective.
-		return false;
+	public boolean faire() {		
+		perspective.zoom(deltaX1, deltaY1, deltaX2, deltaY2);
+		return true;
 	}
 
 	@Override
 	public void defaire() {
-		// TODO Auto-generated method stub
+		perspective.zoom(-1*deltaX1, -1*deltaY1, -1*deltaX2, -1*deltaY2);
 	}
 
 }

@@ -10,6 +10,10 @@ public class Sauvegarder extends Commande implements ISauvegarder {
 		return false;
 	}
 
+	/**
+	 * Il est interdit d'appeler cette méthode!
+	 * @throws NoSuchMethodError
+	 */
 	@Override
 	public void defaire() {
 		//Ne pas appeler cette méthode!
