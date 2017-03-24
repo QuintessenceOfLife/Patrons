@@ -22,12 +22,15 @@ public class MenuEditer extends JMenu{
 	}
 	
 	private void addMenuEditer() {
+		// Icons
 		mItemDefaire.setIcon(new ImageIcon("icons"+File.separator+"undo_16.png"));
 		mItemRefaire.setIcon(new ImageIcon("icons"+File.separator+"redo_16.png"));
 		
+		// Ajout des Menu Items
 		this.add(mItemDefaire);
 		this.add(mItemRefaire);
 		
+		// ACTIONS
 		mItemDefaire.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				

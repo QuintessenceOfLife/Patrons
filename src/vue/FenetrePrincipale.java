@@ -20,18 +20,22 @@ public class FenetrePrincipale extends JFrame {
 	public FenetrePrincipale() {
 		super("Application Image");
 		
+		// Frame specifications
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(new GridLayout(1, 1));
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		
+		// MenuBar
 		menuBar = new JMenuBar();
+		
+		// Menus
 		MenuFichier menuFichier = new MenuFichier();
 		MenuEditer menuEditer = new MenuEditer();
-		
 		menuBar.add(menuFichier);
 		menuBar.add(menuEditer);
 
+		// Add everything into frame and pack
 		setJMenuBar(menuBar);
 		addJPanels();
 		pack();

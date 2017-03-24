@@ -36,16 +36,19 @@ public class MenuFichier extends JMenu{
 	}
 	
 	private void addMenuFichier() {
+		// Icons
 		mItemOuvrir.setIcon(new ImageIcon("icons"+File.separator+"ouvrir_16.png"));
 		mItemSauvegarder.setIcon(new ImageIcon("icons"+File.separator+"save_16.png"));
 		mItemQuitter.setIcon(new ImageIcon("icons"+File.separator+"close_16.png"));
 		
+		// Ajout
 		this.add(mItemOuvrir);
 		this.add(separateur);
 		this.add(mItemSauvegarder);
 		this.add(separateur1);
 		this.add(mItemQuitter);
 		
+		// ACTIONS OF MENU ITEMS
 		mItemOuvrir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
