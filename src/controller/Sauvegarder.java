@@ -1,7 +1,9 @@
 package controller;
 
-public class Sauvegarder extends Commande {
+public class Sauvegarder extends Commande implements ISauvegarder {
 
+	//TODO ajouter le constructeur et les attributs
+	
 	@Override
 	public boolean faire() {
 		// TODO Auto-generated method stub
@@ -9,9 +11,9 @@ public class Sauvegarder extends Commande {
 	}
 
 	@Override
-	public boolean defaire() {
-		// TODO Auto-generated method stub
-		return false;
+	public void defaire() {
+		//Ne pas appeler cette méthode!
+        throw new NoSuchMethodError();
 	}
 
 }

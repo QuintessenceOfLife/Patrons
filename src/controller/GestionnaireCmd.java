@@ -1,13 +1,13 @@
 package controller;
 
-import java.util.List;
 import java.util.LinkedList;
 
 public class GestionnaireCmd {
 	
 	private static GestionnaireCmd gestionnaire = new GestionnaireCmd();
-	private List doneList= new LinkedList<Commande>();
-	private List redoList = new LinkedList<Commande>();
+	private LinkedList<Commande> doneList = new LinkedList<Commande>();
+	private LinkedList<Commande> undoneList = new LinkedList<Commande>();
+	private static final int MAX_LIST_LENGTH = 10;
 	
 	private GestionnaireCmd() { }
 	
@@ -15,25 +15,62 @@ public class GestionnaireCmd {
 		return gestionnaire;
 	}
 	
-	public void executerCommande(Commande cmd) {
-		/* 
-		 * Exécute la commande
-		 * Sauvegarde la commande dans la liste
-		*/
-		if (cmd.faire()) { 
-			addToDone(cmd); 
+	/* CODE EMPRUNTÉ :
+	   Les lignes suivantes sont basées sur l'exemple de la section Command du chapitre 8 de Grand 2002.	   		
+	 */
+	
+	/** 
+	 * Exécute la commande et la sauvegarde dans la liste au besoin.
+	 * @param cmd la commande à exécuter.
+	*/
+	public void executerCommande(Commande cmd) {		
+		if (cmd instanceof IDefaire)
+            defaire();
+		else if (cmd instanceof IRefaire)
+            refaire();
+		else if (cmd instanceof ISauvegarder)
+        	cmd.faire();
+		else { 
+			if (undoneList.size() > 0)
+	            undoneList.clear();
+			if (cmd.faire()) 
+				addToDone(cmd);
+			else //on ne peut défaire cette commande	
+				doneList.clear();                       
 		}
 	}
 	
-	public void addToDone(Commande cmd) {
-		doneList.add(cmd);
+	/**
+	 * Ajoute la commande à la liste des commandes faites.
+	 * La liste ne peut contenir plus que MAX_LIST_LENGTH commandes.
+	 * @param cmd la commande à ajouter.
+	 */
+	private void addToDone(Commande cmd) {
+		doneList.addFirst(cmd);        
+        if (doneList.size() > MAX_LIST_LENGTH)
+          doneList.removeLast();
 	}
 	
-	private void refaire() {
-		
-	}
-	
+	/**
+	 * Défaire la dernière commande.
+	 */
 	private void defaire() {
-		
+		if (doneList.size() > 0) { 
+            Commande cmd = doneList.removeFirst();
+            cmd.defaire();
+            undoneList.addFirst(cmd);
+        }
 	}
+	
+	/**
+	 * Refaire la dernière commande défaite.
+	 */
+	private void refaire() {
+		if (undoneList.size() > 0) { 
+			Commande cmd = undoneList.removeFirst();
+            cmd.faire();
+            doneList.addFirst(cmd);			
+        } 
+	}
+	/* FIN DU CODE EMPRUNTÉ */
 }
