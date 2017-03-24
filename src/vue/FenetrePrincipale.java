@@ -2,14 +2,11 @@ package vue;
 
 import java.awt.Color;
 import java.awt.Dimension;
-
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
-
 import javax.swing.JDesktopPane;
-
 import java.awt.GridLayout;
 
 public class FenetrePrincipale extends JFrame {
@@ -40,7 +37,6 @@ public class FenetrePrincipale extends JFrame {
 		width = desktopSize.width - 20;
 		height = desktopSize.height - 20;
 
-		
 		// MenuBar
 		menuBar = new JMenuBar();
 		
