@@ -20,9 +20,8 @@ public class Zoom extends Commande {
 	}
 
 	@Override
-	public boolean defaire() {
+	public void defaire() {
 		// TODO Auto-generated method stub
-		return false;
 	}
 
 }

@@ -4,14 +4,14 @@ public class Defaire extends Commande implements IDefaire {
 
 	@Override
 	public boolean faire() {
-		// TODO Auto-generated method stub
-		return false;
+		//Ne pas appeler cette méthode!
+        throw new NoSuchMethodError();
 	}
 
 	@Override
-	public boolean defaire() {
-		// TODO Auto-generated method stub
-		return false;
+	public void defaire() {
+		//Ne pas appeler cette méthode!
+        throw new NoSuchMethodError();
 	}
 
 }
