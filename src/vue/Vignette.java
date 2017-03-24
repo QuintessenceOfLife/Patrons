@@ -8,7 +8,7 @@ public class Vignette extends JInternalFrame{
 	// Attributs
 	JPanel vignette;
 	
-	public Vignette(String label){
+	public Vignette(String label, int width, int height, int locationX, int locationY){
 		super(label, true, true, true, true);
 		
 		// Specifications de la perspective
@@ -17,7 +17,8 @@ public class Vignette extends JInternalFrame{
 		// Ajout
 		setContentPane(vignette);
 		setClosable(false);
-	    setSize(400, 300);
+	    setSize(width, height);
+	    setLocation(locationX, locationY);
 	   	setVisible(true);
 	}
 }

@@ -8,7 +8,7 @@ public class FenetrePerspective extends JInternalFrame {
 	// Attributs
 	JPanel perspective;
 	
-	public FenetrePerspective(String label){
+	public FenetrePerspective(String label, int width, int height, int locationX, int locationY){
 		super(label, true, true, true, true);
 		
 		// Specifications de la perspective
@@ -17,7 +17,8 @@ public class FenetrePerspective extends JInternalFrame {
 		// Ajout
 		setContentPane(perspective);
 		setClosable(false);
-	    setSize(400, 300);
+	    setSize(width, height);
+	    setLocation(locationX, locationY);
 	   	setVisible(true);
 	}
 }
