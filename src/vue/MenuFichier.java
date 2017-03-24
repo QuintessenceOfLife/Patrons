@@ -1,9 +1,13 @@
 package vue;
 
+import java.awt.BorderLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
@@ -51,7 +55,20 @@ public class MenuFichier extends JMenu{
 		// ACTIONS OF MENU ITEMS
 		mItemOuvrir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				// TODO: Test
+//				JFileChooser fc = new JFileChooser();
+//				int result = fc.showOpenDialog(null);
+//				if (result == JFileChooser.APPROVE_OPTION) {
+//					File file = fc.getSelectedFile();
+//					String fileName = file.getAbsolutePath(); 
+//					
+//					JLabel image = new JLabel("", new ImageIcon(fileName), JLabel.CENTER);
+//					image.setIcon(new ImageIcon(new ImageIcon(fileName).getImage().getScaledInstance(400, 400, Image.SCALE_DEFAULT)));
+//
+//					panel.getPerspective().add(image, BorderLayout.CENTER);
+//					panel.getPerspective().revalidate(); 
+//					panel.getPerspective().repaint(); 
+//				}
 			}
 		});
 		

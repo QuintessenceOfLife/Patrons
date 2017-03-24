@@ -12,10 +12,12 @@ import java.awt.GridLayout;
 public class FenetrePrincipale extends JFrame {
 	
 	private JMenuBar menuBar;
+	private MenuFichier menuFichier;
+	private MenuEditer menuEditer;
 	private JPanel mainPanel;
-	private JPanel topLeft;
-	private JPanel bottomLeft;
-	private JPanel topRight;
+	private FenetrePerspective topLeft;
+	private FenetrePerspective bottomLeft;
+	private Vignette topRight;
 	
 	public FenetrePrincipale() {
 		super("Application Image");
@@ -30,8 +32,8 @@ public class FenetrePrincipale extends JFrame {
 		menuBar = new JMenuBar();
 		
 		// Menus
-		MenuFichier menuFichier = new MenuFichier();
-		MenuEditer menuEditer = new MenuEditer();
+		menuFichier = new MenuFichier();
+		menuEditer = new MenuEditer();
 		menuBar.add(menuFichier);
 		menuBar.add(menuEditer);
 
