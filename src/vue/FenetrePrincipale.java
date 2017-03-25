@@ -19,7 +19,7 @@ public class FenetrePrincipale extends JFrame {
 	private int height;
 	private FenetrePerspective topLeft;
 	private FenetrePerspective bottomLeft;
-	private Vignette topRight;
+	private FenetreVignette topRight;
 	
 	public FenetrePrincipale() {
 		super("Application Image");
@@ -59,7 +59,7 @@ public class FenetrePrincipale extends JFrame {
 		// Create the panels
 		topLeft = new FenetrePerspective("Perspective 1", (int) (width * 0.7), (int) (height * 0.4), 0,0);
 		bottomLeft = new FenetrePerspective("Perspective 2", (int) (width*0.7),(int) (height*0.4), 0, (int) (height*0.4));
-		topRight = new Vignette("Vignette", (int) (width * 0.3), (int) (height * 0.4), (int) (width * 0.7), 0);
+		topRight = new FenetreVignette("Vignette", (int) (width * 0.3), (int) (height * 0.4), (int) (width * 0.7), 0);
 
 		// Ajout des InternalFrames
         desktopPane.add(topLeft);		// Add Perspective1
