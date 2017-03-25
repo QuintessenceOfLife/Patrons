@@ -2,13 +2,14 @@ package vue;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
+import model.Observateur;
 
-public class Vignette extends JInternalFrame{
+public class FenetreVignette extends JInternalFrame implements Observateur {
 	
 	// Attributs
 	JPanel vignette;
 	
-	public Vignette(String label, int width, int height, int locationX, int locationY){
+	public FenetreVignette(String label, int width, int height, int locationX, int locationY){
 		super(label, true, true, true, true);
 		
 		// Specifications de la perspective
@@ -20,5 +21,11 @@ public class Vignette extends JInternalFrame{
 	    setSize(width, height);
 	    setLocation(locationX, locationY);
 	   	setVisible(true);
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
 	}
 }

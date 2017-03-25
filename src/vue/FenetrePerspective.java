@@ -2,8 +2,9 @@ package vue;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
+import model.Observateur;
 
-public class FenetrePerspective extends JInternalFrame {
+public class FenetrePerspective extends JInternalFrame implements Observateur {
 	
 	// Attributs
 	JPanel perspective;
@@ -20,5 +21,11 @@ public class FenetrePerspective extends JInternalFrame {
 	    setSize(width, height);
 	    setLocation(locationX, locationY);
 	   	setVisible(true);
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -1,15 +1,20 @@
 package model;
 
-import java.util.Observable;
-import java.util.Observer;
+import java.io.File;
 
-public class Perspective extends Observable {
+public class Perspective implements Observable {
 	
-	private int x1, y1, x2, y2;
-	//TODO add image
-	private Observer obs; //TODO need a collection of observers?
-	
-	//TODO add a constructor with an Observer in an argument? or add a setObserver() instead?	
+	private Observateur obs;
+	private int x1, y1, x2, y2;	
+	File fichierImage;
+		
+	/**
+	 * Constructeur
+	 * @param obs l'observateur de cette perspective.
+	 */
+	public Perspective(Observateur obs) {
+		this.obs = obs;
+	}
 	
 	public int getX1() {
 		return x1;
@@ -27,7 +32,14 @@ public class Perspective extends Observable {
 		return y2;
 	}
 	
-
+	public File getFichierImage() {
+		return fichierImage;
+	}
+	
+	public void setFichierImage(File fichierImage) {
+		this.fichierImage = fichierImage;
+	}
+	
 	/**
 	 * Effectuer le zoom.
 	 * @param deltaX1 variation de l'abscisse du point du haut à gauche de l'image.
@@ -39,9 +51,8 @@ public class Perspective extends Observable {
 		x1 += deltaX1;
 		y1 += deltaY1;
 		x2 += deltaX2;
-		y2 += deltaY2;
-		setChanged();
-		notifyObservers();
+		y2 += deltaY2;	
+		notifier();
 	}
 	
 	/**
@@ -54,12 +65,11 @@ public class Perspective extends Observable {
 		y1 += deltaY;
 		x2 += deltaX;
 		y2 += deltaY;
-		setChanged();
-		notifyObservers();		
+		notifier();		
 	}
 	
 	@Override
-	public void notifyObservers() {
-		obs.update(this, "zoom");  //TODO remove these args if not needed
+	public void notifier() {		
+		obs.update();
 	}
 }
