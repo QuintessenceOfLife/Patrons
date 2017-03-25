@@ -1,6 +1,6 @@
 package controller;
 
-public class Ouvrir extends Commande {
+public class Recuperer extends Commande {
 
 	//TODO add constructor and attributes
 	
@@ -12,6 +12,10 @@ public class Ouvrir extends Commande {
 		return false;
 	}
 
+	/**
+	 * Il est interdit d'appeler cette méthode!
+	 * @throws NoSuchMethodError
+	 */
 	@Override
 	public void defaire() {
 		//Ne pas appeler cette méthode!
