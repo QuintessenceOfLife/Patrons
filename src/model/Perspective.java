@@ -10,11 +10,7 @@ public class Perspective implements Observable, Serializable {
 	private int x1, y1, x2, y2;	
 	File fichierImage;
 		
-	/**
-	 * Constructeur
-	 * @param obs l'observateur de cette perspective.
-	 */
-	public Perspective(Observateur obs) {
+	public void setObservateur(Observateur obs) {
 		this.obs = obs;
 	}
 	

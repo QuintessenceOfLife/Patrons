@@ -9,6 +9,10 @@ public class Vignette implements Observable, Serializable {
 	Observateur obs;
 	File fichierImage;
 	
+	public void setObservateur(Observateur obs) {
+		this.obs = obs;
+	}
+	
 	public File getFichierImage() {
 		return fichierImage;
 	}
@@ -17,16 +21,7 @@ public class Vignette implements Observable, Serializable {
 		this.fichierImage = fichierImage;
 		notifier();
 	}
-	
-
-	/**
-	 * Constructeur
-	 * @param obs l'observateur de cette vignette
-	 */
-	public Vignette(Observateur obs) {
-		this.obs = obs;
-	}
-	
+		
 	@Override
 	public void notifier() {
 		obs.update();
