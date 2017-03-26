@@ -26,6 +26,7 @@ public class Recuperer extends Commande {
 		this.perspective1 = perspective1;
 		this.perspective2 = perspective2;
 		this.sauvegarde = sauvegarde;
+		gestionnaire.executerCommande(this);
 	}
 		
 	/**

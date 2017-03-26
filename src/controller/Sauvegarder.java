@@ -18,6 +18,7 @@ public class Sauvegarder extends Commande implements ISauvegarder {
 	public Sauvegarder(Object[] data, File sauvegarde) {
 		this.data = data;
 		this.sauvegarde = sauvegarde;
+		gestionnaire.executerCommande(this);
 	}
 
 	/**
