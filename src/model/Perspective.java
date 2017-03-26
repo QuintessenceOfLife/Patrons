@@ -37,8 +37,19 @@ public class Perspective implements Observable, Serializable {
 		return fichierImage;
 	}
 	
-	public void setFichierImage(File fichierImage) {
+	/**
+	 * Initialiser les données de la perspective (à chaque ouverture d'une nouvelle image).
+	 * @param fichierImage le fichier de l'image
+	 * @param largeur de l'image
+	 * @param hauteur de l'image
+	 */
+	public void init(File fichierImage, int largeur, int hauteur) {
 		this.fichierImage = fichierImage;
+		this.x1 = 0;
+		this.y1 = 0;
+		this.x2 = largeur;
+		this.y2 = hauteur;
+		notifier();
 	}
 	
 	/**
