@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 public class Perspective implements Observable, Serializable {
 	
+	private static final long serialVersionUID = 6291767085117089711L;
 	private Observateur obs;
 	private int x1, y1, x2, y2;	
 	File fichierImage;

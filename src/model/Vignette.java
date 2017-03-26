@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 public class Vignette implements Observable, Serializable {
 
+	private static final long serialVersionUID = -5530688886023806350L;
 	Observateur obs;
 	File fichierImage;
 	

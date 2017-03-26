@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
+import model.Data;
 import model.Perspective;
 import model.Vignette;
 
@@ -36,10 +37,10 @@ public class Recuperer extends Commande {
 	@Override
 	public boolean faire() {
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(sauvegarde));) {			
-			Object[] data = (Object[]) ois.readObject();	
-			vignette = (Vignette) data[0];
-			perspective1 = (Perspective) data[1];
-			perspective2 = (Perspective) data[2];
+			Data data = (Data) ois.readObject();	
+			vignette = data.getVignette();
+			perspective1 = data.getPerspective1();
+			perspective2 = data.getPerspective2();
 		} catch (ClassNotFoundException | IOException e) {
 			e.printStackTrace();
 		}				
