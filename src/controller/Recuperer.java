@@ -38,10 +38,24 @@ public class Recuperer extends Commande {
 	public boolean faire() {
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(sauvegarde));) {			
 			Data data = (Data) ois.readObject();	
-			vignette = data.getVignette();
-			perspective1 = data.getPerspective1();
-			perspective2 = data.getPerspective2();
-		} catch (ClassNotFoundException | IOException e) {
+			vignette.setFichierImage(data.getVignette().getFichierImage());
+			perspective1.init(data.getPerspective1().getFichierImage(), data.getPerspective1().getX2(), data.getPerspective1().getY2());
+			perspective2.init(data.getPerspective2().getFichierImage(), data.getPerspective2().getX2(), data.getPerspective2().getY2());			
+//			System.out.println("----------dans Recuperer.faire()------------");			
+//			System.out.println("contenu de vignette : ");
+//			System.out.println(vignette.getFichierImage().toString());
+//			System.out.println("contenu de perspective1 :");
+//			System.out.println(perspective1.getX1());
+//			System.out.println(perspective1.getY1());
+//			System.out.println(perspective1.getX2());
+//			System.out.println(perspective1.getY2());
+//			System.out.println("contenu de perspective2 :");
+//			System.out.println(perspective2.getX1());
+//			System.out.println(perspective2.getY1());
+//			System.out.println(perspective2.getX2());
+//			System.out.println(perspective2.getY2());
+//			System.out.println("-----------------------------------------------------------");
+		} catch (ClassNotFoundException | IOException e) {		
 			e.printStackTrace();
 		}				
 		return false; //toujours
