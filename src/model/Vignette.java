@@ -11,9 +11,9 @@ public class Vignette implements Observable {
 		return fichierImage;
 	}
 	
-
 	public void setFichierImage(File fichierImage) {
 		this.fichierImage = fichierImage;
+		notifier();
 	}
 	
 
@@ -30,5 +30,4 @@ public class Vignette implements Observable {
 		obs.update();
 	}
 
-	//TODO add get image
 }
