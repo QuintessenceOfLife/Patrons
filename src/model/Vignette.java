@@ -1,8 +1,9 @@
 package model;
 
 import java.io.File;
+import java.io.Serializable;
 
-public class Vignette implements Observable {
+public class Vignette implements Observable, Serializable {
 
 	Observateur obs;
 	File fichierImage;

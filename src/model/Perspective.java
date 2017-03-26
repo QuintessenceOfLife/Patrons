@@ -1,8 +1,9 @@
 package model;
 
 import java.io.File;
+import java.io.Serializable;
 
-public class Perspective implements Observable {
+public class Perspective implements Observable, Serializable {
 	
 	private Observateur obs;
 	private int x1, y1, x2, y2;	

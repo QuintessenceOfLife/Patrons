@@ -1,15 +1,48 @@
 package controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
+import model.Perspective;
+import model.Vignette;
+
 public class Recuperer extends Commande {
 
-	//TODO add constructor and attributes
+	private Vignette vignette;
+	private Perspective perspective1, perspective2;
+	private File sauvegarde;
 	
+	/**
+	 * Constructeur
+	 * @param vignette recevra les données de la vignette.
+	 * @param perspective1 recevra les données de la première perspective.
+	 * @param perspective2 recevra les données de la deuxième perspective.
+	 * @param sauvegarde fichier contenant les données à récupérer.
+	 */
+	public Recuperer(Vignette vignette, Perspective perspective1, Perspective perspective2, File sauvegarde) {
+		this.vignette = vignette;
+		this.perspective1 = perspective1;
+		this.perspective2 = perspective2;
+		this.sauvegarde = sauvegarde;
+	}
+		
+	/**
+	 * Récupérer la vignette et les deux perspectives à partir de la sauvegarde.
+	 * @return
+	 */
 	@Override
 	public boolean faire() {
-		// TODO Auto-generated method stub
-		
-		//Doit toujours retourner false!
-		return false;
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(sauvegarde));) {			
+			Object[] data = (Object[]) ois.readObject();	
+			vignette = (Vignette) data[0];
+			perspective1 = (Perspective) data[1];
+			perspective2 = (Perspective) data[2];
+		} catch (ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+		}				
+		return false; //toujours
 	}
 
 	/**
