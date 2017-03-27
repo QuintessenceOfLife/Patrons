@@ -10,13 +10,12 @@ public class FenetreVignette extends JInternalFrame implements Observateur {
 	
 	// Attributs
 	JPanel vignette;	
-	private static Perspective vignetteM; //le modèle de cette vue
+	private static Perspective perspective1 = Perspective.getPerspective1(); //le modèle de cette vue
 	
-	public FenetreVignette(String label, int width, int height, int locationX, int locationY, Perspective vignetteM){
+	public FenetreVignette(String label, int width, int height, int locationX, int locationY){
 		super(label, true, true, true, true);
 		
-		FenetreVignette.vignetteM = vignetteM;
-		vignetteM.setObservateur(this); //Enregistre cette vue auprès de son modèle en tant qu'observateur
+		perspective1.setObservateur(this); //Enregistre cette vue auprès de son modèle en tant qu'observateur
 		
 		// Specifications de la vignette
 		vignette = new JPanel();

@@ -11,8 +11,6 @@ import model.Vignette;
 
 public class Recuperer extends Commande {
 
-	private Vignette vignette;
-	private Perspective perspective1, perspective2;
 	private File sauvegarde;
 	
 	/**
@@ -22,10 +20,7 @@ public class Recuperer extends Commande {
 	 * @param perspective2 recevra les données de la deuxième perspective.
 	 * @param sauvegarde fichier contenant les données à récupérer.
 	 */
-	public Recuperer(Vignette vignette, Perspective perspective1, Perspective perspective2, File sauvegarde) {
-		this.vignette = vignette;
-		this.perspective1 = perspective1;
-		this.perspective2 = perspective2;
+	public Recuperer(File sauvegarde) {
 		this.sauvegarde = sauvegarde;
 		gestionnaire.executerCommande(this);
 	}
@@ -37,10 +32,13 @@ public class Recuperer extends Commande {
 	@Override
 	public boolean faire() {
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(sauvegarde));) {			
-			Data data = (Data) ois.readObject();	
-			vignette.setFichierImage(data.getVignette().getFichierImage());
-			perspective1.init(data.getPerspective1().getFichierImage(), data.getPerspective1().getX2(), data.getPerspective1().getY2());
-			perspective2.init(data.getPerspective2().getFichierImage(), data.getPerspective2().getX2(), data.getPerspective2().getY2());			
+			Object[] objects = (Object[]) ois.readObject();				
+			Perspective p = (Perspective) objects[0];
+			vignette.setFichierImage(p.getFichierImage());
+			p = (Perspective) objects[1];
+			perspective1.setCoordinates(p.getX1(), p.getY1(), p.getX2(), p.getY2());
+			p = (Perspective) objects[2];
+			perspective1.setCoordinates(p.getX1(), p.getY1(), p.getX2(), p.getY2());						
 //			System.out.println("----------dans Recuperer.faire()------------");			
 //			System.out.println("contenu de vignette : ");
 //			System.out.println(vignette.getFichierImage().toString());
