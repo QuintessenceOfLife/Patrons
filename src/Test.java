@@ -17,9 +17,6 @@ public class Test {
 		Perspective perspective2 = Perspective.getPerspective2();
 		
 		//create the view
-//		ObservateurVignette obsVignette = new ObservateurVignette(image);
-//		ObservateurPerspective obsPerspective1 = new ObservateurPerspective(perspective1);
-//		ObservateurPerspective obsPerspective2 = new ObservateurPerspective(perspective2);
 		new ObservateurVignette(image);
 		new ObservateurPerspective(perspective1);
 		new ObservateurPerspective(perspective2);
