@@ -36,7 +36,17 @@ public class CtrlMenu implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("Action: " + e.getActionCommand());
+		switch(e.getActionCommand()) {
+		case "Ouvrir" : {
+			Commande ouvrir = new Ouvrir(perspective1);
+			ouvrir.faire();
+			break;
+		}
+			case "Quitter" : {
+				System.exit(0);
+				break;
+			}
+		}
 	}
 	
 	
