@@ -1,20 +1,19 @@
 package controller;
-import model.Perspective;
 
 public class Translater extends Commande {
 
-	private Perspective perspective;
+	private int numPerspective;
 	private int deltaX;
 	private int deltaY;
 	
 	/**
 	 * Constructeur
-	 * @param perspective est le récepteur de cette commande. 
+	 * @param numPerspective indique le récepteur de cette commande. 1 pour la perspective1, 2 pour la perspective2. 
 	 * @param deltaX variation des abscisses.
 	 * @param deltaY variation des ordonnées.
 	 */ 
-	public Translater(Perspective perspective, int deltaX, int deltaY) {
-		this.perspective = perspective;
+	public Translater(int numPerspective, int deltaX, int deltaY) {
+		this.numPerspective = numPerspective;
 		this.deltaX = deltaX;
 		this.deltaY = deltaY;
 		gestionnaire.executerCommande(this);
@@ -22,13 +21,22 @@ public class Translater extends Commande {
 	
 	@Override
 	public boolean faire() {
-		perspective.translater(deltaX, deltaY);
-		return true;
+		boolean returnValue = true;
+		if (numPerspective == 1) 
+			perspective1.translater(deltaX, deltaY);
+		else if (numPerspective == 2)
+			perspective2.translater(deltaX, deltaY);
+		else 
+			returnValue = false;
+		return returnValue;		
 	}
 
 	@Override
 	public void defaire() {
-		perspective.translater(-1*deltaX, -1*deltaY);
+		if (numPerspective == 1)
+			perspective1.translater(-1*deltaX, -1*deltaY);
+		else if (numPerspective == 2)
+			perspective2.translater(-1*deltaX, -1*deltaY);
 	}
 
 }
