@@ -3,15 +3,37 @@ package model;
 import java.io.File;
 import java.io.Serializable;
 
-public class Perspective implements Observable, Serializable {
+public class Perspective implements Serializable {
 	
 	private static final long serialVersionUID = 6291767085117089711L;
-	private Observateur obs;
+	private static Perspective perspective1 = new Perspective();
+	private static Perspective perspective2 = new Perspective();
+	private static Perspective vignette = new Perspective();
+	private static File fichierImage;
 	private int x1, y1, x2, y2;	
-	File fichierImage;
-		
-	public void setObservateur(Observateur obs) {
-		this.obs = obs;
+	private Observateur obs;
+	
+	private Perspective() { }
+	
+	public static Perspective getPerspective1() {
+		return perspective1;
+	}
+
+	public static Perspective getPerspective2() {
+		return perspective2;
+	}
+
+	public static Perspective getVignette() {
+		return vignette;
+	}
+	
+	public static File getFichierImage() {
+		return fichierImage;
+	}
+	
+	public void setFichierImage(File fichierImage) {
+		Perspective.fichierImage = fichierImage;
+		notifier();
 	}
 	
 	public int getX1() {
@@ -30,24 +52,25 @@ public class Perspective implements Observable, Serializable {
 		return y2;
 	}
 	
-	public File getFichierImage() {
-		return fichierImage;
-	}
-	
 	/**
-	 * Initialiser les données de la perspective (à chaque ouverture d'une nouvelle image).
-	 * @param fichierImage le fichier de l'image
-	 * @param largeur de l'image
-	 * @param hauteur de l'image
+	 * Fixer les coordonnées.
+	 * @param x1 abscisse du point du haut à gauche 
+	 * @param y1 ordonnée du point du haut à gauche
+	 * @param x2 abscisse du point du bas à droite 
+	 * @param y2 ordonnée du point du bas à droite
 	 */
-	public void init(File fichierImage, int largeur, int hauteur) {
-		this.fichierImage = fichierImage;
-		this.x1 = 0;
-		this.y1 = 0;
-		this.x2 = largeur;
-		this.y2 = hauteur;
+	public void setCoordinates(int x1, int y1, int x2, int y2) {
+		this.x1 = x1;
+		this.y1 = y1;
+		this.x2 = x2;
+		this.y2 = y2;
 		notifier();
 	}
+	
+	public void setObservateur(Observateur obs) {
+		this.obs = obs;
+	}
+	
 	
 	/**
 	 * Effectuer le zoom.
@@ -77,7 +100,6 @@ public class Perspective implements Observable, Serializable {
 		notifier();		
 	}
 	
-	@Override
 	public void notifier() {		
 		obs.update();
 	}
