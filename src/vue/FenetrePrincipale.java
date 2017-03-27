@@ -10,6 +10,7 @@ import javax.swing.JDesktopPane;
 import java.awt.GridLayout;
 
 import model.Perspective;
+import model.Image;
 
 @SuppressWarnings("serial")
 public class FenetrePrincipale extends JFrame {
@@ -62,7 +63,7 @@ public class FenetrePrincipale extends JFrame {
 		// Create the panels
 		topLeft = new FenetrePerspective("Perspective 1", (int) (width * 0.7), (int) (height * 0.4), 0, 0, Perspective.getPerspective1());
 		bottomLeft = new FenetrePerspective("Perspective 2", (int) (width*0.7),(int) (height*0.4), 0, (int) (height*0.4), Perspective.getPerspective2());
-		topRight = new FenetreVignette("Vignette", (int) (width * 0.3), (int) (height * 0.4), (int) (width * 0.7), 0, Perspective.getVignette());
+		topRight = new FenetreVignette("Vignette", (int) (width * 0.3), (int) (height * 0.4), (int) (width * 0.7), 0, Image.getInstance());
 
 		// Ajout des InternalFrames
         desktopPane.add(topLeft);		// Add Perspective1

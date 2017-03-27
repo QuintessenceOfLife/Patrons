@@ -3,15 +3,13 @@ package model;
 import java.io.File;
 import java.io.Serializable;
 
-public class Perspective implements Serializable {
+public class Perspective implements Observable, Serializable {
 	
 	private static final long serialVersionUID = 6291767085117089711L;
 	private static Perspective perspective1 = new Perspective();
 	private static Perspective perspective2 = new Perspective();
-	private static Perspective vignette = new Perspective();
-	private static File fichierImage;
 	private int x1, y1, x2, y2;	
-	private Observateur obs;
+	private Observateur observateur;
 	
 	private Perspective() { }
 	
@@ -23,19 +21,6 @@ public class Perspective implements Serializable {
 		return perspective2;
 	}
 
-	public static Perspective getVignette() {
-		return vignette;
-	}
-	
-	public static File getFichierImage() {
-		return fichierImage;
-	}
-	
-	public void setFichierImage(File fichierImage) {
-		Perspective.fichierImage = fichierImage;
-		notifier();
-	}
-	
 	public int getX1() {
 		return x1;
 	}
@@ -68,7 +53,7 @@ public class Perspective implements Serializable {
 	}
 	
 	public void setObservateur(Observateur obs) {
-		this.obs = obs;
+		this.observateur = obs;
 	}
 	
 	
@@ -101,6 +86,6 @@ public class Perspective implements Serializable {
 	}
 	
 	public void notifier() {		
-		obs.update();
+		observateur.update();
 	}
 }
