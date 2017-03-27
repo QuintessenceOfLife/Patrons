@@ -1,8 +1,9 @@
 package model;
 
 import java.io.File;
+import java.io.Serializable;
 
-public class Image implements Observable {
+public class Image implements Observable, Serializable {
 	
 	private static Image instance = new Image();
 	private File fichierImage;
@@ -20,6 +21,7 @@ public class Image implements Observable {
 
 	public void setFichierImage(File fichierImage) {
 		this.fichierImage = fichierImage;
+		notifier();
 	}
 	
 	public void setObservateur(Observateur observateur) {

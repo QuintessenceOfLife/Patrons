@@ -5,22 +5,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
-import model.Data;
-import model.Perspective;
-import model.Vignette;
-
 public class Sauvegarder extends Commande implements ISauvegarder {
 
 	private File sauvegarde;
-	private Data data;
-	
+
 	/**
 	 * Constructeur
-	 * @param data tableau contenant les objets vignette, perspective1 et perspective2 à sauvegarder.
 	 * @param sauvegarde le fichier cible de la sauvegarde.
 	 */
-	public Sauvegarder(Data data, File sauvegarde) {
-		this.data = data;
+	public Sauvegarder(File sauvegarde) {
 		this.sauvegarde = sauvegarde;
 		gestionnaire.executerCommande(this);
 	}
@@ -31,16 +24,15 @@ public class Sauvegarder extends Commande implements ISauvegarder {
 	 */
 	@Override
 	public boolean faire() {
-		//TODO remove this debug --------------------------------------------------------------------------
-//		System.out.println(((Vignette) data[0]).getFichierImage().toString());
-//		System.out.println(((Perspective) data[1]).getX2());
-//		System.out.println(((Perspective) data[2]).getY2());
-		//---------------------------------------------------------------------------------------------------
-		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(sauvegarde));) {			
-			oos.writeObject(data);			
+		Object[] objects = new Object[3];
+		objects[0] = image;
+		objects[1] = perspective1;
+		objects[2] = perspective2;
+		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(sauvegarde));) {
+			oos.writeObject(objects);
 		} catch (IOException e) {
 			e.printStackTrace();
-		} 		
+		}
 		return false;
 	}
 
@@ -50,8 +42,8 @@ public class Sauvegarder extends Commande implements ISauvegarder {
 	 */
 	@Override
 	public void defaire() {
-		//Ne pas appeler cette méthode!
-        throw new NoSuchMethodError();
+		// Ne pas appeler cette méthode!
+		throw new NoSuchMethodError();
 	}
 
 }
