@@ -41,8 +41,8 @@ public class CtrlMenu implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		switch(e.getActionCommand()) {
 		case "Ouvrir" : {
-			Commande ouvrir = new Ouvrir(perspective1);
-			ouvrir.faire();
+			// TODO
+			new Ouvrir();
 			break;
 		}
 			case "Quitter" : {

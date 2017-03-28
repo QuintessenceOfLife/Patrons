@@ -9,17 +9,21 @@ import vue.FiltreMenuOuvrir;
 
 public class Ouvrir extends Commande {
 
-	private Perspective p;
 	
-	public Ouvrir(Perspective p) {
-		this.p = p;
+	public Ouvrir() {
+
+		gestionnaire.executerCommande(this);
 	}
 	
 	@Override
 	public boolean faire() {
 		// TODO Auto-generated method stub
 		
-		// User select the image file
+//		image.setFichierImage(file);
+//		perspective1.setCoordinates(x1, y1, x2, y2);
+//		perspective2.setCoordinates(x1, y1, x2, y2);
+		
+//		// User select the image file
 //		JFileChooser jfc = new JFileChooser();
 //		jfc.setAcceptAllFileFilterUsed(false);
 //		jfc.addChoosableFileFilter(new FiltreMenuOuvrir());
