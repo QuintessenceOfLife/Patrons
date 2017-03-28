@@ -1,17 +1,15 @@
 package vue;
 
-import java.awt.BorderLayout;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
+
 import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
 
+import controller.CtrlMenu;
+
+@SuppressWarnings("serial")
 public class MenuFichier extends JMenu{
 	
 	// Menu Items de Fichier
@@ -51,37 +49,11 @@ public class MenuFichier extends JMenu{
 		this.add(mItemSauvegarder);
 		this.add(separateur1);
 		this.add(mItemQuitter);
-		
-		// ACTIONS OF MENU ITEMS
-		mItemOuvrir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO: Test
-//				JFileChooser fc = new JFileChooser();
-//				int result = fc.showOpenDialog(null);
-//				if (result == JFileChooser.APPROVE_OPTION) {
-//					File file = fc.getSelectedFile();
-//					String fileName = file.getAbsolutePath(); 
-//					
-//					JLabel image = new JLabel("", new ImageIcon(fileName), JLabel.CENTER);
-//					image.setIcon(new ImageIcon(new ImageIcon(fileName).getImage().getScaledInstance(400, 400, Image.SCALE_DEFAULT)));
-//
-//					panel.getPerspective().add(image, BorderLayout.CENTER);
-//					panel.getPerspective().revalidate(); 
-//					panel.getPerspective().repaint(); 
-//				}
-			}
-		});
-		
-		mItemSauvegarder.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-		});
-		
-		mItemQuitter.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				System.exit(0);
-			}
-		});
+	}
+	
+	public void addController(CtrlMenu ctrlMenu) {
+		mItemOuvrir.addActionListener(ctrlMenu);
+		mItemSauvegarder.addActionListener(ctrlMenu);
+		mItemQuitter.addActionListener(ctrlMenu);
 	}
 }

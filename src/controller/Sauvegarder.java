@@ -1,12 +1,38 @@
 package controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 public class Sauvegarder extends Commande implements ISauvegarder {
 
-	//TODO ajouter le constructeur et les attributs
-	
+	private File sauvegarde;
+
+	/**
+	 * Constructeur
+	 * @param sauvegarde le fichier cible de la sauvegarde.
+	 */
+	public Sauvegarder(File sauvegarde) {
+		this.sauvegarde = sauvegarde;
+		gestionnaire.executerCommande(this);
+	}
+
+	/**
+	 * Effectuer la sauvegarde.
+	 * @return
+	 */
 	@Override
 	public boolean faire() {
-		// TODO Auto-generated method stub
+		Object[] objects = new Object[3];
+		objects[0] = image;
+		objects[1] = perspective1;
+		objects[2] = perspective2;
+		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(sauvegarde));) {
+			oos.writeObject(objects);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 
@@ -16,8 +42,8 @@ public class Sauvegarder extends Commande implements ISauvegarder {
 	 */
 	@Override
 	public void defaire() {
-		//Ne pas appeler cette méthode!
-        throw new NoSuchMethodError();
+		// Ne pas appeler cette méthode!
+		throw new NoSuchMethodError();
 	}
 
 }

@@ -1,15 +1,49 @@
 package controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
+import model.Perspective;
+import model.Image;
+
 public class Recuperer extends Commande {
 
-	//TODO add constructor and attributes
+	private File sauvegarde;
 	
+	/**
+	 * Constructeur	
+	 * @param sauvegarde fichier contenant les données à récupérer.
+	 */
+	public Recuperer(File sauvegarde) {
+		this.sauvegarde = sauvegarde;
+		gestionnaire.executerCommande(this);
+	}
+		
+	/**
+	 * Récupérer l'image et les deux perspectives à partir de la sauvegarde.
+	 * @return
+	 */
 	@Override
 	public boolean faire() {
-		// TODO Auto-generated method stub
-		
-		//Doit toujours retourner false!
-		return false;
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(sauvegarde));) {			
+			Object[] objects = (Object[]) ois.readObject();				
+			image.setFichierImage( ((Image) objects[0]).getFichierImage() );
+			perspective1.setCoordinates( 
+					((Perspective) objects[1]).getX1(), 
+					((Perspective) objects[1]).getY1(), 
+					((Perspective) objects[1]).getX2(), 
+					((Perspective) objects[1]).getY2() );			
+			perspective2.setCoordinates( 
+					((Perspective) objects[2]).getX1(), 
+					((Perspective) objects[2]).getY1(), 
+					((Perspective) objects[2]).getX2(), 
+					((Perspective) objects[2]).getY2() );						
+		} catch (ClassNotFoundException | IOException e) {		
+			e.printStackTrace();
+		}				
+		return false; //toujours
 	}
 
 	/**

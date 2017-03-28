@@ -2,18 +2,22 @@ package vue;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
+
+import model.Image;
 import model.Observateur;
-import model.Vignette;
 
 @SuppressWarnings("serial")
 public class FenetreVignette extends JInternalFrame implements Observateur {
 	
 	// Attributs
-	JPanel vignette;
-	Vignette vignetteM; //le modèle de cette vue
+	JPanel vignette;	
+	private static Image image; //le modèle de cette vue
 	
-	public FenetreVignette(String label, int width, int height, int locationX, int locationY, Vignette vignetteM){
+	public FenetreVignette(String label, int width, int height, int locationX, int locationY, Image image){
 		super(label, true, true, true, true);
+		
+		FenetreVignette.image = image;
+		image.setObservateur(this); //Enregistre cette vue auprès de son modèle en tant qu'observateur
 		
 		// Specifications de la vignette
 		vignette = new JPanel();
@@ -23,10 +27,7 @@ public class FenetreVignette extends JInternalFrame implements Observateur {
 		setClosable(false);
 	    setSize(width, height);
 	    setLocation(locationX, locationY);
-	   	setVisible(true);
-	   		   	
-	   	this.vignetteM = vignetteM;
-	   	this.vignetteM.setObservateur(this); //Enregistre cette vue auprès de son modèle en tant qu'observateur
+	   	setVisible(true);	   		   		   	
 	}
 
 	@Override
@@ -34,4 +35,5 @@ public class FenetreVignette extends JInternalFrame implements Observateur {
 		// TODO Auto-generated method stub
 		
 	}
+	
 }
