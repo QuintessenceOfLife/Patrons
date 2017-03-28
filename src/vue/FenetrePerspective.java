@@ -1,7 +1,10 @@
 package vue;
 
+import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 import model.Observateur;
 import model.Perspective;
 
@@ -31,8 +34,10 @@ public class FenetrePerspective extends JInternalFrame implements Observateur {
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-		
+		JLabel image = new JLabel("", new ImageIcon(Perspective.getFichierImage().getAbsolutePath()), JLabel.CENTER);
+		perspective.add(image);
+		revalidate();
+		repaint();
 	}
 	
 }

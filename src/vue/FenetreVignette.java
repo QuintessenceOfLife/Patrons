@@ -35,4 +35,5 @@ public class FenetreVignette extends JInternalFrame implements Observateur {
 		// TODO Auto-generated method stub
 		
 	}
+	
 }
