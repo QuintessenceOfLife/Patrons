@@ -3,6 +3,7 @@ package controller;
 import model.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import model.Perspective;
 import vue.MenuEditer;
@@ -29,10 +30,11 @@ public class CtrlMenu implements ActionListener {
 		menuEditer = me;
 	}
 	
-	public void setPerspectives(Perspective v, Perspective p1, Perspective p2) {
-		vignette = v;
-		perspective1 = p1;
-		perspective2 = p2;
+	// TODO: Relook at this, maybe create other methods if during created there's no vignette or perspectives yet
+	public CtrlMenu(Image image, Perspective perspective1, Perspective perspective2) {
+		this.image = image;
+		this.perspective1 = perspective1;
+		this.perspective2 = perspective2;
 	}
 
 	@Override
@@ -49,6 +51,4 @@ public class CtrlMenu implements ActionListener {
 			}
 		}
 	}
-	
-	
 }

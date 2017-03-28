@@ -34,10 +34,11 @@ public class FenetrePerspective extends JInternalFrame implements Observateur {
 
 	@Override
 	public void update() {
-		JLabel image = new JLabel("", new ImageIcon(Perspective.getFichierImage().getAbsolutePath()), JLabel.CENTER);
-		perspective.add(image);
-		revalidate();
-		repaint();
+		
+	// TODO
+//		JLabel image = new JLabel("", new ImageIcon(Perspective.getFichierImage().getAbsolutePath()), JLabel.CENTER);
+//		perspective.add(image);
+//		revalidate();
+//		repaint();
 	}
-	
 }
