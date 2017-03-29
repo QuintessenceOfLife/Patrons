@@ -21,7 +21,7 @@ public class FenetreVignette extends JPanel implements Observateur {
 	public FenetreVignette(Photo image, int width, int height, int widthDesktop){
 		setSize(width, height);
 		this.image = image;
-		image.setObservateur(this); //Enregistre cette vue auprès de son modèle en tant qu'observateur
+		this.image.setObservateur(this); //Enregistre cette vue auprès de son modèle en tant qu'observateur
 		
 	    setLocation(widthDesktop - width, HEIGHT_FROM_TOP);  		   		   	
 	}
@@ -29,6 +29,8 @@ public class FenetreVignette extends JPanel implements Observateur {
 	@Override
 	public void update() {
 		try {
+			removeAll();
+			
 			BufferedImage myPicture = ImageIO.read(Photo.getInstance().getFichierImage());
 			
 			double resolutionImage = (double) (myPicture.getWidth()) / (double) (myPicture.getHeight());

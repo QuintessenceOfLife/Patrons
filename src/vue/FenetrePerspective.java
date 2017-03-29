@@ -20,12 +20,14 @@ public class FenetrePerspective extends JPanel implements Observateur {
 	
 	public FenetrePerspective(Perspective perspectiveM) {
 		this.perspectiveM = perspectiveM;  
-	   	perspectiveM.setObservateur(this); //Enregistre cette vue auprès de son modèle en tant qu'observateur	
+	   	this.perspectiveM.setObservateur(this); //Enregistre cette vue auprès de son modèle en tant qu'observateur	
 	}
 
 	@Override
 	public void update() {
 		try {
+			removeAll();
+			
 			BufferedImage myPicture = ImageIO.read(Photo.getInstance().getFichierImage());
 			
 			double resolutionImage = (double) (myPicture.getWidth()) / (double) (myPicture.getHeight());
