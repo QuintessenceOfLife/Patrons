@@ -2,9 +2,12 @@ package controller;
 
 import java.io.File;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import model.Perspective;
-import vue.FiltreMenuOuvrir;
 
 public class Ouvrir extends Commande {
 
@@ -16,8 +19,9 @@ public class Ouvrir extends Commande {
 	public boolean faire() {
 		JFileChooser fileChooser = new JFileChooser();
 		
+		FileFilter imageFilter = new FileNameExtensionFilter("Image files", ImageIO.getReaderFileSuffixes());
 		fileChooser.setAcceptAllFileFilterUsed(false);
-		fileChooser.addChoosableFileFilter(new FiltreMenuOuvrir());
+		fileChooser.addChoosableFileFilter(imageFilter);
 		
 		if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 			File file = fileChooser.getSelectedFile();
