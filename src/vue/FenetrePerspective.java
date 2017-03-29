@@ -33,8 +33,7 @@ public class FenetrePerspective extends JPanel implements Observateur {
 	@Override
 	public void update() {
 		try {
-			BufferedImage myPicture;
-			myPicture = ImageIO.read(new File(Photo.getInstance().getFichierImage().getAbsolutePath()));
+			BufferedImage myPicture = ImageIO.read(Photo.getInstance().getFichierImage());
 			double resolutionImage = (double) (myPicture.getWidth()) / (double) (myPicture.getHeight());
 			double resolutionPanel = (double) getSize().width / (double) getSize().height;
 			int width;

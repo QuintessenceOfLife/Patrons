@@ -24,39 +24,38 @@ public class FenetreVignette extends JPanel implements Observateur {
 	public FenetreVignette(Photo image, int width, int height, int widthDesktop){
 		setSize(width, height);
 		this.image = image;
-//		image.setObservateur(this); //Enregistre cette vue auprès de son modèle en tant qu'observateur
+		image.setObservateur(this); //Enregistre cette vue auprès de son modèle en tant qu'observateur
 		
 	    setLocation(widthDesktop - width, HEIGHT_FROM_TOP);  		   		   	
 	}
 
 	@Override
 	public void update() {
-//		try {
-//			BufferedImage myPicture;
-//			myPicture = ImageIO.read(new File(Photo.getInstance().getFichierImage().getAbsolutePath()));
-//			double resolutionImage = (double) (myPicture.getWidth()) / (double) (myPicture.getHeight());
-//			double resolutionPanel = (double) getSize().width / (double) getSize().height;
-//			int width;
-//			int height;
-//			
-//			if (resolutionImage > resolutionPanel){
-//				width = getSize().width;
-//				height = (int) (getSize().width / resolutionImage);
-//				
-//			} else {
-//				width = (int) (getSize().height * resolutionImage);
-//				height = getSize().height;
-//			}
-//			
-//			JLabel picLabel = new JLabel(new ImageIcon(new ImageIcon(myPicture).getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH)));
-//			add(picLabel);
-//			
-//			revalidate();
-//			repaint();
-//			
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+			BufferedImage myPicture = ImageIO.read(Photo.getInstance().getFichierImage());
+			
+			double resolutionImage = (double) (myPicture.getWidth()) / (double) (myPicture.getHeight());
+			double resolutionPanel = (double) getSize().width / (double) getSize().height;
+			int width;
+			int height;
+			
+			if (resolutionImage > resolutionPanel){
+				width = getSize().width;
+				height = (int) (getSize().width / resolutionImage);
+			} else {
+				width = (int) (getSize().height * resolutionImage);
+				height = getSize().height;
+			}
+			
+			JLabel picLabel = new JLabel(new ImageIcon(myPicture.getScaledInstance(width, height, Image.SCALE_SMOOTH)));
+			add(picLabel);
+			
+			revalidate();
+			repaint();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
