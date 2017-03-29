@@ -14,7 +14,7 @@ import javax.swing.JDesktopPane;
 import java.awt.GridLayout;
 
 import model.Perspective;
-import model.Image;
+import model.Photo;
 
 @SuppressWarnings("serial")
 public class FenetrePrincipale extends JFrame {
@@ -53,7 +53,7 @@ public class FenetrePrincipale extends JFrame {
 		menuBar = new JMenuBar();
 		
 		// Menus
-		ctrlMenu = new CtrlMenu(Image.getInstance(), Perspective.getPerspective1(), Perspective.getPerspective2());
+		ctrlMenu = new CtrlMenu(Photo.getInstance(), Perspective.getPerspective1(), Perspective.getPerspective2());
 		menuFichier = new MenuFichier();
 		menuEditer = new MenuEditer();
 		menuFichier.addController(ctrlMenu);
@@ -76,9 +76,9 @@ public class FenetrePrincipale extends JFrame {
 		tabbedPanel.setSize((int) (width * 0.7), (int) (height * 0.85));
 		
 		// Find out a way to add same image to multiple panels
-		fenetrePerspective1 = new FenetrePerspective(Perspective.getPerspective1(), Image.getInstance());
-//		fenetrePerspective2 = new FenetrePerspective(Perspective.getPerspective2(), Image.getInstance());
-		fenetreVignette = new FenetreVignette(Image.getInstance(), (int) (width * 0.20), (int) (height * 0.20), width);
+		fenetrePerspective1 = new FenetrePerspective(Perspective.getPerspective1(), Photo.getInstance());
+//		fenetrePerspective2 = new FenetrePerspective(Perspective.getPerspective2(), Photo.getInstance());
+		fenetreVignette = new FenetreVignette(Photo.getInstance(), (int) (width * 0.20), (int) (height * 0.20), width);
 		
 		tabbedPanel.add("Perspective 1", fenetrePerspective1);
 		tabbedPanel.add("Perspective 2", fenetrePerspective2);

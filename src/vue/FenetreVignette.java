@@ -10,17 +10,17 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import model.Image;
+import model.Photo;
 import model.Observateur;
 
 @SuppressWarnings("serial")
 public class FenetreVignette extends JPanel implements Observateur {
 	
 	// Attributs
-	private Image image; //le modèle de cette vue
+	private Photo image; //le modèle de cette vue
 	private int HEIGHT_FROM_TOP = 15;
 	
-	public FenetreVignette(Image image, int width, int height, int widthDesktop){
+	public FenetreVignette(Photo image, int width, int height, int widthDesktop){
 		setSize(width, height);
 		this.image = image;
 //		image.setObservateur(this); //Enregistre cette vue auprès de son modèle en tant qu'observateur

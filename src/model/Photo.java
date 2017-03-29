@@ -3,15 +3,15 @@ package model;
 import java.io.File;
 import java.io.Serializable;
 
-public class Image implements Observable, Serializable {
+public class Photo implements Observable, Serializable {
 	
-	private static Image instance = new Image();
+	private static Photo instance = new Photo();
 	private File fichierImage;
 	private Observateur observateur;
 	
-	private Image() {}
+	private Photo() {}
 	
-	public static Image getInstance() {
+	public static Photo getInstance() {
 		return instance; 
 	}
 
