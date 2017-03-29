@@ -5,9 +5,6 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JTabbedPane;
-
-import controller.CtrlMenu;
-
 import java.awt.SystemColor;
 import java.awt.Toolkit;
 import javax.swing.JDesktopPane;
@@ -15,6 +12,7 @@ import java.awt.GridLayout;
 
 import model.Perspective;
 import model.Photo;
+import controller.CtrlMenu;
 
 @SuppressWarnings("serial")
 public class FenetrePrincipale extends JFrame {
@@ -72,17 +70,20 @@ public class FenetrePrincipale extends JFrame {
 	}
 	
 	private void addJPanels(){
+		// Tabbed Panel qui prend 70% du width de l'ecran et 85% de l'hauteur
 		tabbedPanel = new JTabbedPane();
 		tabbedPanel.setSize((int) (width * 0.7), (int) (height * 0.85));
 		
-		// Find out a way to add same image to multiple panels
-		fenetrePerspective1 = new FenetrePerspective(Perspective.getPerspective1(), Photo.getInstance());
-		fenetrePerspective2 = new FenetrePerspective(Perspective.getPerspective2(), Photo.getInstance());
+		// Creation des fenetres
+		fenetrePerspective1 = new FenetrePerspective(Perspective.getPerspective1());
+		fenetrePerspective2 = new FenetrePerspective(Perspective.getPerspective2());
 		fenetreVignette = new FenetreVignette(Photo.getInstance(), (int) (width * 0.20), (int) (height * 0.20), width);
 		
+		// Ajout des perspectives dans le tabbed panned
 		tabbedPanel.add("Perspective 1", fenetrePerspective1);
 		tabbedPanel.add("Perspective 2", fenetrePerspective2);
 	    
+		// Ajout dans le desktop Pane
         desktopPane.add(tabbedPanel);
         desktopPane.add(fenetreVignette);
 	}
