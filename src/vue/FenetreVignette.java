@@ -1,6 +1,9 @@
 package vue;
 
+import java.awt.BorderLayout;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -20,10 +23,20 @@ public class FenetreVignette extends JPanel implements Observateur {
 	
 	public FenetreVignette(Photo image, int width, int height, int widthDesktop){
 		setSize(width, height);
+		setLayout(new BorderLayout());
 		this.image = image;
 		this.image.setObservateur(this); //Enregistre cette vue auprès de son modèle en tant qu'observateur
 		
 	    setLocation(widthDesktop - width, HEIGHT_FROM_TOP);  		   		   	
+	}
+	
+	public BufferedImage fitImage(BufferedImage image, int width, int height){
+		BufferedImage resizedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+		Graphics2D g2 = resizedImage.createGraphics();
+		g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+		g2.drawImage(image, 0, 0, width, height, null);
+		g2.dispose();
+		return resizedImage;
 	}
 
 	@Override
@@ -46,8 +59,9 @@ public class FenetreVignette extends JPanel implements Observateur {
 				height = getSize().height;
 			}
 			
-			JLabel picLabel = new JLabel(new ImageIcon(myPicture.getScaledInstance(width, height, Image.SCALE_SMOOTH)));
-			add(picLabel);
+			myPicture = fitImage(myPicture, width, height);
+			JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+			add(picLabel, BorderLayout.CENTER);
 			
 			revalidate();
 			repaint();
