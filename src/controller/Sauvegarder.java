@@ -25,7 +25,7 @@ public class Sauvegarder extends Commande implements ISauvegarder {
 	@Override
 	public boolean faire() {
 		Object[] objects = new Object[3];
-		objects[0] = image;
+		objects[0] = photo;
 		objects[1] = perspective1;
 		objects[2] = perspective2;
 		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(sauvegarde));) {
