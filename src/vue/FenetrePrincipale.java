@@ -4,16 +4,15 @@ import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
-
-import controller.CtrlMenu;
-
+import javax.swing.JTabbedPane;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
 import javax.swing.JDesktopPane;
 import java.awt.GridLayout;
 
 import model.Perspective;
-import model.Image;
+import model.Photo;
+import controller.CtrlMenu;
 
 @SuppressWarnings("serial")
 public class FenetrePrincipale extends JFrame {
@@ -23,11 +22,14 @@ public class FenetrePrincipale extends JFrame {
 	private MenuEditer menuEditer;
 	private CtrlMenu ctrlMenu;
 	private JDesktopPane desktopPane;
+	private JTabbedPane tabbedPanel;
+	private FenetrePerspective fenetrePerspective1;
+	private FenetrePerspective fenetrePerspective2;
+	private FenetreVignette fenetreVignette;
+	
+	// TODO
 	private int width;
 	private int height;
-	private FenetrePerspective topLeft;
-	private FenetrePerspective bottomLeft;
-	private FenetreVignette topRight;
 	
 	public FenetrePrincipale() {
 		super("Application Image");
@@ -49,39 +51,40 @@ public class FenetrePrincipale extends JFrame {
 		menuBar = new JMenuBar();
 		
 		// Menus
-		ctrlMenu = new CtrlMenu(Image.getInstance(), Perspective.getPerspective1(), Perspective.getPerspective2());
+		ctrlMenu = new CtrlMenu(Photo.getInstance(), Perspective.getPerspective1(), Perspective.getPerspective2());
 		menuFichier = new MenuFichier();
 		menuEditer = new MenuEditer();
+		menuFichier.addController(ctrlMenu);
+		menuEditer.addController(ctrlMenu);
+		ctrlMenu.setMenus(menuFichier, menuEditer);
 		menuBar.add(menuFichier);
 		menuBar.add(menuEditer);
 
 		// Add everything into frame and pack
 		setJMenuBar(menuBar);
 		addJPanels();
+	    setContentPane(desktopPane);
 		pack();
 		
 		setVisible(true);
 	}
 	
 	private void addJPanels(){
-		// TODO
+		// Tabbed Panel qui prend 70% du width de l'ecran et 85% de l'hauteur
+		tabbedPanel = new JTabbedPane();
+		tabbedPanel.setSize((int) (width * 0.7), (int) (height * 0.85));
+		
+		// Creation des fenetres
+		fenetrePerspective1 = new FenetrePerspective(Perspective.getPerspective1());
+		fenetrePerspective2 = new FenetrePerspective(Perspective.getPerspective2());
+		fenetreVignette = new FenetreVignette(Photo.getInstance(), (int) (width * 0.20), (int) (height * 0.20), width);
+		
+		// Ajout des perspectives dans le tabbed panned
+		tabbedPanel.add("Perspective 1", fenetrePerspective1);
+		tabbedPanel.add("Perspective 2", fenetrePerspective2);
 	    
-//		// Create the panels
-//		topLeft = new FenetrePerspective("Perspective 1", (int) (width * 0.7), (int) (height * 0.4), 0, 0, Perspective.getPerspective1());
-//		bottomLeft = new FenetrePerspective("Perspective 2", (int) (width*0.7),(int) (height*0.4), 0, (int) (height*0.4), Perspective.getPerspective2());
-//		topRight = new FenetreVignette("Vignette", (int) (width * 0.3), (int) (height * 0.4), (int) (width * 0.7), 0, Image.getInstance());
-//
-//		// set the menu controller
-//		ctrlMenu.setMenus(menuFichier, menuEditer);
-//		ctrlMenu.setPerspectives(Perspective.getVignette(), Perspective.getPerspective1(), Perspective.getPerspective2());
-//		menuFichier.addController(ctrlMenu);
-//		menuEditer.addController(ctrlMenu);
-//		
-//		// Ajout des InternalFrames
-//        desktopPane.add(topLeft);		// Add Perspective1
-//        desktopPane.add(bottomLeft);
-//        desktopPane.add(topRight);
-//   
-//        setContentPane(desktopPane);
+		// Ajout dans le desktop Pane
+        desktopPane.add(tabbedPanel);
+        desktopPane.add(fenetreVignette);
 	}
 }

@@ -2,16 +2,16 @@ package vue;
 
 import java.io.Serializable;
 
-import model.Image;
+import model.Photo;
 import model.Observateur;
 
 public class ObservateurVignette implements Observateur, Serializable {
 	
 	private static final long serialVersionUID = -5146770680951693576L;
 	
-	private Image image; //modèle
+	private Photo image; //modèle
 	
-	public ObservateurVignette(Image image) {
+	public ObservateurVignette(Photo image) {
 		this.image = image;
 		image.setObservateur(this);
 	}

@@ -2,7 +2,7 @@ import java.io.File;
 
 import controller.Recuperer;
 import controller.Sauvegarder;
-import model.Image;
+import model.Photo;
 import model.Perspective;
 import vue.ObservateurPerspective;
 import vue.ObservateurVignette;
@@ -12,7 +12,7 @@ public class Test {
 	public static void main(String[] args) {	
 		
 		//create the model
-		Image image = Image.getInstance();
+		Photo image = Photo.getInstance();
 		Perspective perspective1 = Perspective.getPerspective1();
 		Perspective perspective2 = Perspective.getPerspective2();
 		

@@ -1,10 +1,8 @@
 package controller;
 
-import model.Image;
+import model.Photo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-
 import model.Perspective;
 import vue.MenuEditer;
 import vue.MenuFichier;
@@ -13,12 +11,9 @@ public class CtrlMenu implements ActionListener {
 	
 	private MenuFichier menuFichier;
 	private MenuEditer menuEditer;
-	private Image image;
+	private Photo image;
 	private Perspective perspective1;
 	private Perspective perspective2;
-	
-	
-	//TODO implement this controller
 	
 	/**
 	 * Set the menus
@@ -31,7 +26,7 @@ public class CtrlMenu implements ActionListener {
 	}
 	
 	// TODO: Relook at this, maybe create other methods if during created there's no vignette or perspectives yet
-	public CtrlMenu(Image image, Perspective perspective1, Perspective perspective2) {
+	public CtrlMenu(Photo image, Perspective perspective1, Perspective perspective2) {
 		this.image = image;
 		this.perspective1 = perspective1;
 		this.perspective2 = perspective2;
@@ -41,8 +36,7 @@ public class CtrlMenu implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		switch(e.getActionCommand()) {
 		case "Ouvrir" : {
-			Commande ouvrir = new Ouvrir(perspective1);
-			ouvrir.faire();
+			new Ouvrir();
 			break;
 		}
 			case "Quitter" : {

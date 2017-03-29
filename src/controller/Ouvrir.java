@@ -1,39 +1,33 @@
 package controller;
 
 import java.io.File;
-
+import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
-
-import model.Perspective;
-import vue.FiltreMenuOuvrir;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class Ouvrir extends Commande {
 
-	private Perspective p;
-	
-	public Ouvrir(Perspective p) {
-		this.p = p;
+	public Ouvrir() {
+		gestionnaire.executerCommande(this);
 	}
 	
 	@Override
 	public boolean faire() {
-		// TODO Auto-generated method stub
+		JFileChooser fileChooser = new JFileChooser();
 		
-		// User select the image file
-//		JFileChooser jfc = new JFileChooser();
-//		jfc.setAcceptAllFileFilterUsed(false);
-//		jfc.addChoosableFileFilter(new FiltreMenuOuvrir());
-//		
-//		int result = jfc.showOpenDialog(null);
-//		
-//		if (result == JFileChooser.APPROVE_OPTION) {
-//			File file = jfc.getSelectedFile();
-//			String filename = file.getAbsolutePath();
-//			
-//			// Update the perspectives
-//			System.out.println("Setting image file to: " + filename);
-//			p.setFichierImage(file);
-//		}
+		FileFilter imageFilter = new FileNameExtensionFilter("Image files", ImageIO.getReaderFileSuffixes());
+		fileChooser.setAcceptAllFileFilterUsed(false);
+		fileChooser.addChoosableFileFilter(imageFilter);
+		
+		if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+			File file = fileChooser.getSelectedFile();
+			image.setFichierImage(file);
+			
+			// TODO: Set proper coordinates
+			perspective1.setCoordinates(0, 0, 400, 400);
+			perspective2.setCoordinates(0, 0, 400, 400);
+		}
 		return false;
 	}
 
@@ -42,5 +36,4 @@ public class Ouvrir extends Commande {
 		// TODO Auto-generated method stub
 		
 	}
-
 }

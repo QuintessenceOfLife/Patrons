@@ -1,6 +1,5 @@
 package model;
 
-import java.io.File;
 import java.io.Serializable;
 
 public class Perspective implements Observable, Serializable {

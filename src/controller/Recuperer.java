@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 
 import model.Perspective;
-import model.Image;
+import model.Photo;
 
 public class Recuperer extends Commande {
 
@@ -29,7 +29,7 @@ public class Recuperer extends Commande {
 	public boolean faire() {
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(sauvegarde));) {			
 			Object[] objects = (Object[]) ois.readObject();				
-			image.setFichierImage( ((Image) objects[0]).getFichierImage() );
+			image.setFichierImage( ((Photo) objects[0]).getFichierImage() );
 			perspective1.setCoordinates( 
 					((Perspective) objects[1]).getX1(), 
 					((Perspective) objects[1]).getY1(), 
