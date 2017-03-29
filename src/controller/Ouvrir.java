@@ -27,9 +27,9 @@ public class Ouvrir extends Commande {
 			File file = fileChooser.getSelectedFile();
 			image.setFichierImage(file);
 			
-			// TODO: Set coordinates
-//			perspective1.setCoordinates(x1, y1, x2, y2);
-//			perspective2.setCoordinates(x1, y1, x2, y2);
+			// TODO: Set proper coordinates
+			perspective1.setCoordinates(0, 0, 400, 400);
+			perspective2.setCoordinates(0, 0, 400, 400);
 		}
 		return false;
 	}
