@@ -3,8 +3,6 @@ package controller;
 import model.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-
 import model.Perspective;
 import vue.MenuEditer;
 import vue.MenuFichier;
@@ -16,9 +14,6 @@ public class CtrlMenu implements ActionListener {
 	private Image image;
 	private Perspective perspective1;
 	private Perspective perspective2;
-	
-	
-	//TODO implement this controller
 	
 	/**
 	 * Set the menus
@@ -41,7 +36,6 @@ public class CtrlMenu implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		switch(e.getActionCommand()) {
 		case "Ouvrir" : {
-			// TODO
 			new Ouvrir();
 			break;
 		}

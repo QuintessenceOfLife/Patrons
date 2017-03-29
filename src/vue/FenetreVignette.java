@@ -1,39 +1,48 @@
 package vue;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import model.Image;
 import model.Observateur;
 
 @SuppressWarnings("serial")
-public class FenetreVignette extends JInternalFrame implements Observateur {
+public class FenetreVignette extends JPanel implements Observateur {
 	
 	// Attributs
-	JPanel vignette;	
-	private static Image image; //le modèle de cette vue
+	private Image image; //le modèle de cette vue
+	private int HEIGHT_FROM_TOP = 15;
 	
-	public FenetreVignette(String label, int width, int height, int locationX, int locationY, Image image){
-		super(label, true, true, true, true);
+	public FenetreVignette(Image image, int width, int height, int widthDesktop){
+		setSize(width, height);
+		this.image = image;
+//		image.setObservateur(this); //Enregistre cette vue auprès de son modèle en tant qu'observateur
 		
-		FenetreVignette.image = image;
-		image.setObservateur(this); //Enregistre cette vue auprès de son modèle en tant qu'observateur
-		
-		// Specifications de la vignette
-		vignette = new JPanel();
-				
-		// Ajout
-		setContentPane(vignette);
-		setClosable(false);
-	    setSize(width, height);
-	    setLocation(locationX, locationY);
-	   	setVisible(true);	   		   		   	
+	    setLocation(widthDesktop - width, HEIGHT_FROM_TOP);  		   		   	
 	}
 
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		
+//		try {
+//		
+//			BufferedImage myPicture = ImageIO.read(new File(Image.getInstance().getFichierImage().getAbsolutePath()));
+//			JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+//			add(picLabel);
+//			
+//			revalidate();
+//			repaint();
+//			
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
-	
 }
