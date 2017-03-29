@@ -52,6 +52,9 @@ public class FenetrePrincipale extends JFrame {
 		ctrlMenu = new CtrlMenu(Image.getInstance(), Perspective.getPerspective1(), Perspective.getPerspective2());
 		menuFichier = new MenuFichier();
 		menuEditer = new MenuEditer();
+		ctrlMenu.setMenus(menuFichier, menuEditer);
+		menuFichier.addController(ctrlMenu);
+		menuEditer.addController(ctrlMenu);
 		menuBar.add(menuFichier);
 		menuBar.add(menuEditer);
 
@@ -66,22 +69,16 @@ public class FenetrePrincipale extends JFrame {
 	private void addJPanels(){
 		// TODO
 	    
-//		// Create the panels
-//		topLeft = new FenetrePerspective("Perspective 1", (int) (width * 0.7), (int) (height * 0.4), 0, 0, Perspective.getPerspective1());
-//		bottomLeft = new FenetrePerspective("Perspective 2", (int) (width*0.7),(int) (height*0.4), 0, (int) (height*0.4), Perspective.getPerspective2());
-//		topRight = new FenetreVignette("Vignette", (int) (width * 0.3), (int) (height * 0.4), (int) (width * 0.7), 0, Image.getInstance());
-//
-//		// set the menu controller
-//		ctrlMenu.setMenus(menuFichier, menuEditer);
-//		ctrlMenu.setPerspectives(Perspective.getVignette(), Perspective.getPerspective1(), Perspective.getPerspective2());
-//		menuFichier.addController(ctrlMenu);
-//		menuEditer.addController(ctrlMenu);
-//		
-//		// Ajout des InternalFrames
-//        desktopPane.add(topLeft);		// Add Perspective1
-//        desktopPane.add(bottomLeft);
-//        desktopPane.add(topRight);
-//   
-//        setContentPane(desktopPane);
+		// Create the panels
+		topLeft = new FenetrePerspective("Perspective 1", (int) (width * 0.7), (int) (height * 0.4), 0, 0, Perspective.getPerspective1());
+		bottomLeft = new FenetrePerspective("Perspective 2", (int) (width*0.7),(int) (height*0.4), 0, (int) (height*0.4), Perspective.getPerspective2());
+		topRight = new FenetreVignette("Vignette", (int) (width * 0.3), (int) (height * 0.4), (int) (width * 0.7), 0, Image.getInstance());
+		
+		// Ajout des InternalFrames
+        desktopPane.add(topLeft);		// Add Perspective1
+        desktopPane.add(bottomLeft);
+        desktopPane.add(topRight);
+   
+        setContentPane(desktopPane);
 	}
 }
