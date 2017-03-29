@@ -77,7 +77,7 @@ public class FenetrePrincipale extends JFrame {
 		
 		// Find out a way to add same image to multiple panels
 		fenetrePerspective1 = new FenetrePerspective(Perspective.getPerspective1(), Photo.getInstance());
-//		fenetrePerspective2 = new FenetrePerspective(Perspective.getPerspective2(), Photo.getInstance());
+		fenetrePerspective2 = new FenetrePerspective(Perspective.getPerspective2(), Photo.getInstance());
 		fenetreVignette = new FenetreVignette(Photo.getInstance(), (int) (width * 0.20), (int) (height * 0.20), width);
 		
 		tabbedPanel.add("Perspective 1", fenetrePerspective1);
