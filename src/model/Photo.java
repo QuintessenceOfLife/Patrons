@@ -6,7 +6,7 @@ import java.io.Serializable;
 public class Photo implements Observable, Serializable {
 	
 	private static Photo instance = new Photo();
-	private File fichierImage;
+	private File fichierPhoto;
 	private Observateur observateur;
 	
 	private Photo() {}
@@ -16,11 +16,11 @@ public class Photo implements Observable, Serializable {
 	}
 
 	public File getFichierImage() {
-		return fichierImage;
+		return fichierPhoto;
 	}
 
 	public void setFichierImage(File fichierImage) {
-		this.fichierImage = fichierImage;
+		this.fichierPhoto = fichierImage;
 		notifier();
 	}
 	

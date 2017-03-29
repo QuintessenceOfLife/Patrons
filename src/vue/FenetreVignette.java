@@ -18,14 +18,14 @@ import model.Observateur;
 public class FenetreVignette extends JPanel implements Observateur {
 	
 	// Attributs
-	private Photo image; //le modèle de cette vue
+	private Photo photo; //le modèle de cette vue
 	private int HEIGHT_FROM_TOP = 15;
 	
 	public FenetreVignette(Photo image, int width, int height, int widthDesktop){
 		setSize(width, height);
 		setLayout(new BorderLayout());
-		this.image = image;
-		this.image.setObservateur(this); //Enregistre cette vue auprès de son modèle en tant qu'observateur
+		this.photo = image;
+		this.photo.setObservateur(this); //Enregistre cette vue auprès de son modèle en tant qu'observateur
 		
 	    setLocation(widthDesktop - width, HEIGHT_FROM_TOP);  		   		   	
 	}
