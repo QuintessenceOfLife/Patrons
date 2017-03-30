@@ -1,6 +1,7 @@
 package vue;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridBagLayout;
@@ -67,7 +68,6 @@ public class FenetrePerspective extends JPanel implements Observateur {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);		
 		Graphics2D g2d = (Graphics2D) g;
-		g2d.clearRect(x1, y1, x2, y2);
 		x1 = perspectiveM.getX1();
 		y1 = perspectiveM.getY1();
 		x2 = perspectiveM.getX2();
