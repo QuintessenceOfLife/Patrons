@@ -17,6 +17,7 @@ import javax.imageio.ImageIO;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import controller.CtrlPerspective;
@@ -57,7 +58,7 @@ public class FenetrePerspective extends JPanel implements Observateur {
 			myPicture = ImageIO.read(fichierPhoto);
 		} catch (IOException e) {
 			e.printStackTrace();
-			//TODO show an error message in a dialog
+			JOptionPane.showMessageDialog(this, "Erreur de lecture du fichier image!", "IOException", JOptionPane.ERROR_MESSAGE);
 		}
 		paintComponent(getGraphics());
 	}
