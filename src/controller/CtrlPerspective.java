@@ -12,12 +12,10 @@ import controller.Translater;
 public class CtrlPerspective {
 	
 	private FenetrePerspective fenPerspective;
-	private Perspective perspective;
 	private int dragStartX, dragStartY;
 	
 	public CtrlPerspective(FenetrePerspective fenPerspective, Perspective perspective) {
 		this.fenPerspective = fenPerspective;
-		this.perspective = perspective;
 		fenPerspective.setZoomListener(new ZoomListener());
 		fenPerspective.setTranslateListener(new TranslateListener());
 		fenPerspective.setMousePressedListener(new MousePressedListener());
@@ -33,15 +31,9 @@ public class CtrlPerspective {
 	private class TranslateListener extends MouseAdapter {
 		@Override
 		public void mouseDragged(MouseEvent e) {
-			int deltaX, deltaY;
-			deltaX = e.getX() - dragStartX;
-			deltaY = e.getY() - dragStartY;
+			new Translater(fenPerspective.getNumFenetre(), e.getX(), e.getY(), dragStartX, dragStartY);
 			dragStartX = e.getX();
 			dragStartY = e.getY();
-			System.out.println("dX: " + Integer.toString(deltaX));
-			System.out.println("dY: " + Integer.toString(deltaY));
-			System.out.println();
-			new Translater(fenPerspective.getNumFenetre(), deltaX, deltaY);
 		}
 	}
 	
@@ -52,8 +44,4 @@ public class CtrlPerspective {
 			dragStartY = e.getY();
 		}
 	}
-	
-	//private void calculerDeltas() {
-		//TODO implement 
-	//}
 }

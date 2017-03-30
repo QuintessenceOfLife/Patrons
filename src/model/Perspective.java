@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Perspective implements Observable, Serializable {
 
 	private static final long serialVersionUID = 6291767085117089711L;
-	private static final double facteurZoom = 0.1;
+	private static final double FACTEUR_ZOOM = 0.1;
 	private static Perspective perspective1 = new Perspective();
 	private static Perspective perspective2 = new Perspective();
 	private int x1, y1, x2, y2;	
@@ -72,7 +72,7 @@ public class Perspective implements Observable, Serializable {
 			notches = 1;
 		}
 
-		double zoom = (notches * facteurZoom);
+		double zoom = (notches * FACTEUR_ZOOM);
 
 		if(wheelY < y2 && wheelY > y1 && wheelX > x1 && wheelX < x2){
 			x1 -= (int) ((wheelX - x1)*zoom);
