@@ -48,8 +48,7 @@ public class CtrlMenu implements ActionListener {
 			}
 		
 			case "Sauvegarder": {
-				File file = new File("save");
-				new Sauvegarder(file);
+				new Sauvegarder(saveFile());
 				break;
 			}
 			case "Quitter" : {
@@ -73,13 +72,13 @@ public class CtrlMenu implements ActionListener {
 		return null;
 	}
 	
-//	private File saveFile() {
-//		JFileChooser fileChooser = new JFileChooser();
-//		
-//		if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
-//			return fileChooser.getSelectedFile();
-//		}
-//		
-//		return null;
-//	}
+	private File saveFile() {
+		JFileChooser fileChooser = new JFileChooser();
+		
+		if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+			return fileChooser.getSelectedFile();
+		}
+		
+		return null;
+	}
 }
