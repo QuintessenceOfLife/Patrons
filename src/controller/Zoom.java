@@ -3,7 +3,7 @@ package controller;
 public class Zoom extends Commande {
 
 	private int numPerspective;
-	private int deltaX1, deltaY1, deltaX2, deltaY2;
+	private int wheelX, wheelY, notches;
 	
 	/**
 	 * Constructeur
@@ -13,12 +13,11 @@ public class Zoom extends Commande {
 	 * @param deltaX2 variation de l'abscisse du point du bas à droite de l'image.
 	 * @param deltaY2 variation de l'ordonnée du point bas à droite de l'image.
 	 */
-	public Zoom(int numPerspective, int deltaX1, int deltaY1, int deltaX2, int deltaY2) {
+	public Zoom(int numPerspective, int wheelX, int wheelY, int notches) {
 		this.numPerspective = numPerspective;
-		this.deltaX1 = deltaX1;
-		this.deltaY1 = deltaY1;
-		this.deltaX2 = deltaX2;
-		this.deltaY2 = deltaY2;
+		this.wheelX = wheelX;
+		this.wheelY = wheelY;
+		this.notches = notches;
 		gestionnaire.executerCommande(this);
 	}
 	
@@ -26,9 +25,9 @@ public class Zoom extends Commande {
 	public boolean faire() {
 		boolean returnValue = true;
 		if (numPerspective == 1) 
-			perspective1.zoom(deltaX1, deltaY1, deltaX2, deltaY2);
+			perspective1.zoom(wheelX, wheelY, notches);
 		else if (numPerspective == 2)
-			perspective2.zoom(deltaX1, deltaY1, deltaX2, deltaY2);
+			perspective2.zoom(wheelX, wheelY, notches);
 		else 
 			returnValue = false;
 		return returnValue;
@@ -37,9 +36,9 @@ public class Zoom extends Commande {
 	@Override
 	public void defaire() {
 		if (numPerspective == 1)
-			perspective1.zoom(-1*deltaX1, -1*deltaY1, -1*deltaX2, -1*deltaY2);
+			perspective1.zoom(-1*wheelX, -1*wheelY, -1*notches);
 		else if (numPerspective == 2)
-			perspective2.zoom(-1*deltaX1, -1*deltaY1, -1*deltaX2, -1*deltaY2);
+			perspective2.zoom(-1*wheelX, -1*wheelY, -1*notches);
 	}
 
 }
