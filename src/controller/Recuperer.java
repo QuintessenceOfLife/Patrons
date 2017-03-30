@@ -5,9 +5,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-import model.Perspective;
-import model.Photo;
-
 public class Recuperer extends Commande {
 
 	private File sauvegarde;
