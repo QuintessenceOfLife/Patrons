@@ -25,14 +25,8 @@ public class CtrlPerspective {
 	
 	private class ZoomListener extends MouseAdapter {
 		@Override
-		public void mouseWheelMoved(MouseWheelEvent e) {
-			int notches = e.getWheelRotation();
-//			 double temp = zoom - (notches * 0.1);
-//			 // minimum zoom factor is 1.0
-//			 temp = Math.max(temp, 1.0);
-//			 if (temp != zoom) {
-//			 zoom = temp;
-//			 resizeImage();
+		public void mouseWheelMoved(MouseWheelEvent e) {			 
+			new Zoom(fenPerspective.getNumFenetre(), e.getX(), e.getY(), e.getWheelRotation());
 		}		
 	}
 	
