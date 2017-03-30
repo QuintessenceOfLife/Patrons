@@ -47,6 +47,14 @@ public class FenetrePerspective extends JPanel implements Observateur {
 												// qu'observateur
 		new CtrlPerspective(this, perspectiveM);
 		setLayout(new BorderLayout());
+		
+		//TODO remove this
+		try {
+			myPicture = ImageIO.read(new File("wolf.jpg"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -58,19 +66,19 @@ public class FenetrePerspective extends JPanel implements Observateur {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);		
 		Graphics2D g2d = (Graphics2D) g;
-		try {
-			myPicture = ImageIO.read(photo.getFichierImage());
-		} catch (IOException e) {
-			e.printStackTrace();
-			// TODO show the error message in a dialog-box			
-			return;
-		}
+//		try {
+//			myPicture = ImageIO.read(photo.getFichierImage());
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//			// TODO show the error message in a dialog-box			
+//			return;
+//		}
 		g2d.clearRect(x1, y1, x2, y2);
 		x1 = perspectiveM.getX1();
 		y1 = perspectiveM.getY1();
 		x2 = perspectiveM.getX2();
 		y2 = perspectiveM.getY2();		
-		g2d.drawImage(myPicture, x1, y1, x2-x1, y2-y1, this);
+		g2d.drawImage(myPicture, x1, y1, x2-x1, y2-y1, null);
 		g2d.dispose();
 	}
 
