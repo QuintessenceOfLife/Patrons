@@ -45,8 +45,8 @@ public class FenetrePrincipale extends JFrame {
 		desktopPane.setBackground(Color.WHITE);
 		Dimension desktopSize = Toolkit.getDefaultToolkit().getScreenSize();
 		width = desktopSize.width - 20;
-		height = desktopSize.height - 20;
-
+		height = desktopSize.height - 20;	
+		
 		// MenuBar
 		menuBar = new JMenuBar();
 		
@@ -75,8 +75,8 @@ public class FenetrePrincipale extends JFrame {
 		tabbedPanel.setSize((int) (width * 0.7), (int) (height * 0.85));
 		
 		// Creation des fenetres
-		fenetrePerspective1 = new FenetrePerspective(Perspective.getPerspective1());
-		fenetrePerspective2 = new FenetrePerspective(Perspective.getPerspective2());
+		fenetrePerspective1 = new FenetrePerspective(1, Perspective.getPerspective1(), Photo.getInstance());
+		fenetrePerspective2 = new FenetrePerspective(2, Perspective.getPerspective2(), Photo.getInstance());
 		fenetreVignette = new FenetreVignette(Photo.getInstance(), (int) (width * 0.20), (int) (height * 0.20), width);
 		
 		// Ajout des perspectives dans le tabbed panned

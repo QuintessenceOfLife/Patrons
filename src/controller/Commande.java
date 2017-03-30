@@ -6,7 +6,7 @@ import model.Perspective;
 public abstract class Commande {
 
 	protected final static GestionnaireCmd gestionnaire = GestionnaireCmd.getGestionnaireCmd();
-	protected static Photo image = Photo.getInstance();
+	protected static Photo photo = Photo.getInstance();
 	protected static Perspective perspective1 = Perspective.getPerspective1();
 	protected static Perspective perspective2 = Perspective.getPerspective2();
 	

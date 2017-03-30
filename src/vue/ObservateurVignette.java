@@ -19,7 +19,7 @@ public class ObservateurVignette implements Observateur, Serializable {
 	@Override
 	public void update() {		
 		System.out.println("----------dans ObservateurVignette.update()----------------");
-		System.out.println(image.getFichierImage().toString());
+		System.out.println(image.getFichierPhoto().toString());
 		System.out.println("-----------------------------------------------------------");
 	}
 

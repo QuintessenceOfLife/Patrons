@@ -3,10 +3,11 @@ package model;
 import java.io.File;
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class Photo implements Observable, Serializable {
 	
 	private static Photo instance = new Photo();
-	private File fichierImage;
+	private File fichierPhoto;
 	private Observateur observateur;
 	
 	private Photo() {}
@@ -15,12 +16,12 @@ public class Photo implements Observable, Serializable {
 		return instance; 
 	}
 
-	public File getFichierImage() {
-		return fichierImage;
+	public File getFichierPhoto() {
+		return fichierPhoto;
 	}
 
-	public void setFichierImage(File fichierImage) {
-		this.fichierImage = fichierImage;
+	public void setFichierPhoto(File fichierPhoto) {
+		this.fichierPhoto = fichierPhoto;
 		notifier();
 	}
 	

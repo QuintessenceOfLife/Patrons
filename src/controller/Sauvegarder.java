@@ -24,10 +24,17 @@ public class Sauvegarder extends Commande implements ISauvegarder {
 	 */
 	@Override
 	public boolean faire() {
-		Object[] objects = new Object[3];
-		objects[0] = image;
-		objects[1] = perspective1;
-		objects[2] = perspective2;
+		Object[] objects = new Object[9];
+		objects[0] = photo.getFichierPhoto();
+		objects[1] = perspective1.getX1();
+		objects[2] = perspective1.getY1();
+		objects[3] = perspective1.getX2();
+		objects[4] = perspective1.getY2();
+		objects[5] = perspective2.getX1();
+		objects[6] = perspective2.getY1();
+		objects[7] = perspective2.getX2();
+		objects[8] = perspective2.getY2();
+				
 		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(sauvegarde));) {
 			oos.writeObject(objects);
 		} catch (IOException e) {

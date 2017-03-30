@@ -14,6 +14,7 @@ public class MenuFichier extends JMenu{
 	
 	// Menu Items de Fichier
 	private JMenuItem mItemOuvrir;
+	private JMenuItem mItemRecuperer;
 	private JMenuItem mItemSauvegarder;
 	private JMenuItem mItemQuitter;
 	
@@ -26,6 +27,7 @@ public class MenuFichier extends JMenu{
 		
 		// Creation des Menu Items de Fichier
 		mItemOuvrir = new JMenuItem("Ouvrir");
+		mItemRecuperer = new JMenuItem("Récupérer");
 		mItemSauvegarder = new JMenuItem("Sauvegarder");
 		mItemQuitter = new JMenuItem("Quitter");
 		
@@ -45,6 +47,7 @@ public class MenuFichier extends JMenu{
 		
 		// Ajout
 		this.add(mItemOuvrir);
+		this.add(mItemRecuperer);
 		this.add(separateur);
 		this.add(mItemSauvegarder);
 		this.add(separateur1);
@@ -53,6 +56,7 @@ public class MenuFichier extends JMenu{
 	
 	public void addController(CtrlMenu ctrlMenu) {
 		mItemOuvrir.addActionListener(ctrlMenu);
+		mItemRecuperer.addActionListener(ctrlMenu);
 		mItemSauvegarder.addActionListener(ctrlMenu);
 		mItemQuitter.addActionListener(ctrlMenu);
 	}

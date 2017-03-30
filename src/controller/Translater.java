@@ -9,13 +9,13 @@ public class Translater extends Commande {
 	/**
 	 * Constructeur
 	 * @param numPerspective indique le récepteur de cette commande. 1 pour la perspective1, 2 pour la perspective2. 
-	 * @param deltaX variation des abscisses.
-	 * @param deltaY variation des ordonnées.
+	 * @param curseurX variation des abscisses.
+	 * @param curseurY variation des ordonnées.
 	 */ 
-	public Translater(int numPerspective, int deltaX, int deltaY) {
+	public Translater(int numPerspective, int curseurX, int curseurY, int dragStartX, int dragStartY) {
 		this.numPerspective = numPerspective;
-		this.deltaX = deltaX;
-		this.deltaY = deltaY;
+		this.deltaX = curseurX - dragStartX;;
+		this.deltaY = curseurY - dragStartY;;
 		gestionnaire.executerCommande(this);
 	}
 	
