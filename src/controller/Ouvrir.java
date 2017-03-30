@@ -2,6 +2,7 @@ package controller;
 
 import java.io.File;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -24,9 +25,10 @@ public class Ouvrir extends Commande {
 			File file = fileChooser.getSelectedFile();
 			photo.setFichierPhoto(file);
 			
-			// TODO: Set proper coordinates
-			perspective1.setCoordinates(0, 0, 400, 400);
-			perspective2.setCoordinates(0, 0, 400, 400);
+			ImageIcon image = new ImageIcon(file.getAbsolutePath());
+			
+			perspective1.setCoordinates(0, 0, image.getIconWidth(), image.getIconHeight());
+			perspective2.setCoordinates(0, 0, image.getIconWidth(), image.getIconHeight());
 		}
 		return false;
 	}
