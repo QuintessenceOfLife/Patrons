@@ -29,7 +29,7 @@ public class Recuperer extends Commande {
 	public boolean faire() {
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(sauvegarde));) {			
 			Object[] objects = (Object[]) ois.readObject();				
-			photo.setFichierImage( ((Photo) objects[0]).getFichierImage() );
+			photo.setFichierPhoto( ((Photo) objects[0]).getFichierPhoto() );
 			perspective1.setCoordinates( 
 					((Perspective) objects[1]).getX1(), 
 					((Perspective) objects[1]).getY1(), 

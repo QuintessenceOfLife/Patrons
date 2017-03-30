@@ -28,11 +28,12 @@ import model.Perspective;
 public class FenetrePerspective extends JPanel implements Observateur {
 
 	// Attributs
-	private Perspective perspectiveM; // le modèle de cette vue
+	private Perspective perspectiveM; //le modèle de cette vue
 	private Photo photo;
 	private int numFenetre;
 	private BufferedImage myPicture;
 	private int x1, y1, x2, y2;
+	private File fichierPhoto;
 
 	public int getNumFenetre() {
 		return numFenetre;
@@ -42,23 +43,22 @@ public class FenetrePerspective extends JPanel implements Observateur {
 		this.numFenetre = numFenetre;
 		this.photo = photo;
 		this.perspectiveM = perspectiveM;
-		this.perspectiveM.setObservateur(this); // Enregistre cette vue auprès
-												// de son modèle en tant
-												// qu'observateur
+		//Enregistre cette vue auprès de son modèle en tant qu'observateur
+		this.perspectiveM.setObservateur(this); 
 		new CtrlPerspective(this, perspectiveM);
-		setLayout(new BorderLayout());
-		
-		//TODO remove this
-		try {
-			myPicture = ImageIO.read(new File("wolf.jpg"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		setLayout(new BorderLayout());	
 	}
 
 	@Override
-	public void update() {		
+	public void update() {				
+		if ( (fichierPhoto == null) || (!fichierPhoto.equals( photo.getFichierPhoto()) ) ) 			
+		try {
+			fichierPhoto = photo.getFichierPhoto();
+			myPicture = ImageIO.read(fichierPhoto);
+		} catch (IOException e) {
+			e.printStackTrace();
+			//TODO show an error message in a dialog
+		}
 		paintComponent(getGraphics());
 	}
 
@@ -66,13 +66,6 @@ public class FenetrePerspective extends JPanel implements Observateur {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);		
 		Graphics2D g2d = (Graphics2D) g;
-//		try {
-//			myPicture = ImageIO.read(photo.getFichierImage());
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//			// TODO show the error message in a dialog-box			
-//			return;
-//		}
 		g2d.clearRect(x1, y1, x2, y2);
 		x1 = perspectiveM.getX1();
 		y1 = perspectiveM.getY1();

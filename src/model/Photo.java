@@ -15,12 +15,12 @@ public class Photo implements Observable, Serializable {
 		return instance; 
 	}
 
-	public File getFichierImage() {
+	public File getFichierPhoto() {
 		return fichierPhoto;
 	}
 
-	public void setFichierImage(File fichierImage) {
-		this.fichierPhoto = fichierImage;
+	public void setFichierPhoto(File fichierPhoto) {
+		this.fichierPhoto = fichierPhoto;
 		notifier();
 	}
 	

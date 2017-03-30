@@ -44,7 +44,7 @@ public class FenetreVignette extends JPanel implements Observateur {
 		try {
 			removeAll();
 			
-			BufferedImage myPicture = ImageIO.read(Photo.getInstance().getFichierImage());
+			BufferedImage myPicture = ImageIO.read(Photo.getInstance().getFichierPhoto());
 			
 			double resolutionImage = (double) (myPicture.getWidth()) / (double) (myPicture.getHeight());
 			double resolutionPanel = (double) getSize().width / (double) getSize().height;

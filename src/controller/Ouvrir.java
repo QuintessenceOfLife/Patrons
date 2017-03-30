@@ -22,7 +22,7 @@ public class Ouvrir extends Commande {
 		
 		if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 			File file = fileChooser.getSelectedFile();
-			photo.setFichierImage(file);
+			photo.setFichierPhoto(file);
 			
 			// TODO: Set proper coordinates
 			perspective1.setCoordinates(0, 0, 400, 400);
