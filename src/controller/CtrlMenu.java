@@ -1,9 +1,16 @@
 package controller;
 
-import model.Photo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+
+import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import model.Perspective;
+import model.Photo;
 import vue.MenuEditer;
 import vue.MenuFichier;
 
@@ -35,14 +42,61 @@ public class CtrlMenu implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch(e.getActionCommand()) {
-		case "Ouvrir" : {
-			new Ouvrir();
-			break;
-		}
+			case "Ouvrir" : {
+				new Ouvrir(openFile());
+				break;
+			}
+		
+			case "Récupérer" : {
+				new Recuperer(restoreFile());
+				break;
+			}
+			case "Sauvegarder": {
+				new Sauvegarder(saveFile());
+				break;
+			}
 			case "Quitter" : {
 				System.exit(0);
 				break;
 			}
+			
 		}
+	}
+	
+	private File openFile() {		
+		JFileChooser fileChooser = new JFileChooser();
+		
+		FileFilter imageFilter = new FileNameExtensionFilter("Image files", ImageIO.getReaderFileSuffixes());
+		fileChooser.setAcceptAllFileFilterUsed(false);
+		fileChooser.addChoosableFileFilter(imageFilter);
+		
+		if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+			return fileChooser.getSelectedFile();
+		}
+		return null;
+	}
+	
+	private File restoreFile() {		
+		JFileChooser fileChooser = new JFileChooser();
+		
+		FileFilter savedFileFilter = new FileNameExtensionFilter("Fichier ser", "ser");
+		fileChooser.setAcceptAllFileFilterUsed(false);
+		fileChooser.addChoosableFileFilter(savedFileFilter);
+		
+		if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+			return fileChooser.getSelectedFile();
+		}
+		return null;
+	}
+	
+	private File saveFile() {
+		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setAcceptAllFileFilterUsed(false);
+		fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Sauvegarde", "ser"));
+		if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+			return fileChooser.getSelectedFile();
+		}
+		
+		return null;
 	}
 }

@@ -3,6 +3,7 @@ package model;
 import java.io.File;
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class Photo implements Observable, Serializable {
 	
 	private static Photo instance = new Photo();

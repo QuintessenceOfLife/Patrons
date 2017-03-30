@@ -5,9 +5,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-import model.Perspective;
-import model.Photo;
-
 public class Recuperer extends Commande {
 
 	private File sauvegarde;
@@ -29,17 +26,17 @@ public class Recuperer extends Commande {
 	public boolean faire() {
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(sauvegarde));) {			
 			Object[] objects = (Object[]) ois.readObject();				
-			photo.setFichierPhoto( ((Photo) objects[0]).getFichierPhoto() );
+			photo.setFichierPhoto( ((File) objects[0]) );
 			perspective1.setCoordinates( 
-					((Perspective) objects[1]).getX1(), 
-					((Perspective) objects[1]).getY1(), 
-					((Perspective) objects[1]).getX2(), 
-					((Perspective) objects[1]).getY2() );			
+					((int) objects[1]),
+					((int) objects[2]),
+					((int) objects[3]), 
+					((int) objects[4]));			
 			perspective2.setCoordinates( 
-					((Perspective) objects[2]).getX1(), 
-					((Perspective) objects[2]).getY1(), 
-					((Perspective) objects[2]).getX2(), 
-					((Perspective) objects[2]).getY2() );						
+					((int) objects[5]), 
+					((int) objects[6]), 
+					((int) objects[7]), 
+					((int) objects[8]));						
 		} catch (ClassNotFoundException | IOException e) {		
 			e.printStackTrace();
 		}				
