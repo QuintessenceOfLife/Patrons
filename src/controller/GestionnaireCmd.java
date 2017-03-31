@@ -48,7 +48,6 @@ public class GestionnaireCmd {
 	 */
 	public void defaire() {
 		if (doneList.size() > 0) { 
-			System.out.println("Defaire");
 			Commande cmd = doneList.removeFirst();
 			cmd.defaire();
 			undoneList.addFirst(cmd);
@@ -59,7 +58,6 @@ public class GestionnaireCmd {
 	 * Refaire la dernière commande défaite.
 	 */
 	public void refaire() {
-		System.out.println("Refaire");
 		if (undoneList.size() > 0) { 
 			Commande cmd = undoneList.removeFirst();
 			cmd.faire();
