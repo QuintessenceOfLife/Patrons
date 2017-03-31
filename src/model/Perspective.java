@@ -67,9 +67,9 @@ public class Perspective implements Observable, Serializable {
 	public void zoom(int wheelX, int wheelY, int notches) {
 
 		if(notches < 0){
-			notches = -1;
-		} else {
 			notches = 1;
+		} else {
+			notches = -1;
 		}
 
 		double zoom = (notches * FACTEUR_ZOOM);
