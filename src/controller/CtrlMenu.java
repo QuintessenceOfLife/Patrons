@@ -12,7 +12,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import model.Perspective;
 import model.Photo;
-import vue.FenetrePrincipale;
 import vue.MenuEditer;
 import vue.MenuFichier;
 
