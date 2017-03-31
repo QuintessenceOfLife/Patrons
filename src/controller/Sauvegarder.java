@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
-public class Sauvegarder extends Commande implements ISauvegarder {
+public class Sauvegarder extends Commande {
 
 	private File sauvegarde;
 
@@ -15,7 +15,6 @@ public class Sauvegarder extends Commande implements ISauvegarder {
 	 */
 	public Sauvegarder(File sauvegarde) {
 		this.sauvegarde = sauvegarde;
-		gestionnaire.executerCommande(this);
 	}
 
 	/**

@@ -1,6 +1,6 @@
 package controller;
 
-public class Refaire extends Commande implements IRefaire {
+public class Refaire extends Commande {
 
 	/**
 	 * Il est interdit d'appeler cette méthode!
@@ -9,8 +9,8 @@ public class Refaire extends Commande implements IRefaire {
 	 */
 	@Override
 	public boolean faire() {
-		//Ne pas appeler cette méthode!
-        throw new NoSuchMethodError();
+		gestionnaire.refaire();
+		return false;
 	}
 
 	/**
@@ -22,5 +22,4 @@ public class Refaire extends Commande implements IRefaire {
 		//Ne pas appeler cette méthode!
         throw new NoSuchMethodError();
 	}
-
 }

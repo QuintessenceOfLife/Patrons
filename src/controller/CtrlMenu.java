@@ -46,20 +46,29 @@ public class CtrlMenu implements ActionListener {
 				new Ouvrir(openFile());
 				break;
 			}
-		
 			case "Récupérer" : {
 				new Recuperer(restoreFile());
 				break;
 			}
 			case "Sauvegarder": {
-				new Sauvegarder(saveFile());
+				Commande sauvegarder = new Sauvegarder(saveFile());
+				sauvegarder.faire();
+				break;
+			}
+			case "Defaire" : {
+				Commande defaire = new Defaire();
+				defaire.faire();
+				break;
+			}
+			case "Refaire" : {
+				Commande refaire = new Refaire();
+				refaire.faire();
 				break;
 			}
 			case "Quitter" : {
 				System.exit(0);
 				break;
 			}
-			
 		}
 	}
 	
