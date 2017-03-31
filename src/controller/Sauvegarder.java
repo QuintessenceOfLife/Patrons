@@ -15,7 +15,6 @@ public class Sauvegarder extends Commande {
 	 */
 	public Sauvegarder(File sauvegarde) {
 		this.sauvegarde = sauvegarde;
-		gestionnaire.executerCommande(this);
 	}
 
 	/**

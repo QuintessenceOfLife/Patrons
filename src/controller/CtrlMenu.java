@@ -51,17 +51,17 @@ public class CtrlMenu implements ActionListener {
 				break;
 			}
 			case "Sauvegarder": {
-				Sauvegarder sauvegarder = new Sauvegarder(saveFile());
+				Commande sauvegarder = new Sauvegarder(saveFile());
 				sauvegarder.faire();
 				break;
 			}
 			case "Defaire" : {
-				Defaire defaire = new Defaire();
+				Commande defaire = new Defaire();
 				defaire.faire();
 				break;
 			}
 			case "Refaire" : {
-				Refaire refaire = new Refaire();
+				Commande refaire = new Refaire();
 				refaire.faire();
 				break;
 			}
