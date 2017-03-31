@@ -87,5 +87,9 @@ public class FenetrePerspective extends JPanel implements Observateur {
 	public void setTranslateListener(MouseMotionListener mml) {
 		addMouseMotionListener(mml);
 	}
+	
+	public void setMouseReleasedListener(MouseListener mrl) {
+		addMouseListener(mrl);
+	}
 
 }

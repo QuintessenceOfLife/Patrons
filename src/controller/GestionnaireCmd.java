@@ -23,13 +23,23 @@ public class GestionnaireCmd {
 	 * Exécute la commande et la sauvegarde dans la liste au besoin.
 	 * @param cmd la commande à exécuter.
 	 */
-	public void executerCommande(Commande cmd) {		
+	public void executerCommande(Commande cmd) {	
+		cmd.faire();
+//		if (undoneList.size() > 0)
+//			undoneList.clear();
+//		if (cmd.faire()) 
+//			addToDone(cmd);
+//		else //on ne peut défaire cette commande	
+//			doneList.clear();                       
+	}
+	
+	public void checkIfDone(Commande cmd){
 		if (undoneList.size() > 0)
 			undoneList.clear();
-		if (cmd.faire()) 
+		if (cmd.done()) 
 			addToDone(cmd);
 		else //on ne peut défaire cette commande	
-			doneList.clear();                       
+			doneList.clear();    
 	}
 
 	/**

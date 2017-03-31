@@ -22,15 +22,11 @@ public class Zoom extends Commande {
 	}
 	
 	@Override
-	public boolean faire() {
-		boolean returnValue = true;
+	public void faire() {
 		if (numPerspective == 1) 
 			perspective1.zoom(curseurX, curseurY, notches);
 		else if (numPerspective == 2)
 			perspective2.zoom(curseurX, curseurY, notches);
-		else 
-			returnValue = false;
-		return returnValue;
 	}
 
 	@Override
@@ -39,6 +35,12 @@ public class Zoom extends Commande {
 			perspective1.zoom(-1*curseurX, -1*curseurY, -1*notches);
 		else if (numPerspective == 2)
 			perspective2.zoom(-1*curseurX, -1*curseurY, -1*notches);
+	}
+
+	@Override
+	public boolean done() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

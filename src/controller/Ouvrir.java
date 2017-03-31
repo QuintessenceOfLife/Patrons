@@ -14,19 +14,24 @@ public class Ouvrir extends Commande {
 	}
 	
 	@Override
-	public boolean faire() {
+	public void faire() {
 		photo.setFichierPhoto(file);
 			
 		ImageIcon image = new ImageIcon(file.getAbsolutePath());
 		
 		perspective1.setCoordinates(0, 0, image.getIconWidth(), image.getIconHeight());
 		perspective2.setCoordinates(0, 0, image.getIconWidth(), image.getIconHeight());
-		return false;
 	}
 
 	@Override
 	public void defaire() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public boolean done() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

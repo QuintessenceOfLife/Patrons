@@ -8,9 +8,8 @@ public class Refaire extends Commande {
 	 * @return 
 	 */
 	@Override
-	public boolean faire() {
+	public void faire() {
 		gestionnaire.refaire();
-		return false;
 	}
 
 	/**
@@ -21,5 +20,11 @@ public class Refaire extends Commande {
 	public void defaire() {
 		//Ne pas appeler cette méthode!
         throw new NoSuchMethodError();
+	}
+
+	@Override
+	public boolean done() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

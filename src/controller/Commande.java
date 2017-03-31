@@ -15,10 +15,12 @@ public abstract class Commande {
 	 * Appeler la méthode appropriée du récepteur de cette commande, dans le but de la réaliser.
 	 * @return true pour permettre de défaire cette commande, false sinon.
 	 */
-	public abstract boolean faire();
+	public abstract void faire();
 	
 	/**
 	 * Appeler la méthode appropriée du récepteur de cette commande, dans le but de la défaire.
 	 */
 	public abstract void defaire();
+	
+	public abstract boolean done();
 }

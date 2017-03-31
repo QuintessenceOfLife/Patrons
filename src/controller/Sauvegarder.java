@@ -22,7 +22,7 @@ public class Sauvegarder extends Commande {
 	 * @return
 	 */
 	@Override
-	public boolean faire() {
+	public void faire() {
 		Object[] objects = new Object[9];
 		objects[0] = photo.getFichierPhoto();
 		objects[1] = perspective1.getX1();
@@ -39,7 +39,6 @@ public class Sauvegarder extends Commande {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return false;
 	}
 
 	/**
@@ -50,6 +49,12 @@ public class Sauvegarder extends Commande {
 	public void defaire() {
 		// Ne pas appeler cette méthode!
 		throw new NoSuchMethodError();
+	}
+
+	@Override
+	public boolean done() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

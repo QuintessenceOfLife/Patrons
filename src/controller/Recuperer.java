@@ -23,7 +23,7 @@ public class Recuperer extends Commande {
 	 * @return
 	 */
 	@Override
-	public boolean faire() {
+	public void faire() {
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(sauvegarde));) {			
 			Object[] objects = (Object[]) ois.readObject();				
 			photo.setFichierPhoto( ((File) objects[0]) );
@@ -40,7 +40,6 @@ public class Recuperer extends Commande {
 		} catch (ClassNotFoundException | IOException e) {		
 			e.printStackTrace();
 		}				
-		return false; //toujours
 	}
 
 	/**
@@ -51,6 +50,12 @@ public class Recuperer extends Commande {
 	public void defaire() {
 		//Ne pas appeler cette méthode!
         throw new NoSuchMethodError();
+	}
+
+	@Override
+	public boolean done() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
