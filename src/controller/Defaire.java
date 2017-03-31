@@ -1,6 +1,6 @@
 package controller;
 
-public class Defaire extends Commande implements IDefaire {
+public class Defaire extends Commande {
 
 	/**
 	 * Il est interdit d'appeler cette méthode!
@@ -9,8 +9,8 @@ public class Defaire extends Commande implements IDefaire {
 	 */
 	@Override
 	public boolean faire() {
-		//Ne pas appeler cette méthode!
-        throw new NoSuchMethodError();
+		gestionnaire.defaire();
+		return false;
 	}
 
 	/**
