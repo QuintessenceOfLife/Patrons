@@ -51,21 +51,23 @@ public class FenetrePrincipale extends JFrame {
 		menuBar = new JMenuBar();
 		
 		// Menus
-		ctrlMenu = new CtrlMenu(Photo.getInstance(), Perspective.getPerspective1(), Perspective.getPerspective2());
+		
 		menuFichier = new MenuFichier();
 		menuEditer = new MenuEditer();
-		menuFichier.addController(ctrlMenu);
-		menuEditer.addController(ctrlMenu);
-		ctrlMenu.setMenus(menuFichier, menuEditer);
+		
+		
 		menuBar.add(menuFichier);
 		menuBar.add(menuEditer);
 
 		// Add everything into frame and pack
 		setJMenuBar(menuBar);
 		addJPanels();
-	    setContentPane(desktopPane);
+	    getContentPane().add(desktopPane);
 		pack();
-		
+		ctrlMenu = new CtrlMenu(Photo.getInstance(), Perspective.getPerspective1(), Perspective.getPerspective2(), tabbedPanel);
+		menuFichier.addController(ctrlMenu);
+		menuEditer.addController(ctrlMenu);
+		ctrlMenu.setMenus(menuFichier, menuEditer);
 		setVisible(true);
 	}
 	
@@ -81,8 +83,8 @@ public class FenetrePrincipale extends JFrame {
 		
 		// Ajout des perspectives dans le tabbed panned
 		tabbedPanel.add("Perspective 1", fenetrePerspective1);
-		tabbedPanel.add("Perspective 2", fenetrePerspective2);
-	    
+		tabbedPanel.add("Perspective 2", fenetrePerspective2);	    
+		
 		// Ajout dans le desktop Pane
         desktopPane.add(tabbedPanel);
         desktopPane.add(fenetreVignette);
