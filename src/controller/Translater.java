@@ -14,8 +14,8 @@ public class Translater extends Commande {
 	 */ 
 	public Translater(int numPerspective, int curseurX, int curseurY, int dragStartX, int dragStartY) {
 		this.numPerspective = numPerspective;
-		this.deltaX = curseurX - dragStartX;;
-		this.deltaY = curseurY - dragStartY;;
+		this.deltaX = curseurX - dragStartX;
+		this.deltaY = curseurY - dragStartY;
 	}
 	
 	@Override
