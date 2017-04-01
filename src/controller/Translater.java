@@ -34,8 +34,4 @@ public class Translater extends Commande {
 			perspective2.translater(-1*deltaX, -1*deltaY);
 	}
 
-	@Override
-	public boolean done() {
-		return (deltaX != 0 && deltaY != 0);
-	}
 }

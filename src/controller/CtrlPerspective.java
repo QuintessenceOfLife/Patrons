@@ -13,8 +13,8 @@ public class CtrlPerspective {
 	
 	protected final static GestionnaireCmd gestionnaire = GestionnaireCmd.getGestionnaireCmd();
 	private FenetrePerspective fenPerspective;
-	private int mouseStartX, mouseStartY;
-	private int dragStartX, dragStartY;
+	private int initialDragOriginX, initialDragOriginY;
+	private int subsequentDragOriginX, subsequentDragOriginY;
 	
 	public CtrlPerspective(FenetrePerspective fenPerspective, Perspective perspective) {
 		this.fenPerspective = fenPerspective;
@@ -27,37 +27,36 @@ public class CtrlPerspective {
 	private class ZoomListener extends MouseAdapter {
 		@Override
 		public void mouseWheelMoved(MouseWheelEvent e) {			 
-			new Zoom(fenPerspective.getNumFenetre(), e.getX(), e.getY(), e.getWheelRotation());
+			(new Zoom(fenPerspective.getNumFenetre(), e.getX(), e.getY(), e.getWheelRotation())).faire();
 		}		
 	}
 	
 	private class TranslateListener extends MouseAdapter {
 		@Override
 		public void mouseDragged(MouseEvent e) {
-			Translater translater = new Translater(fenPerspective.getNumFenetre(), e.getX(), e.getY(), dragStartX, dragStartY);
-			dragStartX = e.getX();
-			dragStartY = e.getY();
-			translater.faire();
+			(new Translater(fenPerspective.getNumFenetre(), e.getX(), e.getY(), subsequentDragOriginX, subsequentDragOriginY)).faire();
+			subsequentDragOriginX = e.getX();
+			subsequentDragOriginY = e.getY();
 		}
 	}
 	
 	private class MousePressedListener extends MouseAdapter {
 		@Override
 		public void mousePressed(MouseEvent e) {
-			dragStartX = e.getX();
-			dragStartY = e.getY();
-			mouseStartX = e.getX();
-			mouseStartY = e.getY();
+			initialDragOriginX = e.getX();
+			initialDragOriginY = e.getY();
+			subsequentDragOriginX = e.getX();
+			subsequentDragOriginY = e.getY();			
 		}
 	}
 	
 	private class MouseReleasedListener extends MouseAdapter {
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			System.out.println("Released");
-			Translater translater = new Translater(fenPerspective.getNumFenetre(), e.getX(), e.getY(), mouseStartX, mouseStartY);
-			translater.done();
-			gestionnaire.checkIfDone(translater);
+			if ((e.getX() == initialDragOriginX) && (e.getY() == initialDragOriginY))
+				return;
+			gestionnaire.addToDone(new Translater(fenPerspective.getNumFenetre(), e.getX(), e.getY(), initialDragOriginX, initialDragOriginY));
+			gestionnaire.clearUndoneList();
 		}
 	}
 }

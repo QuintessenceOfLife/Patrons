@@ -51,10 +51,4 @@ public class Sauvegarder extends Commande {
 		throw new NoSuchMethodError();
 	}
 
-	@Override
-	public boolean done() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

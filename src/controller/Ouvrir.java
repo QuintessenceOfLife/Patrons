@@ -10,7 +10,6 @@ public class Ouvrir extends Commande {
 	
 	public Ouvrir(File file) {
 		this.file = file;
-		gestionnaire.executerCommande(this);
 	}
 	
 	@Override
@@ -29,9 +28,4 @@ public class Ouvrir extends Commande {
 		
 	}
 
-	@Override
-	public boolean done() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }
