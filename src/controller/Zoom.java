@@ -18,7 +18,6 @@ public class Zoom extends Commande {
 		this.curseurX = curseurX;
 		this.curseurY = curseurY;
 		this.notches = notches;
-		gestionnaire.executerCommande(this);
 	}
 	
 	@Override
@@ -35,12 +34,6 @@ public class Zoom extends Commande {
 			perspective1.zoom(-1*curseurX, -1*curseurY, -1*notches);
 		else if (numPerspective == 2)
 			perspective2.zoom(-1*curseurX, -1*curseurY, -1*notches);
-	}
-
-	@Override
-	public boolean done() {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 }

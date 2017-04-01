@@ -15,7 +15,6 @@ public class Recuperer extends Commande {
 	 */
 	public Recuperer(File sauvegarde) {
 		this.sauvegarde = sauvegarde;
-		gestionnaire.executerCommande(this);
 	}
 		
 	/**
@@ -50,12 +49,6 @@ public class Recuperer extends Commande {
 	public void defaire() {
 		//Ne pas appeler cette méthode!
         throw new NoSuchMethodError();
-	}
-
-	@Override
-	public boolean done() {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 }

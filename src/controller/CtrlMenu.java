@@ -16,6 +16,7 @@ import vue.MenuFichier;
 
 public class CtrlMenu implements ActionListener {
 	
+	protected final static GestionnaireCmd gestionnaire = GestionnaireCmd.getGestionnaireCmd();
 	private MenuFichier menuFichier;
 	private MenuEditer menuEditer;
 	private Photo image;
@@ -43,26 +44,27 @@ public class CtrlMenu implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		switch(e.getActionCommand()) {
 			case "Ouvrir" : {
-				new Ouvrir(openFile());
+				(new Ouvrir(openFile())).faire();
+				gestionnaire.clearDoneList();
+				gestionnaire.clearUndoneList();
 				break;
 			}
 			case "Récupérer" : {
-				new Recuperer(restoreFile());
+				(new Recuperer(restoreFile())).faire();
+				gestionnaire.clearDoneList();
+				gestionnaire.clearUndoneList();
 				break;
 			}
 			case "Sauvegarder": {
-				Commande sauvegarder = new Sauvegarder(saveFile());
-				sauvegarder.faire();
+				(new Sauvegarder(saveFile())).faire();				
 				break;
 			}
 			case "Defaire" : {
-				Commande defaire = new Defaire();
-				defaire.faire();
+				gestionnaire.defaire();
 				break;
 			}
 			case "Refaire" : {
-				Commande refaire = new Refaire();
-				refaire.faire();
+				gestionnaire.refaire();				
 				break;
 			}
 			case "Quitter" : {

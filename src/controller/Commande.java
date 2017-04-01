@@ -22,5 +22,4 @@ public abstract class Commande {
 	 */
 	public abstract void defaire();
 	
-	public abstract boolean done();
 }

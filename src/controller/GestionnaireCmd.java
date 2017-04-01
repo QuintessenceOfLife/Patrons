@@ -19,35 +19,12 @@ public class GestionnaireCmd {
 	   Les lignes suivantes sont basées sur l'exemple de la section Command du chapitre 8 de Grand 2002.	   		
 	 */
 
-	/** 
-	 * Exécute la commande et la sauvegarde dans la liste au besoin.
-	 * @param cmd la commande à exécuter.
-	 */
-	public void executerCommande(Commande cmd) {	
-		cmd.faire();
-//		if (undoneList.size() > 0)
-//			undoneList.clear();
-//		if (cmd.faire()) 
-//			addToDone(cmd);
-//		else //on ne peut défaire cette commande	
-//			doneList.clear();                       
-	}
-	
-	public void checkIfDone(Commande cmd){
-		if (undoneList.size() > 0)
-			undoneList.clear();
-		if (cmd.done()) 
-			addToDone(cmd);
-		else //on ne peut défaire cette commande	
-			doneList.clear();    
-	}
-
 	/**
 	 * Ajoute la commande à la liste des commandes faites.
 	 * La liste ne peut contenir plus que MAX_LIST_LENGTH commandes.
 	 * @param cmd la commande à ajouter.
 	 */
-	private void addToDone(Commande cmd) {
+	public void addToDone(Commande cmd) {
 		doneList.addFirst(cmd);        
 		if (doneList.size() > MAX_LIST_LENGTH)
 			doneList.removeLast();
@@ -75,4 +52,12 @@ public class GestionnaireCmd {
 		} 
 	}
 	/* FIN DU CODE EMPRUNTÉ */
+	
+	public void clearDoneList() {
+		doneList.clear();
+	}
+	
+	public void clearUndoneList() {
+		undoneList.clear();
+	}
 }
