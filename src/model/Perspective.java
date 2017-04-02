@@ -51,11 +51,10 @@ public class Perspective implements Observable, Serializable {
 		this.y2 = y2;
 		notifier();
 	}
-
+	
 	public void setObservateur(Observateur obs) {
 		this.observateur = obs;
 	}
-
 
 	/**
 	 * Effectuer le zoom.
@@ -64,21 +63,16 @@ public class Perspective implements Observable, Serializable {
 	 * @param deltaX2 variation de l'abscisse du point du bas à droite de l'image.
 	 * @param deltaY2 variation de l'ordonnée du point bas à droite de l'image.
 	 */
-	public void zoom(int wheelX, int wheelY, int notches) {
-
-		if(notches < 0){
-			notches = -1;
-		} else {
-			notches = 1;
-		}
-
+	public void zoom(int curseurX, int curseurY, int notches) {
+		
 		double zoom = (notches * FACTEUR_ZOOM);
 
-		if(wheelY < y2 && wheelY > y1 && wheelX > x1 && wheelX < x2){
-			x1 -= (int) ((wheelX - x1)*zoom);
-			y1 -= (int) ((wheelY - y1)*zoom);
-			x2 += (int) ((wheelX - x2)*-zoom);
-			y2 += (int) ((wheelY - y2)*-zoom);
+		if(curseurY < y2 && curseurY > y1 && curseurX > x1 && curseurX < x2){
+			System.out.println("applying zoom...");
+			x1 -= (int) ((curseurX - x1)*zoom);
+			y1 -= (int) ((curseurY - y1)*zoom);
+			x2 += (int) ((curseurX - x2)*-zoom);
+			y2 += (int) ((curseurY - y2)*-zoom);
 		}
 
 		notifier();

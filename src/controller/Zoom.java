@@ -30,10 +30,16 @@ public class Zoom extends Commande {
 
 	@Override
 	public void defaire() {
+		System.out.println("Dans defaire");
+		System.out.println("numPerspective: " + numPerspective);
+		System.out.println("curseurX: " + curseurX);
+		System.out.println("curseurY: " + curseurY);
+		System.out.println("notches: " + notches);
+		System.out.println("-------------------------------------------");
 		if (numPerspective == 1)
-			perspective1.zoom(-1*curseurX, -1*curseurY, -1*notches);
+			perspective1.zoom(curseurX, curseurY, -1*notches);
 		else if (numPerspective == 2)
-			perspective2.zoom(-1*curseurX, -1*curseurY, -1*notches);
+			perspective2.zoom(curseurX, curseurY, -1*notches);
 	}
 
 }
