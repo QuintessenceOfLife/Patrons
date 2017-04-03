@@ -51,7 +51,7 @@ public class FenetrePrincipale extends JFrame {
 		menuBar = new JMenuBar();
 		
 		// Menus
-		ctrlMenu = new CtrlMenu(Perspective.getPerspective1(), Perspective.getPerspective2(), tabbedPanel);
+		ctrlMenu = new CtrlMenu(tabbedPanel);
 		menuFichier = new MenuFichier();
 		menuEditer = new MenuEditer();
 		
@@ -64,10 +64,9 @@ public class FenetrePrincipale extends JFrame {
 		addJPanels();
 	    getContentPane().add(desktopPane);
 		pack();
-		ctrlMenu = new CtrlMenu(Perspective.getPerspective1(), Perspective.getPerspective2(), tabbedPanel);
+		ctrlMenu = new CtrlMenu(tabbedPanel);
 		menuFichier.addController(ctrlMenu);
 		menuEditer.addController(ctrlMenu);
-		ctrlMenu.setMenus(menuFichier, menuEditer);
 		setVisible(true);
 	}
 	

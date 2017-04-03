@@ -15,7 +15,6 @@ import controller.Translater;
 public class CtrlPerspective {
 	
 	protected final static GestionnaireCmd gestionnaire = GestionnaireCmd.getGestionnaireCmd();
-	private FenetrePerspective fenPerspective;
 	private int numFenetre;
 	private Perspective perspective;
 	private int initialDragOriginX, initialDragOriginY;
@@ -25,7 +24,6 @@ public class CtrlPerspective {
 	private static final int DELAI = 200; 
 		
 	public CtrlPerspective(FenetrePerspective fenPerspective, Perspective perspective) {		
-		this.fenPerspective = fenPerspective;
 		numFenetre = fenPerspective.getNumFenetre();		
 		fenPerspective.setZoomListener(new IncrementalZoomListener());
 		fenPerspective.setTranslateListener(new TranslateListener());

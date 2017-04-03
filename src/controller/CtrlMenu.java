@@ -10,32 +10,13 @@ import javax.swing.JTabbedPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import model.Perspective;
-import vue.MenuEditer;
-import vue.MenuFichier;
-
 public class CtrlMenu implements ActionListener {
 	
 	protected final static GestionnaireCmd gestionnaire = GestionnaireCmd.getGestionnaireCmd();
-	private MenuFichier menuFichier;
-	private MenuEditer menuEditer;
-	private Perspective perspective1;
-	private Perspective perspective2;
 	private JTabbedPane tabbedPane;
 	
-	/**
-	 * Set the menus
-	 * @param mf Menu fichier
-	 * @param me Menu Editer
-	 */
-	public void setMenus(MenuFichier mf, MenuEditer me) {
-		menuFichier = mf;
-		menuEditer = me;
-	}
-	
-	public CtrlMenu(Perspective perspective1, Perspective perspective2, JTabbedPane tabbedPane) {
-		this.perspective1 = perspective1;
-		this.perspective2 = perspective2;
+
+	public CtrlMenu(JTabbedPane tabbedPane) {
 		this.tabbedPane = tabbedPane;
 	}
 
