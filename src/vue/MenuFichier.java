@@ -1,11 +1,14 @@
 package vue;
 
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
+import javax.swing.KeyStroke;
 
 import controller.CtrlMenu;
 
@@ -31,6 +34,13 @@ public class MenuFichier extends JMenu{
 		mItemSauvegarder = new JMenuItem("Sauvegarder");
 		mItemQuitter = new JMenuItem("Quitter");
 		
+		mItemOuvrir.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, 
+				Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask()));
+		mItemSauvegarder.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, 
+				Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask()));
+		mItemRecuperer.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, 
+				Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask()));
+		
 		// Creation des separateurs
 		separateur = new JSeparator();
 		separateur1 = new JSeparator();
@@ -42,6 +52,7 @@ public class MenuFichier extends JMenu{
 	private void addMenuFichier() {
 		// Icons
 		mItemOuvrir.setIcon(new ImageIcon("icons"+File.separator+"ouvrir_16.png"));
+		mItemRecuperer.setIcon(new ImageIcon("icons" + File.separator+"recup_16.png"));
 		mItemSauvegarder.setIcon(new ImageIcon("icons"+File.separator+"save_16.png"));
 		mItemQuitter.setIcon(new ImageIcon("icons"+File.separator+"close_16.png"));
 		
