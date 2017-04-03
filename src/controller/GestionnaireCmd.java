@@ -5,9 +5,13 @@ import java.util.LinkedList;
 public class GestionnaireCmd {
 
 	private static GestionnaireCmd gestionnaire = new GestionnaireCmd();
-	private LinkedList<Commande> doneList = new LinkedList<Commande>();
-	private LinkedList<Commande> undoneList = new LinkedList<Commande>();
-	private static final int MAX_LIST_LENGTH = 10;
+	//deux listes pour la perspective1
+	private LinkedList<DecoratorPerspective> doneList1 = new LinkedList<DecoratorPerspective>();
+	private LinkedList<DecoratorPerspective> undoneList1 = new LinkedList<DecoratorPerspective>();
+	//deux listes pour la perspective2
+	private LinkedList<DecoratorPerspective> doneList2 = new LinkedList<DecoratorPerspective>();
+	private LinkedList<DecoratorPerspective> undoneList2 = new LinkedList<DecoratorPerspective>();
+	private static final int MAX_LIST_LENGTH = 20;
 
 	private GestionnaireCmd() { }
 
@@ -15,54 +19,72 @@ public class GestionnaireCmd {
 		return gestionnaire;
 	}
 
-	/* CODE EMPRUNTÉ :
-	   Les lignes suivantes sont basées sur l'exemple de la section Command du chapitre 8 de Grand 2002.	   		
-	 */
-
-	/** 
-	 * Exécute la commande et la sauvegarde dans la liste au besoin.
-	 * @param cmd la commande à exécuter.
-	 */
-	public void executerCommande(Commande cmd) {		
-		if (undoneList.size() > 0)
-			undoneList.clear();
-		if (cmd.faire()) 
-			addToDone(cmd);
-		else //on ne peut défaire cette commande	
-			doneList.clear();                       
-	}
-
 	/**
 	 * Ajoute la commande à la liste des commandes faites.
 	 * La liste ne peut contenir plus que MAX_LIST_LENGTH commandes.
 	 * @param cmd la commande à ajouter.
 	 */
-	private void addToDone(Commande cmd) {
-		doneList.addFirst(cmd);        
-		if (doneList.size() > MAX_LIST_LENGTH)
-			doneList.removeLast();
+	public void addToDone(DecoratorPerspective cmd, int numPerspective) {
+		if (numPerspective == 1) {
+			doneList1.addFirst(cmd);        
+			if (doneList1.size() > MAX_LIST_LENGTH)
+				doneList1.removeLast();
+		} else if(numPerspective == 2) {
+			doneList2.addFirst(cmd);        
+			if (doneList2.size() > MAX_LIST_LENGTH)
+				doneList2.removeLast();
+		}
 	}
 
 	/**
 	 * Défaire la dernière commande.
 	 */
-	public void defaire() {
-		if (doneList.size() > 0) { 
-			Commande cmd = doneList.removeFirst();
-			cmd.defaire();
-			undoneList.addFirst(cmd);
+	public void defaire(int numPerspective) {
+		if (numPerspective == 1) {
+			if (doneList1.size() > 0) { 
+				DecoratorPerspective cmd = doneList1.removeFirst();
+				cmd.defaire();
+				undoneList1.addFirst(cmd);
+			}
+		} else if(numPerspective == 2) {
+			if (doneList2.size() > 0) { 
+				DecoratorPerspective cmd = doneList2.removeFirst();
+				cmd.defaire();
+				undoneList2.addFirst(cmd);
+			}
 		}
 	}
 
 	/**
 	 * Refaire la dernière commande défaite.
 	 */
-	public void refaire() {
-		if (undoneList.size() > 0) { 
-			Commande cmd = undoneList.removeFirst();
-			cmd.faire();
-			doneList.addFirst(cmd);			
-		} 
+	public void refaire(int numPerspective) {
+		if (numPerspective == 1) {
+			if (undoneList1.size() > 0) { 
+				DecoratorPerspective cmd = undoneList1.removeFirst();
+				cmd.faire();
+				doneList1.addFirst(cmd);			
+			} 
+		} else if (numPerspective == 2) {
+			if (undoneList2.size() > 0) { 
+				DecoratorPerspective cmd = undoneList2.removeFirst();
+				cmd.faire();
+				doneList2.addFirst(cmd);			
+			}
+		}
 	}
-	/* FIN DU CODE EMPRUNTÉ */
+	
+	public void clearDoneList(int numPerspective) {
+		if (numPerspective == 1) 
+			doneList1.clear();
+		else if (numPerspective == 2) 
+			doneList2.clear();				
+	}
+	
+	public void clearUndoneList(int numPerspective) {
+		if (numPerspective == 1) 
+			undoneList1.clear();
+		else if (numPerspective == 2) 
+			undoneList2.clear();	
+	}
 }

@@ -14,29 +14,24 @@ public class Translater extends Commande {
 	 */ 
 	public Translater(int numPerspective, int curseurX, int curseurY, int dragStartX, int dragStartY) {
 		this.numPerspective = numPerspective;
-		this.deltaX = curseurX - dragStartX;;
-		this.deltaY = curseurY - dragStartY;;
-		gestionnaire.executerCommande(this);
+		this.deltaX = curseurX - dragStartX;
+		this.deltaY = curseurY - dragStartY;
 	}
 	
+	public int getDeltaX() {
+		return deltaX;
+	}
+
+	public int getDeltaY() {
+		return deltaY;
+	}
+
 	@Override
-	public boolean faire() {
-		boolean returnValue = true;
+	public void faire() {
 		if (numPerspective == 1) 
 			perspective1.translater(deltaX, deltaY);
 		else if (numPerspective == 2)
 			perspective2.translater(deltaX, deltaY);
-		else 
-			returnValue = false;
-		return returnValue;		
-	}
-
-	@Override
-	public void defaire() {
-		if (numPerspective == 1)
-			perspective1.translater(-1*deltaX, -1*deltaY);
-		else if (numPerspective == 2)
-			perspective2.translater(-1*deltaX, -1*deltaY);
 	}
 
 }

@@ -10,23 +10,17 @@ public class Ouvrir extends Commande {
 	
 	public Ouvrir(File file) {
 		this.file = file;
-		gestionnaire.executerCommande(this);
 	}
 	
 	@Override
-	public boolean faire() {
+	public void faire() {
 		photo.setFichierPhoto(file);
 			
 		ImageIcon image = new ImageIcon(file.getAbsolutePath());
 		
-		perspective1.setCoordinates(0, 0, image.getIconWidth(), image.getIconHeight());
+		//dans cette ordre pour contourner le problème de always draw on top du tabbedPane
 		perspective2.setCoordinates(0, 0, image.getIconWidth(), image.getIconHeight());
-		return false;
+		perspective1.setCoordinates(0, 0, image.getIconWidth(), image.getIconHeight());		
 	}
 
-	@Override
-	public void defaire() {
-		// TODO Auto-generated method stub
-		
-	}
 }

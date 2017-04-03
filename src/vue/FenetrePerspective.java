@@ -1,26 +1,17 @@
 package vue;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.GridBagLayout;
-import java.awt.Image;
-import java.awt.RenderingHints;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.Box;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
 import controller.CtrlPerspective;
 import model.Photo;
 import model.Observateur;
@@ -34,7 +25,6 @@ public class FenetrePerspective extends JPanel implements Observateur {
 	private Photo photo;
 	private int numFenetre;
 	private BufferedImage myPicture;
-	private int x1, y1, x2, y2;
 	private File fichierPhoto;
 
 	public int getNumFenetre() {
@@ -68,11 +58,11 @@ public class FenetrePerspective extends JPanel implements Observateur {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);		
 		Graphics2D g2d = (Graphics2D) g;
-		x1 = perspectiveM.getX1();
-		y1 = perspectiveM.getY1();
-		x2 = perspectiveM.getX2();
-		y2 = perspectiveM.getY2();		
-		g2d.drawImage(myPicture, x1, y1, x2-x1, y2-y1, null);
+			double dx1 = perspectiveM.getX1();
+			double dy1 = perspectiveM.getY1();
+			double dx2 = perspectiveM.getX2();
+			double dy2 = perspectiveM.getY2();	
+			g2d.drawImage(myPicture, (int)dx1, (int)dy1, (int)(dx2-dx1), (int)(dy2-dy1), null);
 		g2d.dispose();
 	}
 
@@ -86,6 +76,10 @@ public class FenetrePerspective extends JPanel implements Observateur {
 
 	public void setTranslateListener(MouseMotionListener mml) {
 		addMouseMotionListener(mml);
+	}
+	
+	public void setMouseReleasedListener(MouseListener mrl) {
+		addMouseListener(mrl);
 	}
 
 }
