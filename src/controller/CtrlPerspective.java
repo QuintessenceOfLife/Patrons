@@ -20,6 +20,7 @@ public class CtrlPerspective {
 	private int initialDragOriginX, initialDragOriginY;
 	private int subsequentDragOriginX, subsequentDragOriginY;
 	private double initialSX1, initialSY1, initialSX2, initialSY2;
+	private final double FACTEUR_ZOOM = 0.1;
 	private Timer timer;
 	private static final int DELAI = 200; 
 		
@@ -68,11 +69,11 @@ public class CtrlPerspective {
 				initialSX2 = x2;
 				initialSY2 = y2;
 			}			
-			double facteurZoom = Perspective.FACTEUR_ZOOM;
-			double dx1 = x1 - (wheelX - x1) * notches * facteurZoom;
-			double dy1 = y1 - (wheelY - y1) * notches * facteurZoom;
-			double dx2 = x2 + (x2 - wheelX) * notches * facteurZoom;
-			double dy2 = y2 + (y2 - wheelY) * notches * facteurZoom;
+			
+			double dx1 = x1 - (wheelX - x1) * notches * FACTEUR_ZOOM;
+			double dy1 = y1 - (wheelY - y1) * notches * FACTEUR_ZOOM;
+			double dx2 = x2 + (x2 - wheelX) * notches * FACTEUR_ZOOM;
+			double dy2 = y2 + (y2 - wheelY) * notches * FACTEUR_ZOOM;
 			
 			(new Zoom(numFenetre, x1, y1, x2, y2, dx1, dy1, dx2, dy2)).faire();
 			

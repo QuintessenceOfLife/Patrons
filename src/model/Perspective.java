@@ -5,7 +5,6 @@ import java.io.Serializable;
 public class Perspective implements Observable, Serializable {
 
 	private static final long serialVersionUID = 6291767085117089711L;
-	public static final double FACTEUR_ZOOM = 0.1;
 	private static Perspective perspective1 = new Perspective();
 	private static Perspective perspective2 = new Perspective();
 	private double x1, y1, x2, y2;	
