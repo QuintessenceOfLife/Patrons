@@ -5,8 +5,7 @@ public class Zoom extends Commande {
 	private int numPerspective;
 	private double sx1, sy1, sx2, sy2; //source coordinates
 	private double dx1, dy1, dx2, dy2; //destination coordinates
-	
-	
+		
 	/**
 	 * Constructeur
 	 * @param numPerspective indique le récepteur de cette commande. 1 pour la perspective1, 2 pour la perspective2. 
@@ -36,23 +35,28 @@ public class Zoom extends Commande {
 		System.out.println("dy2: " + dy2);
 	}
 	
+	public double getSX1() {
+		return sx1;
+	}
+
+	public double getSY1() {
+		return sy1;
+	}
+
+	public double getSX2() {
+		return sx2;
+	}
+
+	public double getSY2() {
+		return sy2;
+	}
+
 	@Override
 	public void faire() {
 		if (numPerspective == 1) 
 			perspective1.setCoordinates(dx1, dy1, dx2, dy2);
 		else if (numPerspective == 2)
 			perspective2.setCoordinates(dx1, dy1, dx2, dy2);
-	}
-
-	@Override
-	public void defaire() {
-		System.out.println("Dans defaire");
-		System.out.println("numPerspective: " + numPerspective);
-		System.out.println("-------------------------------------------");
-		if (numPerspective == 1)
-			perspective1.setCoordinates(sx1, sy1, sx2, sy2);
-		else if (numPerspective == 2)
-			perspective2.setCoordinates(sx1, sy1, sx2, sy2);
 	}
 
 }

@@ -6,11 +6,11 @@ public class GestionnaireCmd {
 
 	private static GestionnaireCmd gestionnaire = new GestionnaireCmd();
 	//deux listes pour la perspective1
-	private LinkedList<Commande> doneList1 = new LinkedList<Commande>();
-	private LinkedList<Commande> undoneList1 = new LinkedList<Commande>();
+	private LinkedList<DecoratorPerspective> doneList1 = new LinkedList<DecoratorPerspective>();
+	private LinkedList<DecoratorPerspective> undoneList1 = new LinkedList<DecoratorPerspective>();
 	//deux listes pour la perspective2
-	private LinkedList<Commande> doneList2 = new LinkedList<Commande>();
-	private LinkedList<Commande> undoneList2 = new LinkedList<Commande>();
+	private LinkedList<DecoratorPerspective> doneList2 = new LinkedList<DecoratorPerspective>();
+	private LinkedList<DecoratorPerspective> undoneList2 = new LinkedList<DecoratorPerspective>();
 	private static final int MAX_LIST_LENGTH = 20;
 
 	private GestionnaireCmd() { }
@@ -24,7 +24,7 @@ public class GestionnaireCmd {
 	 * La liste ne peut contenir plus que MAX_LIST_LENGTH commandes.
 	 * @param cmd la commande à ajouter.
 	 */
-	public void addToDone(Commande cmd, int numPerspective) {
+	public void addToDone(DecoratorPerspective cmd, int numPerspective) {
 		if (numPerspective == 1) {
 			doneList1.addFirst(cmd);        
 			if (doneList1.size() > MAX_LIST_LENGTH)
@@ -42,13 +42,13 @@ public class GestionnaireCmd {
 	public void defaire(int numPerspective) {
 		if (numPerspective == 1) {
 			if (doneList1.size() > 0) { 
-				Commande cmd = doneList1.removeFirst();
+				DecoratorPerspective cmd = doneList1.removeFirst();
 				cmd.defaire();
 				undoneList1.addFirst(cmd);
 			}
 		} else if(numPerspective == 2) {
 			if (doneList2.size() > 0) { 
-				Commande cmd = doneList2.removeFirst();
+				DecoratorPerspective cmd = doneList2.removeFirst();
 				cmd.defaire();
 				undoneList2.addFirst(cmd);
 			}
@@ -61,13 +61,13 @@ public class GestionnaireCmd {
 	public void refaire(int numPerspective) {
 		if (numPerspective == 1) {
 			if (undoneList1.size() > 0) { 
-				Commande cmd = undoneList1.removeFirst();
+				DecoratorPerspective cmd = undoneList1.removeFirst();
 				cmd.faire();
 				doneList1.addFirst(cmd);			
 			} 
 		} else if (numPerspective == 2) {
 			if (undoneList2.size() > 0) { 
-				Commande cmd = undoneList2.removeFirst();
+				DecoratorPerspective cmd = undoneList2.removeFirst();
 				cmd.faire();
 				doneList2.addFirst(cmd);			
 			}

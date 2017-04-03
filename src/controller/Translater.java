@@ -18,20 +18,20 @@ public class Translater extends Commande {
 		this.deltaY = curseurY - dragStartY;
 	}
 	
+	public int getDeltaX() {
+		return deltaX;
+	}
+
+	public int getDeltaY() {
+		return deltaY;
+	}
+
 	@Override
 	public void faire() {
 		if (numPerspective == 1) 
 			perspective1.translater(deltaX, deltaY);
 		else if (numPerspective == 2)
 			perspective2.translater(deltaX, deltaY);
-	}
-
-	@Override
-	public void defaire() {
-		if (numPerspective == 1)
-			perspective1.translater(-1*deltaX, -1*deltaY);
-		else if (numPerspective == 2)
-			perspective2.translater(-1*deltaX, -1*deltaY);
 	}
 
 }
