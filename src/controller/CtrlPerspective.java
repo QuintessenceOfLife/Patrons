@@ -76,11 +76,12 @@ public class CtrlPerspective {
 	private class TotalZoomListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) { 
-        	gestionnaire.addToDone(new Zoom(numFenetre, initialSX1, initialSY1, initialSX2, initialSY2, perspective.getX1(), perspective.getY1(), perspective.getX2(), perspective.getY2()));
+        	gestionnaire.addToDone(new Zoom(numFenetre, initialSX1, initialSY1, initialSX2, initialSY2, perspective.getX1(), perspective.getY1(), perspective.getX2(), perspective.getY2()),
+        			numFenetre);
             System.out.println("created a total zoom command and added it to done list");
             System.out.println("numFenetre: " + numFenetre);
             System.out.println("---------------------------------------------------");
-            gestionnaire.clearUndoneList();
+            gestionnaire.clearUndoneList(numFenetre);
             initialSY2 = 0;            
         }
     }
@@ -109,8 +110,8 @@ public class CtrlPerspective {
 		public void mouseReleased(MouseEvent e) {
 			if ((e.getX() == initialDragOriginX) && (e.getY() == initialDragOriginY))
 				return;
-			gestionnaire.addToDone(new Translater(numFenetre, e.getX(), e.getY(), initialDragOriginX, initialDragOriginY));
-			gestionnaire.clearUndoneList();
+			gestionnaire.addToDone(new Translater(numFenetre, e.getX(), e.getY(), initialDragOriginX, initialDragOriginY), numFenetre);
+			gestionnaire.clearUndoneList(numFenetre);
 		}
 	}
 		
