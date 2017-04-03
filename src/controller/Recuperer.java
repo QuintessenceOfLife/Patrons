@@ -27,15 +27,15 @@ public class Recuperer extends Commande {
 			Object[] objects = (Object[]) ois.readObject();				
 			photo.setFichierPhoto( ((File) objects[0]) );
 			perspective1.setCoordinates( 
-					((int) objects[1]),
-					((int) objects[2]),
-					((int) objects[3]), 
-					((int) objects[4]));			
+					((double) objects[1]),
+					((double) objects[2]),
+					((double) objects[3]), 
+					((double) objects[4]));			
 			perspective2.setCoordinates( 
-					((int) objects[5]), 
-					((int) objects[6]), 
-					((int) objects[7]), 
-					((int) objects[8]));						
+					((double) objects[5]), 
+					((double) objects[6]), 
+					((double) objects[7]), 
+					((double) objects[8]));						
 		} catch (ClassNotFoundException | IOException e) {		
 			e.printStackTrace();
 		}				

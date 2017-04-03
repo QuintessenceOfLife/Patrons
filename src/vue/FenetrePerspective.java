@@ -1,26 +1,17 @@
 package vue;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.GridBagLayout;
-import java.awt.Image;
-import java.awt.RenderingHints;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.Box;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
 import controller.CtrlPerspective;
 import model.Photo;
 import model.Observateur;
@@ -34,7 +25,7 @@ public class FenetrePerspective extends JPanel implements Observateur {
 	private Photo photo;
 	private int numFenetre;
 	private BufferedImage myPicture;
-	private double sx1, sy1, sx2, sy2;
+//	private double sx1, sy1, sx2, sy2;
 	private File fichierPhoto;
 
 	public int getNumFenetre() {
@@ -68,19 +59,20 @@ public class FenetrePerspective extends JPanel implements Observateur {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);		
 		Graphics2D g2d = (Graphics2D) g;
-		if (sy2 ==0) {
-			sx1 = perspectiveM.getX1();
-			sy1 = perspectiveM.getY1();
-			sx2 = perspectiveM.getX2();
-			sy2 = perspectiveM.getY2();
-			g2d.drawImage(myPicture, (int)sx1, (int)sy1, (int)(sx2-sx1), (int)(sy2-sy1), null);
-		} else {
+//		if (sy2 ==0) {
+//			sx1 = perspectiveM.getX1();
+//			sy1 = perspectiveM.getY1();
+//			sx2 = perspectiveM.getX2();
+//			sy2 = perspectiveM.getY2();
+//			g2d.drawImage(myPicture, (int)sx1, (int)sy1, (int)(sx2-sx1), (int)(sy2-sy1), null);
+//		} else {
 			double dx1 = perspectiveM.getX1();
 			double dy1 = perspectiveM.getY1();
 			double dx2 = perspectiveM.getX2();
-			double dy2 = perspectiveM.getY2();		
-			g2d.drawImage(myPicture, (int)dx1, (int)dy1, (int)dx2, (int)dy2, (int)sx1, (int)sy1, (int)sx2, (int)sy2, null);
-		}
+			double dy2 = perspectiveM.getY2();	
+			g2d.drawImage(myPicture, (int)dx1, (int)dy1, (int)(dx2-dx1), (int)(dy2-dy1), null);
+			//g2d.drawImage(myPicture, (int)dx1, (int)dy1, (int)dx2, (int)dy2, (int)sx1, (int)sy1, (int)sx2, (int)sy2, null);
+//		}
 		g2d.dispose();
 	}
 
