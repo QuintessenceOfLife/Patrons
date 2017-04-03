@@ -43,7 +43,10 @@ public class CtrlMenu implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		switch(e.getActionCommand()) {
 			case "Ouvrir" : {
-				(new Ouvrir(openFile())).faire();
+				File file = openFile();
+				if (file == null)
+					return;
+				(new Ouvrir(file)).faire();
 				tabbedPane.setSelectedIndex(0);
 				gestionnaire.clearDoneList(1);
 				gestionnaire.clearDoneList(2);
@@ -52,7 +55,10 @@ public class CtrlMenu implements ActionListener {
 				break;
 			}
 			case "Récupérer" : {
-				(new Recuperer(restoreFile())).faire();
+				File file = restoreFile();
+				if (file == null)
+					return;
+				(new Recuperer(file)).faire();
 				tabbedPane.setSelectedIndex(0);
 				gestionnaire.clearDoneList(1);
 				gestionnaire.clearDoneList(2);
@@ -61,7 +67,10 @@ public class CtrlMenu implements ActionListener {
 				break;
 			}
 			case "Sauvegarder": {
-				(new Sauvegarder(saveFile())).faire();				
+				File file = saveFile();
+				if (file == null)
+					return;
+				(new Sauvegarder(file)).faire();				
 				break;
 			}
 			case "Defaire" : {				
