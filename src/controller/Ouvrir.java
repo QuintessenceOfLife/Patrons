@@ -18,8 +18,9 @@ public class Ouvrir extends Commande {
 			
 		ImageIcon image = new ImageIcon(file.getAbsolutePath());
 		
-		perspective1.setCoordinates(0, 0, image.getIconWidth(), image.getIconHeight());
+		//dans cette ordre pour contourner le problème de always draw on top du tabbedPane
 		perspective2.setCoordinates(0, 0, image.getIconWidth(), image.getIconHeight());
+		perspective1.setCoordinates(0, 0, image.getIconWidth(), image.getIconHeight());		
 	}
 
 	@Override

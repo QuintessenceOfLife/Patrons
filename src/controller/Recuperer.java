@@ -26,16 +26,17 @@ public class Recuperer extends Commande {
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(sauvegarde));) {			
 			Object[] objects = (Object[]) ois.readObject();				
 			photo.setFichierPhoto( ((File) objects[0]) );
-			perspective1.setCoordinates( 
-					((double) objects[1]),
-					((double) objects[2]),
-					((double) objects[3]), 
-					((double) objects[4]));			
+			//dans cette ordre pour contourner le problème de always draw on top du tabbedPane
 			perspective2.setCoordinates( 
 					((double) objects[5]), 
 					((double) objects[6]), 
 					((double) objects[7]), 
-					((double) objects[8]));						
+					((double) objects[8]));
+			perspective1.setCoordinates( 
+					((double) objects[1]),
+					((double) objects[2]),
+					((double) objects[3]), 
+					((double) objects[4]));												
 		} catch (ClassNotFoundException | IOException e) {		
 			e.printStackTrace();
 		}				
