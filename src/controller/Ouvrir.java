@@ -23,10 +23,4 @@ public class Ouvrir extends Commande {
 		perspective1.setCoordinates(0, 0, image.getIconWidth(), image.getIconHeight());		
 	}
 
-	@Override
-	public void defaire() {	
-		//Ne pas appeler cette méthode!
-        throw new NoSuchMethodError();
-	}
-
 }

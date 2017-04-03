@@ -83,9 +83,30 @@ public class CtrlPerspective {
 	private class TotalZoomListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) { 
-        	gestionnaire.addToDone(new Zoom(numFenetre, initialSX1, initialSY1, initialSX2, initialSY2, 
-        			perspective.getX1(), perspective.getY1(), perspective.getX2(), perspective.getY2()),
-        			numFenetre);
+        	
+        	if ( perspective.getX1() == initialSX1 && 
+        		 perspective.getY1() == initialSY1 &&	
+        		 perspective.getX2() == initialSX2 &&
+        		 perspective.getY2() == initialSY2 )
+        		return;
+        	
+        	Zoom zoom = new Zoom(numFenetre, initialSX1, initialSY1, initialSX2, initialSY2, 
+        			perspective.getX1(), perspective.getY1(), perspective.getX2(), perspective.getY2());
+        	
+        	DecoratorPerspective decoratedZoom = new DecoratorPerspective(zoom) {	
+				@Override
+				public void defaire() {
+					System.out.println("Dans defaire");
+					System.out.println("numPerspective: " + numFenetre);
+					System.out.println("-------------------------------------------");
+					if (numFenetre == 1)
+						perspective1.setCoordinates(zoom.getSX1(), zoom.getSY1(), zoom.getSX2(), zoom.getSY2());
+					else if (numFenetre == 2)
+						perspective2.setCoordinates(zoom.getSX1(), zoom.getSY1(), zoom.getSX2(), zoom.getSY2());					
+				}
+			}; 
+			
+			gestionnaire.addToDone(decoratedZoom, numFenetre);
             System.out.println("created a total zoom command and added it to done list");
             System.out.println("numFenetre: " + numFenetre);
             System.out.println("---------------------------------------------------");
@@ -118,7 +139,18 @@ public class CtrlPerspective {
 		public void mouseReleased(MouseEvent e) {
 			if ((e.getX() == initialDragOriginX) && (e.getY() == initialDragOriginY))
 				return;
-			gestionnaire.addToDone(new Translater(numFenetre, e.getX(), e.getY(), initialDragOriginX, initialDragOriginY), numFenetre);
+			
+			Translater translater = new Translater(numFenetre, e.getX(), e.getY(), initialDragOriginX, initialDragOriginY);
+			DecoratorPerspective decoratedTranslater = new DecoratorPerspective(translater) {				
+				@Override
+				public void defaire() {
+					if (numFenetre == 1)
+						perspective1.translater(-1 * translater.getDeltaX(), -1 * translater.getDeltaY());
+					else if (numFenetre == 2)
+						perspective2.translater(-1 * translater.getDeltaX(), -1 * translater.getDeltaY());					
+				}
+			};
+			gestionnaire.addToDone(decoratedTranslater, numFenetre);
 			gestionnaire.clearUndoneList(numFenetre);
 		}
 	}
