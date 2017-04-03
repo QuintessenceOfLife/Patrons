@@ -15,7 +15,6 @@ public class CtrlMenu implements ActionListener {
 	protected final static GestionnaireCmd gestionnaire = GestionnaireCmd.getGestionnaireCmd();
 	private JTabbedPane tabbedPane;
 	
-
 	public CtrlMenu(JTabbedPane tabbedPane) {
 		this.tabbedPane = tabbedPane;
 	}

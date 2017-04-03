@@ -24,9 +24,9 @@ public class Ouvrir extends Commande {
 	}
 
 	@Override
-	public void defaire() {
-		// TODO Auto-generated method stub
-		
+	public void defaire() {	
+		//Ne pas appeler cette méthode!
+        throw new NoSuchMethodError();
 	}
 
 }

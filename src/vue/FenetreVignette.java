@@ -66,7 +66,6 @@ public class FenetreVignette extends JPanel implements Observateur {
 			repaint();
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

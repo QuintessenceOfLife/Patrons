@@ -27,7 +27,6 @@ public class FenetrePrincipale extends JFrame {
 	private FenetrePerspective fenetrePerspective2;
 	private FenetreVignette fenetreVignette;
 	
-	// TODO
 	private int width;
 	private int height;
 	
