@@ -6,7 +6,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import javax.swing.Timer;
-import javax.swing.text.html.HTMLDocument.HTMLReader.PreAction;
 
 import model.Perspective;
 import vue.FenetrePerspective;
@@ -36,39 +35,49 @@ public class CtrlPerspective {
 		timer.setRepeats(false);
 	}	
 	
-//	public void zoom(int curseurX, int curseurY, int notches) {		
-//		if (curseurY < y2 && curseurY > y1 && curseurX > x1 && curseurX < x2) {
-//			x1 -= (curseurX - x1) * notches * FACTEUR_ZOOM;
-//			y1 -= (curseurY - y1) * notches * FACTEUR_ZOOM;
-//			x2 += (x2 - curseurX) * notches * FACTEUR_ZOOM;
-//			y2 += (y2 - curseurY) * notches * FACTEUR_ZOOM;
-//		}		
-//	}
-	
 	private class IncrementalZoomListener extends MouseAdapter {
 		@Override
 		public void mouseWheelMoved(MouseWheelEvent e) {
+			int wheelX = e.getX();
+			int wheelY = e.getY();
+			
 			if (numFenetre == 1)
 				perspective = Perspective.getPerspective1();
 			else
 				perspective = Perspective.getPerspective2();
-			if (initialSY2 == 0) {
-				initialSX1 = perspective.getX1();
-				initialSY1 = perspective.getY1();
-				initialSX2 = perspective.getX2();
-				initialSY2 = perspective.getY2();
-			}
+			
+			double x1 = perspective.getX1();
+			double x2 = perspective.getX2();
+			double y1 = perspective.getY1();
+			double y2 = perspective.getY2();
+			
 			int notches;
 			if (e.getWheelRotation() < 0) {
 				notches = 1;
+				if ( (x2-x1) >= 20000 || (y2-y1) >= 20000 )
+					return; //on sort si la largeur ou la hauteur max est atteinte
 			} else {
 				notches = -1;
+				if ( (x2-x1) <= 50 || (y2-y1) <= 50 )
+					return; //on sort si la largeur ou la hauteur min est atteinte
 			}
-			double dx1 = perspective.getX1() - (e.getX() - perspective.getX1()) * notches * Perspective.FACTEUR_ZOOM;
-			double dy1 = perspective.getY1() - (e.getY() - perspective.getY1()) * notches * Perspective.FACTEUR_ZOOM;
-			double dx2 = perspective.getX2() + (perspective.getX2() - e.getX()) * notches * Perspective.FACTEUR_ZOOM;
-			double dy2 = perspective.getY2() + (perspective.getY2() - e.getY()) * notches * Perspective.FACTEUR_ZOOM;
-			(new Zoom(numFenetre, perspective.getX1(), perspective.getY1(), perspective.getX2(), perspective.getY2(), dx1, dy1, dx2, dy2)).faire();
+			if ( wheelX <= x1 || wheelX >= x2 || wheelY <= y1 || wheelY >= y2 )
+				return; //on sort si le curseur est en dehors de l'image
+			
+			if (initialSY2 == 0) {
+				initialSX1 = x1;
+				initialSY1 = y1;
+				initialSX2 = x2;
+				initialSY2 = y2;
+			}			
+			double facteurZoom = Perspective.FACTEUR_ZOOM;
+			double dx1 = x1 - (wheelX - x1) * notches * facteurZoom;
+			double dy1 = y1 - (wheelY - y1) * notches * facteurZoom;
+			double dx2 = x2 + (x2 - wheelX) * notches * facteurZoom;
+			double dy2 = y2 + (y2 - wheelY) * notches * facteurZoom;
+			
+			(new Zoom(numFenetre, x1, y1, x2, y2, dx1, dy1, dx2, dy2)).faire();
+			
 			timer.restart();
 		}		
 	}
@@ -76,7 +85,8 @@ public class CtrlPerspective {
 	private class TotalZoomListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) { 
-        	gestionnaire.addToDone(new Zoom(numFenetre, initialSX1, initialSY1, initialSX2, initialSY2, perspective.getX1(), perspective.getY1(), perspective.getX2(), perspective.getY2()),
+        	gestionnaire.addToDone(new Zoom(numFenetre, initialSX1, initialSY1, initialSX2, initialSY2, 
+        			perspective.getX1(), perspective.getY1(), perspective.getX2(), perspective.getY2()),
         			numFenetre);
             System.out.println("created a total zoom command and added it to done list");
             System.out.println("numFenetre: " + numFenetre);

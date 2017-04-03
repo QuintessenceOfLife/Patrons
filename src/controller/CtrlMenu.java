@@ -37,7 +37,7 @@ public class CtrlMenu implements ActionListener {
 	
 	// TODO: Relook at this, maybe create other methods if during created there's no vignette or perspectives yet
 	public CtrlMenu(Photo image, Perspective perspective1, Perspective perspective2, FenetrePrincipale fenPrincipale) {
-		this.image = image;
+//		this.image = image;
 		this.perspective1 = perspective1;
 		this.perspective2 = perspective2;
 		this.fenPrincipale = fenPrincipale;
