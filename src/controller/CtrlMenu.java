@@ -6,6 +6,7 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
+import javax.swing.JTabbedPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -23,7 +24,7 @@ public class CtrlMenu implements ActionListener {
 	private Photo image;
 	private Perspective perspective1;
 	private Perspective perspective2;
-	private FenetrePrincipale fenPrincipale;
+	private JTabbedPane tabbedPane;
 	
 	/**
 	 * Set the menus
@@ -36,11 +37,11 @@ public class CtrlMenu implements ActionListener {
 	}
 	
 	// TODO: Relook at this, maybe create other methods if during created there's no vignette or perspectives yet
-	public CtrlMenu(Photo image, Perspective perspective1, Perspective perspective2, FenetrePrincipale fenPrincipale) {
-//		this.image = image;
+	public CtrlMenu(Photo image, Perspective perspective1, Perspective perspective2, JTabbedPane tabbedPane) {
+		//this.image = image;
 		this.perspective1 = perspective1;
 		this.perspective2 = perspective2;
-		this.fenPrincipale = fenPrincipale;
+		this.tabbedPane = tabbedPane;
 	}
 
 	@Override
@@ -48,6 +49,7 @@ public class CtrlMenu implements ActionListener {
 		switch(e.getActionCommand()) {
 			case "Ouvrir" : {
 				(new Ouvrir(openFile())).faire();
+				tabbedPane.setSelectedIndex(0);
 				gestionnaire.clearDoneList(1);
 				gestionnaire.clearDoneList(2);
 				gestionnaire.clearUndoneList(1);
@@ -56,6 +58,7 @@ public class CtrlMenu implements ActionListener {
 			}
 			case "Récupérer" : {
 				(new Recuperer(restoreFile())).faire();
+				tabbedPane.setSelectedIndex(0);
 				gestionnaire.clearDoneList(1);
 				gestionnaire.clearDoneList(2);
 				gestionnaire.clearUndoneList(1);
