@@ -99,9 +99,10 @@ public class CtrlMenu implements ActionListener {
 		fileChooser.setAcceptAllFileFilterUsed(false);
 		fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Sauvegarde", "ser"));
 		if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
-			return fileChooser.getSelectedFile();
+			File file = new File(fileChooser.getSelectedFile() + ".ser");
+			return file;
 		}
-		
+
 		return null;
 	}
 }
