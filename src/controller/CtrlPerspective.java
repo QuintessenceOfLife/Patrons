@@ -56,6 +56,7 @@ public class CtrlPerspective {
 		fenPerspective.setTranslateListener(new TranslateListener());
 		fenPerspective.setMousePressedListener(new MousePressedListener());
 		fenPerspective.setMouseReleasedListener(new MouseReleasedListener());
+		this.perspective = perspective;
 		timer = new Timer(DELAI, new TotalZoomListener());
 		timer.setRepeats(false);
 	}	
@@ -70,22 +71,16 @@ public class CtrlPerspective {
 		public void mouseWheelMoved(MouseWheelEvent e) {
 			/*
 			 * On prend les coordonnées de la souris.
-			 * On vérifie si on est dans la bonne perspective.
 			 * On prend les coordonnées de départ de la photo.
 			 * On vérifie le sens du zoom.
 			 * Une photo ne peut pas dépasser 20000x20000 ni etre plus petit que 50x50
-			 * On peut zoomer que dans l'image.
+			 * On ne peut zoomer que dans l'image.
 			 * On initialise les données s'il n'y en avait pas
 			 * On calcule les coordonnées de fin
 			 * On effectue le zoom
 			 */
 			int wheelX = e.getX();
 			int wheelY = e.getY();
-			
-			if (numFenetre == 1)
-				perspective = Perspective.getPerspective1();
-			else
-				perspective = Perspective.getPerspective2();
 			
 			double x1 = perspective.getX1();
 			double x2 = perspective.getX2();

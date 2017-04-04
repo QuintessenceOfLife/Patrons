@@ -38,7 +38,7 @@ public class CtrlMenu implements ActionListener {
 	/*****************************
 	 * VARIABLES
 	 *****************************/
-	protected final static GestionnaireCmd gestionnaire = GestionnaireCmd.getGestionnaireCmd();
+	private final static GestionnaireCmd gestionnaire = GestionnaireCmd.getGestionnaireCmd();
 	private JTabbedPane tabbedPane;
 	
 	/*****************************
@@ -50,7 +50,7 @@ public class CtrlMenu implements ActionListener {
 	}
 
 	/**
-	 * Faire une commande dépendemment du bouton pesé
+	 * Faire une commande dépendamment du bouton pesé
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -72,7 +72,7 @@ public class CtrlMenu implements ActionListener {
 			}
 			case "Récupérer" : {
 				/*
-				 * Recuperer fichier et effacer les listes de commandes
+				 * Récupérer fichier et effacer les listes de commandes
 				 */
 				File file = restoreFile();
 				if (file == null)
