@@ -1,5 +1,19 @@
-package vue;
+/******************************************************
+* Cours:   LOG121
+* Session: H2017
+* Groupe:  03
+* Projet: Laboratoire #4
+* Etudiant(e)s: Youssef Soliman
+				Yassine Abdellaoui
+				Raph Jobin
+				Victor Trinh
+* Professeur : 	Vincent Lacasse
+* Charge : 		Patrice Boucher
+* Nom du fichier: FenetrePrincipale.java
+* Date cree: 2017-03-23
+*******************************************************/
 
+package vue;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JFrame;
@@ -9,14 +23,21 @@ import java.awt.SystemColor;
 import java.awt.Toolkit;
 import javax.swing.JDesktopPane;
 import java.awt.GridLayout;
-
 import model.Perspective;
 import model.Photo;
 import controller.CtrlMenu;
 
+/*****************************************************************************
+ * Permet d'instancier la fenêtre principale.
+ * Contient tous les éléments visuelles que voit l'utilisateur.
+ * @author Youssef Soliman, Yassine Abdellaoui, Raph Jobin, Victor Trinh
+ *****************************************************************************/
 @SuppressWarnings("serial")
 public class FenetrePrincipale extends JFrame {
 	
+	/*****************************
+	 * VARIABLES
+	 *****************************/
 	private JMenuBar menuBar;
 	private MenuFichier menuFichier;
 	private MenuEditer menuEditer;
@@ -26,10 +47,12 @@ public class FenetrePrincipale extends JFrame {
 	private FenetrePerspective fenetrePerspective1;
 	private FenetrePerspective fenetrePerspective2;
 	private FenetreVignette fenetreVignette;
-	
 	private int width;
 	private int height;
 	
+	/*****************************
+	 * CONSTRUCTEUR
+	 *****************************/
 	public FenetrePrincipale() {
 		super("Application Image");
 	
@@ -54,7 +77,7 @@ public class FenetrePrincipale extends JFrame {
 		menuFichier = new MenuFichier();
 		menuEditer = new MenuEditer();
 		
-		
+		// Add to MenuBar
 		menuBar.add(menuFichier);
 		menuBar.add(menuEditer);
 
@@ -69,6 +92,9 @@ public class FenetrePrincipale extends JFrame {
 		setVisible(true);
 	}
 	
+	/*****************************
+	 * Ajout des panneaux
+	 *****************************/
 	private void addJPanels(){
 		// Tabbed Panel qui prend 70% du width de l'ecran et 85% de l'hauteur
 		tabbedPanel = new JTabbedPane();

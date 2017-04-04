@@ -1,3 +1,18 @@
+/******************************************************
+* Cours:   LOG121
+* Session: H2017
+* Groupe:  03
+* Projet: Laboratoire #4
+* Etudiant(e)s: Youssef Soliman
+				Yassine Abdellaoui
+				Raph Jobin
+				Victor Trinh
+* Professeur : 	Vincent Lacasse
+* Charge : 		Patrice Boucher
+* Nom du fichier: Sauvegarder.java
+* Date cree: 2017-03-23
+*******************************************************/
+
 package controller;
 
 import java.io.File;
@@ -5,8 +20,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
+/*****************************************************************************
+ * Sauvegarde de l'état dans un fichier .ser
+ * @author Youssef Soliman, Yassine Abdellaoui, Raph Jobin, Victor Trinh
+ *****************************************************************************/
 public class Sauvegarder extends Commande {
 
+	/*****************************
+	 * VARIABLES
+	 *****************************/
 	private File sauvegarde;
 
 	/**

@@ -1,14 +1,36 @@
-package controller;
+/******************************************************
+* Cours:   LOG121
+* Session: H2017
+* Groupe:  03
+* Projet: Laboratoire #4
+* Etudiant(e)s: Youssef Soliman
+				Yassine Abdellaoui
+				Raph Jobin
+				Victor Trinh
+* Professeur : 	Vincent Lacasse
+* Charge : 		Patrice Boucher
+* Nom du fichier: GestionnaireCmd.java
+* Date cree: 2017-03-23
+*******************************************************/
 
+package controller;
 import java.util.LinkedList;
 
+/*****************************************************************************
+ * Gestion des commandes. Ajoute ou enlève les commandes dans les listes appropriées.
+ * Permet aussi d'effacer les listes.
+ * @author Youssef Soliman, Yassine Abdellaoui, Raph Jobin, Victor Trinh
+ *****************************************************************************/
 public class GestionnaireCmd {
 
+	/*****************************
+	 * VARIABLES
+	 *****************************/
 	private static GestionnaireCmd gestionnaire = new GestionnaireCmd();
-	//deux listes pour la perspective1
+	// Deux listes pour la perspective1
 	private LinkedList<DecoratorPerspective> doneList1 = new LinkedList<DecoratorPerspective>();
 	private LinkedList<DecoratorPerspective> undoneList1 = new LinkedList<DecoratorPerspective>();
-	//deux listes pour la perspective2
+	// Deux listes pour la perspective2
 	private LinkedList<DecoratorPerspective> doneList2 = new LinkedList<DecoratorPerspective>();
 	private LinkedList<DecoratorPerspective> undoneList2 = new LinkedList<DecoratorPerspective>();
 	private static final int MAX_LIST_LENGTH = 20;
@@ -74,6 +96,10 @@ public class GestionnaireCmd {
 		}
 	}
 	
+	/**
+	 * Efface la liste des commandes complétées selon la fenêtre
+	 * @param numPerspective Numéro de fenêtre.
+	 */
 	public void clearDoneList(int numPerspective) {
 		if (numPerspective == 1) 
 			doneList1.clear();
@@ -81,6 +107,10 @@ public class GestionnaireCmd {
 			doneList2.clear();				
 	}
 	
+	/**
+	 * Efface la liste des commandes qui ont été refait selon la fenêtre
+	 * @param numPerspective Numéro de fenêtre.
+	 */
 	public void clearUndoneList(int numPerspective) {
 		if (numPerspective == 1) 
 			undoneList1.clear();

@@ -1,3 +1,18 @@
+/******************************************************
+* Cours:   LOG121
+* Session: H2017
+* Groupe:  03
+* Projet: Laboratoire #4
+* Etudiant(e)s: Youssef Soliman
+				Yassine Abdellaoui
+				Raph Jobin
+				Victor Trinh
+* Professeur : 	Vincent Lacasse
+* Charge : 		Patrice Boucher
+* Nom du fichier: Recuperer.java
+* Date cree: 2017-03-23
+*******************************************************/
+
 package controller;
 
 import java.io.File;
@@ -5,13 +20,20 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
+/*****************************************************************************
+ * Récupère un fichier .ser
+ * @author Youssef Soliman, Yassine Abdellaoui, Raph Jobin, Victor Trinh
+ *****************************************************************************/
 public class Recuperer extends Commande {
 
+	/*****************************
+	 * VARIABLES
+	 *****************************/
 	private File sauvegarde;
 	
 	/**
 	 * Constructeur	
-	 * @param sauvegarde fichier contenant les données à récupérer.
+	 * @param sauvegarde Fichier contenant les données à récupérer.
 	 */
 	public Recuperer(File sauvegarde) {
 		this.sauvegarde = sauvegarde;
@@ -19,7 +41,6 @@ public class Recuperer extends Commande {
 		
 	/**
 	 * Récupérer l'image et les deux perspectives à partir de la sauvegarde.
-	 * @return
 	 */
 	@Override
 	public void faire() {

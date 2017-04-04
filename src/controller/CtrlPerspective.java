@@ -1,3 +1,17 @@
+/******************************************************
+* Cours:   LOG121
+* Session: H2017
+* Groupe:  03
+* Projet: Laboratoire #4
+* Etudiant(e)s: Youssef Soliman
+				Yassine Abdellaoui
+				Raph Jobin
+				Victor Trinh
+* Professeur : 	Vincent Lacasse
+* Charge : 		Patrice Boucher
+* Nom du fichier: CtrlPerspective.java
+* Date cree: 2017-03-23
+*******************************************************/
 package controller;
 
 import java.awt.event.ActionEvent;
@@ -6,14 +20,21 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import javax.swing.Timer;
-
 import model.Perspective;
 import vue.FenetrePerspective;
 import controller.Zoom;
 import controller.Translater;
 
+/*****************************************************************************
+ * Classe abstraite qui permet l'ajout de methodes et de variables que
+ * necessiterait une commande.
+ * @author Youssef Soliman, Yassine Abdellaoui, Raph Jobin, Victor Trinh
+ *****************************************************************************/
 public class CtrlPerspective {
 	
+	/*****************************
+	 * VARIABLES
+	 *****************************/
 	protected final static GestionnaireCmd gestionnaire = GestionnaireCmd.getGestionnaireCmd();
 	private int numFenetre;
 	private Perspective perspective;
@@ -23,7 +44,12 @@ public class CtrlPerspective {
 	private final double FACTEUR_ZOOM = 0.1;
 	private Timer timer;
 	private static final int DELAI = 200; 
-		
+	
+	/*****************************
+	 * CONSTRUCTEUR
+	 * @param fenPerspective
+	 * @param perspective
+	 *****************************/
 	public CtrlPerspective(FenetrePerspective fenPerspective, Perspective perspective) {		
 		numFenetre = fenPerspective.getNumFenetre();		
 		fenPerspective.setZoomListener(new IncrementalZoomListener());
@@ -34,9 +60,25 @@ public class CtrlPerspective {
 		timer.setRepeats(false);
 	}	
 	
+	/**
+	 * Classe interne qui detecte le mouvement d'un scroll de la souris
+	 * et effectue un zoom.
+	 * @author Youssef Soliman, Yassine Abdellaoui, Raph Jobin, Victor Trinh
+	 */
 	private class IncrementalZoomListener extends MouseAdapter {
 		@Override
 		public void mouseWheelMoved(MouseWheelEvent e) {
+			/*
+			 * On prend les coordonnées de la souris.
+			 * On vérifie si on est dans la bonne perspective.
+			 * On prend les coordonnées de départ de la photo.
+			 * On vérifie le sens du zoom.
+			 * Une photo ne peut pas dépasser 20000x20000 ni etre plus petit que 50x50
+			 * On peut zoomer que dans l'image.
+			 * On initialise les données s'il n'y en avait pas
+			 * On calcule les coordonnées de fin
+			 * On effectue le zoom
+			 */
 			int wheelX = e.getX();
 			int wheelY = e.getY();
 			
@@ -81,10 +123,19 @@ public class CtrlPerspective {
 		}		
 	}
 	
+	/**
+	 * Classe interne qui detecte l'arrêt d'un zoom
+	 * @author Youssef Soliman, Yassine Abdellaoui, Raph Jobin, Victor Trinh
+	 */
 	private class TotalZoomListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) { 
-        	
+        	/*
+        	 * Si les coordonnées initiales sont égales aux coordonnées de fin, on ne fait rien.
+        	 * Sinon, on fait un zoom et on ajoute le defaire dans le zoom.
+        	 * On ajoute dans la liste la commande effectuée.
+        	 * On reset la donnée initiale
+        	 */
         	if ( perspective.getX1() == initialSX1 && 
         		 perspective.getY1() == initialSY1 &&	
         		 perspective.getX2() == initialSX2 &&
@@ -97,9 +148,6 @@ public class CtrlPerspective {
         	DecoratorPerspective decoratedZoom = new DecoratorPerspective(zoom) {	
 				@Override
 				public void defaire() {
-					System.out.println("Dans defaire");
-					System.out.println("numPerspective: " + numFenetre);
-					System.out.println("-------------------------------------------");
 					if (numFenetre == 1)
 						perspective1.setCoordinates(zoom.getSX1(), zoom.getSY1(), zoom.getSX2(), zoom.getSY2());
 					else if (numFenetre == 2)
@@ -108,14 +156,16 @@ public class CtrlPerspective {
 			}; 
 			
 			gestionnaire.addToDone(decoratedZoom, numFenetre);
-            System.out.println("created a total zoom command and added it to done list");
-            System.out.println("numFenetre: " + numFenetre);
-            System.out.println("---------------------------------------------------");
             gestionnaire.clearUndoneList(numFenetre);
             initialSY2 = 0;            
         }
     }
 	
+	/**
+	 * Classe interne qui detecte le mouvement d'un drag de la souris après un clic
+	 * et effectue une translation.
+	 * @author Youssef Soliman, Yassine Abdellaoui, Raph Jobin, Victor Trinh
+	 */
 	private class TranslateListener extends MouseAdapter {
 		@Override
 		public void mouseDragged(MouseEvent e) {
@@ -125,6 +175,11 @@ public class CtrlPerspective {
 		}
 	}
 	
+	/**
+	 * Classe interne qui detecte le mouvement d'un clic de la souris 
+	 * et enregistre les coordonnées initiales.
+	 * @author Youssef Soliman, Yassine Abdellaoui, Raph Jobin, Victor Trinh
+	 */
 	private class MousePressedListener extends MouseAdapter {
 		@Override
 		public void mousePressed(MouseEvent e) {
@@ -135,9 +190,19 @@ public class CtrlPerspective {
 		}
 	}
 	
+	/**
+	 * Classe interne qui detecte le mouvement d'un release de la souris 
+	 * et enregistre les coordonnées pour effectuer la translation totale.
+	 * @author Youssef Soliman, Yassine Abdellaoui, Raph Jobin, Victor Trinh
+	 */
 	private class MouseReleasedListener extends MouseAdapter {
 		@Override
 		public void mouseReleased(MouseEvent e) {
+			/*
+			 * Enregistrement des coordonnées de fin.
+			 * Faire la translation.
+			 * Ajouter la commande dans la bonne liste.
+			 */
 			if ((e.getX() == initialDragOriginX) && (e.getY() == initialDragOriginY))
 				return;
 			
