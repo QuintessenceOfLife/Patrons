@@ -21,12 +21,7 @@ package controller;
  * @author Youssef Soliman, Yassine Abdellaoui, Raph Jobin, Victor Trinh
  *****************************************************************************/
 public abstract class DecoratorPerspective extends CommandeDecorator {
-	
-	/*****************************
-	 * VARIABLES
-	 *****************************/
-	protected final static GestionnaireCmd gestionnaire = GestionnaireCmd.getGestionnaireCmd();
-	
+
 	/*****************************
 	 * CONSTRUCTEUR
 	 * @param command Commande
@@ -36,7 +31,7 @@ public abstract class DecoratorPerspective extends CommandeDecorator {
 	}
 	
 	/***************************************************************************
-	 * La commande qui recoit le decorateur va aussi avoir cette méthode
+	 * La commande qui reçoit le décorateur va aussi avoir cette méthode
 	 ***************************************************************************/
 	public abstract void defaire();
 	

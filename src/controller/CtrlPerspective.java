@@ -62,7 +62,7 @@ public class CtrlPerspective {
 	}	
 	
 	/**
-	 * Classe interne qui detecte le mouvement d'un scroll de la souris
+	 * Classe interne qui détecte le mouvement d'un scroll de la souris
 	 * et effectue un zoom.
 	 * @author Youssef Soliman, Yassine Abdellaoui, Raph Jobin, Victor Trinh
 	 */
@@ -73,7 +73,7 @@ public class CtrlPerspective {
 			 * On prend les coordonnées de la souris.
 			 * On prend les coordonnées de départ de la photo.
 			 * On vérifie le sens du zoom.
-			 * Une photo ne peut pas dépasser 20000x20000 ni etre plus petit que 50x50
+			 * Une photo ne peut pas dépasser 20000x20000 ni être plus petit que 50x50
 			 * On ne peut zoomer que dans l'image.
 			 * On initialise les données s'il n'y en avait pas
 			 * On calcule les coordonnées de fin

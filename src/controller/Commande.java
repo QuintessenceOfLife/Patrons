@@ -18,9 +18,9 @@ import model.Photo;
 import model.Perspective;
 
 /***************************************************************************************
- * Classe abstraite qui contient les variables et la methode que doit contenir
+ * Classe abstraite qui contient les variables et la méthode que doit contenir
  * toute classe qui l'herite.
- * Toute commande peut faire une action et a acces a la photo et des deux perspectives.
+ * Toute commande peut faire une action et a accès a la photo et des deux perspectives.
  * @author Youssef Soliman, Yassine Abdellaoui, Raph Jobin, Victor Trinh
  ***************************************************************************************/
 public abstract class Commande {

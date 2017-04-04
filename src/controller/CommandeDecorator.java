@@ -16,8 +16,8 @@
 package controller;
 
 /*****************************************************************************
- * Classe abstraite qui permet l'ajout de methodes et de variables que
- * necessiterait une commande.
+ * Classe abstraite qui permet l'ajout de méthodes et de variables que
+ * nécessiterait une commande.
  * @author Youssef Soliman, Yassine Abdellaoui, Raph Jobin, Victor Trinh
  *****************************************************************************/
 public abstract class CommandeDecorator extends Commande {
@@ -36,7 +36,7 @@ public abstract class CommandeDecorator extends Commande {
 	}
 	
 	/***************************************************************************
-	 * La commande qui recoit le decorateur va encore avoir la methode faire()
+	 * La commande qui reçoit le décorateur va encore avoir la méthode faire()
 	 ***************************************************************************/
 	@Override
 	public void faire() {
