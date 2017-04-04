@@ -41,7 +41,7 @@ public class CtrlPerspective {
 	private int initialDragOriginX, initialDragOriginY;
 	private int subsequentDragOriginX, subsequentDragOriginY;
 	private double initialSX1, initialSY1, initialSX2, initialSY2;
-	private final double FACTEUR_ZOOM = 0.1;
+	private static final double FACTEUR_ZOOM = 0.1;
 	private Timer timer;
 	private static final int DELAI = 200; 
 	
