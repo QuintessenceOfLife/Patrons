@@ -35,7 +35,7 @@ public class CtrlPerspective {
 	/*****************************
 	 * VARIABLES
 	 *****************************/
-	protected final static GestionnaireCmd gestionnaire = GestionnaireCmd.getGestionnaireCmd();
+	private final static GestionnaireCmd gestionnaire = GestionnaireCmd.getGestionnaireCmd();
 	private int numFenetre;
 	private Perspective perspective;
 	private int initialDragOriginX, initialDragOriginY;
