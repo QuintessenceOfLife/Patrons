@@ -16,23 +16,23 @@
 package controller;
 
 /*****************************************************************************
- * Classe abstraite qui permet l'ajout de méthodes et de variables que
- * nécessiterait une commande.
+ * Classe abstraite qui permet l'ajout de la méthode défaire et qui a besoin
+ * du gestionnaire de commande.
  * @author Youssef Soliman, Yassine Abdellaoui, Raph Jobin, Victor Trinh
  *****************************************************************************/
 public abstract class CommandeDecorator extends Commande {
-	
+
 	/*****************************
 	 * VARIABLES
 	 *****************************/
-	private Commande command;
-
+	private Commande commande;
+	
 	/*****************************
 	 * CONSTRUCTEUR
-	 * @param command Commande
+	 * @param commande Commande
 	 *****************************/
-	public CommandeDecorator(Commande command) {
-		this.command = command;
+	public CommandeDecorator(Commande commande) {
+		this.commande = commande;
 	}
 	
 	/***************************************************************************
@@ -40,7 +40,12 @@ public abstract class CommandeDecorator extends Commande {
 	 ***************************************************************************/
 	@Override
 	public void faire() {
-		command.faire();
+		commande.faire();
 	}
+	
+	/***************************************************************************
+	 * La commande qui reçoit le décorateur va aussi avoir cette méthode
+	 ***************************************************************************/
+	public abstract void defaire();
 	
 }
