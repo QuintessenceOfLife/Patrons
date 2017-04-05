@@ -38,7 +38,7 @@ public class CtrlMenu implements ActionListener {
 	/*****************************
 	 * VARIABLES
 	 *****************************/
-	private GestionnaireCmd gestionnaire = GestionnaireCmd.getGestionnaireCmd();
+	private static final GestionnaireCmd GESTIONNAIRE = GestionnaireCmd.getGestionnaireCmd();
 	private JTabbedPane tabbedPane;
 	
 	/*****************************
@@ -64,10 +64,10 @@ public class CtrlMenu implements ActionListener {
 					return;
 				(new Ouvrir(file)).faire();
 				tabbedPane.setSelectedIndex(0);
-				gestionnaire.clearDoneList(1);
-				gestionnaire.clearDoneList(2);
-				gestionnaire.clearUndoneList(1);
-				gestionnaire.clearUndoneList(2);
+				GESTIONNAIRE.clearDoneList(1);
+				GESTIONNAIRE.clearDoneList(2);
+				GESTIONNAIRE.clearUndoneList(1);
+				GESTIONNAIRE.clearUndoneList(2);
 				break;
 			}
 			case "Récupérer" : {
@@ -79,10 +79,10 @@ public class CtrlMenu implements ActionListener {
 					return;
 				(new Recuperer(file)).faire();
 				tabbedPane.setSelectedIndex(0);
-				gestionnaire.clearDoneList(1);
-				gestionnaire.clearDoneList(2);
-				gestionnaire.clearUndoneList(1);
-				gestionnaire.clearUndoneList(2);
+				GESTIONNAIRE.clearDoneList(1);
+				GESTIONNAIRE.clearDoneList(2);
+				GESTIONNAIRE.clearUndoneList(1);
+				GESTIONNAIRE.clearUndoneList(2);
 				break;
 			}
 			case "Sauvegarder": {
@@ -99,14 +99,14 @@ public class CtrlMenu implements ActionListener {
 				/*
 				 * Défaire une commande
 				 */
-				gestionnaire.defaire(tabbedPane.getSelectedIndex()+1);
+				GESTIONNAIRE.defaire(tabbedPane.getSelectedIndex()+1);
 				break;
 			}
 			case "Refaire" : {
 				/*
 				 * Refaire une commande
 				 */
-				gestionnaire.refaire(tabbedPane.getSelectedIndex()+1);				
+				GESTIONNAIRE.refaire(tabbedPane.getSelectedIndex()+1);				
 				break;
 			}
 			case "Quitter" : {

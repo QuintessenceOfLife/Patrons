@@ -35,7 +35,7 @@ public class CtrlPerspective {
 	/*****************************
 	 * VARIABLES
 	 *****************************/
-	private GestionnaireCmd gestionnaire = GestionnaireCmd.getGestionnaireCmd();
+	private static final GestionnaireCmd GESTIONNAIRE = GestionnaireCmd.getGestionnaireCmd();
 	private int numFenetre;
 	private Perspective perspective;
 	private int initialDragOriginX, initialDragOriginY;
@@ -150,8 +150,8 @@ public class CtrlPerspective {
 				}
 			}; 
 			
-			gestionnaire.addToDone(decoratedZoom, numFenetre);
-            gestionnaire.clearUndoneList(numFenetre);
+			GESTIONNAIRE.addToDone(decoratedZoom, numFenetre);
+            GESTIONNAIRE.clearUndoneList(numFenetre);
             initialSY2 = 0;            
         }
     }
@@ -211,8 +211,8 @@ public class CtrlPerspective {
 						perspective2.translater(-1 * translater.getDeltaX(), -1 * translater.getDeltaY());					
 				}
 			};
-			gestionnaire.addToDone(decoratedTranslater, numFenetre);
-			gestionnaire.clearUndoneList(numFenetre);
+			GESTIONNAIRE.addToDone(decoratedTranslater, numFenetre);
+			GESTIONNAIRE.clearUndoneList(numFenetre);
 		}
 	}
 		
