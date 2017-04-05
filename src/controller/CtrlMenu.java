@@ -38,7 +38,7 @@ public class CtrlMenu implements ActionListener {
 	/*****************************
 	 * VARIABLES
 	 *****************************/
-	private final static GestionnaireCmd gestionnaire = GestionnaireCmd.getGestionnaireCmd();
+	private GestionnaireCmd gestionnaire = GestionnaireCmd.getGestionnaireCmd();
 	private JTabbedPane tabbedPane;
 	
 	/*****************************

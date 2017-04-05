@@ -35,15 +35,15 @@ public class CtrlPerspective {
 	/*****************************
 	 * VARIABLES
 	 *****************************/
-	private final static GestionnaireCmd gestionnaire = GestionnaireCmd.getGestionnaireCmd();
+	private GestionnaireCmd gestionnaire = GestionnaireCmd.getGestionnaireCmd();
 	private int numFenetre;
 	private Perspective perspective;
 	private int initialDragOriginX, initialDragOriginY;
 	private int subsequentDragOriginX, subsequentDragOriginY;
 	private double initialSX1, initialSY1, initialSX2, initialSY2;
-	private static final double FACTEUR_ZOOM = 0.1;
+	private final double FACTEUR_ZOOM = 0.1;
 	private Timer timer;
-	private static final int DELAI = 200; 
+	private final int DELAI = 200; 
 	
 	/*****************************
 	 * CONSTRUCTEUR
