@@ -41,7 +41,7 @@ public class CtrlPerspective {
 	private int initialDragOriginX, initialDragOriginY;
 	private int subsequentDragOriginX, subsequentDragOriginY;
 	private double initialSX1, initialSY1, initialSX2, initialSY2;
-	private final double FACTEUR_ZOOM = 0.1;
+	private static final double FACTEUR_ZOOM = 0.1;
 	private Timer timer;
 	private static final int DELAI = 200; 
 	
@@ -140,7 +140,7 @@ public class CtrlPerspective {
         	Zoom zoom = new Zoom(numFenetre, initialSX1, initialSY1, initialSX2, initialSY2, 
         			perspective.getX1(), perspective.getY1(), perspective.getX2(), perspective.getY2());
         	
-        	DecoratorPerspective decoratedZoom = new DecoratorPerspective(zoom) {	
+        	CommandeDecorator decoratedZoom = new CommandeDecorator(zoom) {	
 				@Override
 				public void defaire() {
 					if (numFenetre == 1)
@@ -202,7 +202,7 @@ public class CtrlPerspective {
 				return;
 			
 			Translater translater = new Translater(numFenetre, e.getX(), e.getY(), initialDragOriginX, initialDragOriginY);
-			DecoratorPerspective decoratedTranslater = new DecoratorPerspective(translater) {				
+			CommandeDecorator decoratedTranslater = new CommandeDecorator(translater) {				
 				@Override
 				public void defaire() {
 					if (numFenetre == 1)
