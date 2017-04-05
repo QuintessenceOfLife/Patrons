@@ -73,7 +73,6 @@ public class FenetrePrincipale extends JFrame {
 		menuBar = new JMenuBar();
 		
 		// Menus
-		ctrlMenu = new CtrlMenu(tabbedPanel);
 		menuFichier = new MenuFichier();
 		menuEditer = new MenuEditer();
 		
